@@ -1,15 +1,18 @@
 //
 //  main.c
-//  Project_Tsakalidis
+//  Project_Domes
 //
-//  Created by Ioannis Loudaros on 29/5/20.
-//  Copyright © 2020 Ιωάννης Λουδάρος. All rights reserved.
+//  Created by Μυρτώ Δελυγιάννη, Ορέστης Σπυριδάκης, Ιωάννης Λουδάρος, Χριστίνα Κρατημένου on 21/5/20.
+//  Copyright © 2020 Ιωάννης Λουδάρος, Χριστίνα Κρατημένου, Μυρτώ Δελυγιάννη, Ορέστης Σπυριδάκης . All rights reserved.
 //
 
 #include <stdio.h>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+int main()
+{
+  H mama sou einai ble
+
     return 0;
+
+
 }
