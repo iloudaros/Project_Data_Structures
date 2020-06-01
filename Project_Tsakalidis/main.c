@@ -10,7 +10,6 @@
 
 int main()
 {
-  H mama sou einai ble
 
     return 0;
 
