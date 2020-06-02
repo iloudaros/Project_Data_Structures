@@ -9,6 +9,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <assert.h>
+#include <stdbool.h>
+
+//MERGESORT
 
 void split(*p, int max,int min) //Xwrizei to array sth mesh kathe fora
 {
@@ -82,5 +86,63 @@ void mergeSort(*p,int max,int min) //Kanei to sort twn stoixeiwn me sugkriseis k
 		}
 	}
 
+//QUICKSORT
+
+void swap( int *a, int *b ) //Utility function gia swaping
+{
+    assert( a != NULL );
+    assert( b != NULL );
+
+    int temp = *a;
+    *a       = *b;
+    *b       = temp;
+}
+
+//Orizetai to pivot(prwto stoixeio) topotheteitai sthn swsth thesh,
+//deksia apo auto topothetountai ta megalutera stoixeia kai
+//aristera apo auto topothetountai ta mikrotera stoixeia
+
+int partition( int *a, int low, int high )   
+{
+    assert( a != NULL );
+
+    bool flag  = false;
+    int  first = low;        /// Deikths sta aristera (indice)
+    int  last  = high +1;    /// Deikths sta deksia (indice)
+    int  pivot = a[ low ];   /// Antikeimeno tou partitioning
+
+    while ( !flag ) {
+        while ( a[ ++first ] < pivot ) {   /// Scan left and move
+            if ( first == high) flag = true;
+        }
+        while ( a[ --last ] > pivot ) {    /// Scan right and move
+            if ( last == low ) flag  = true;
+        }
+
+        if ( first >= last ) {
+            flag = true;
+        }
+        else {
+            swap( &a[ first], &a[ last ] );
+        }
+    }
+
+    swap( &a[ low ], &a[ last ] );
+
+    return last;
+}
+
+void quickSort( int *a, int low, int high )  //H sunarthsh pou ousiastika ulopoiei to sortarisma 
+{
+    assert( a != NULL );
+
+    if ( high <= low ) {
+        return;
+    }
+
+    int k = partition( a, low, high );
+    quickSort( a, low, k - 1 );     /// Sort left part
+    quickSort( a, k + 1, high );    /// Sort right part
+}
 
 #endif koutou_h
