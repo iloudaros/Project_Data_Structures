@@ -7,6 +7,10 @@
 //
 
 #include <stdio.h>
+#include "myrto.h"
+#include "koutou.h"
+#include "orestis.h"
+#include "johnnylouds.h"
 
 int main()
 {

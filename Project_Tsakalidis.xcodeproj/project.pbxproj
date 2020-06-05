@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		942D7586248A866B0017A263 /* johnnylouds.c in Sources */ = {isa = PBXBuildFile; fileRef = 942D7585248A866B0017A263 /* johnnylouds.c */; };
 		94E1F63C24819B050034A2D8 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 94E1F63A24819B050034A2D8 /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		941BA72D2485A5020017D891 /* johnnylouds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = johnnylouds.h; sourceTree = "<group>"; };
+		942D7585248A866B0017A263 /* johnnylouds.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = johnnylouds.c; sourceTree = "<group>"; };
 		947D25362485934F00B46BB6 /* myrto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myrto.h; sourceTree = "<group>"; };
 		947D2537248594DB00B46BB6 /* koutou.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = koutou.h; sourceTree = "<group>"; };
 		947D25382485958100B46BB6 /* orestis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = orestis.h; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				947D2537248594DB00B46BB6 /* koutou.h */,
 				947D25382485958100B46BB6 /* orestis.h */,
 				941BA72D2485A5020017D891 /* johnnylouds.h */,
+				942D7585248A866B0017A263 /* johnnylouds.c */,
 			);
 			path = Project_Tsakalidis;
 			sourceTree = "<group>";
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94E1F63C24819B050034A2D8 /* main.c in Sources */,
+				942D7586248A866B0017A263 /* johnnylouds.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

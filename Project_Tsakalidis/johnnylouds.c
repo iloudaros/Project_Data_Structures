@@ -1,15 +1,13 @@
 //
-//  johnnylouds,h
+//  johnnylouds.c
 //  Project_Tsakalidis
 //
-//  Εδώ υπάρχει ο parser για την μεταφορά των δεδομένων του αρχείου σε πίνακα
-//  Επίσης εδώ υπάρχει η δήλωση των καινούργιων τύπων "time","measuret" & "measureh"
+//  Created by Ioannis Loudaros on 5/6/20.
+//  Copyright © 2020 Ιωάννης Λουδάρος. All rights reserved.
+//
 
-#ifndef johnnylouds_h
-#define johnnylouds_h
+#include <stdio.h>
 
-
-/*
 //Χρόνος, για την εύκολη διαχείρηση των timestamps, ενδιαφέρον έχει το int together, σκοπός του είναι να κάνει ευκολότερο το sorting
 typedef struct{
     int year;
@@ -42,12 +40,19 @@ typedef struct{
     measuret* measurement;
     int size;
 } logt;
-*/
-
-//Parser Δεδομένων, αυτό το τμήμα του κώδικα έχει ως στόχο την ανάγνωση του αρχείου και την εισαγωγή των δεδομένων στο πρόγραμμα
-void loadh(FILE*,logh);
-void loadt(FILE*,logt);
 
 
 
-#endif johnnylouds_h
+
+
+
+
+//Οι parsers
+
+void loadh(FILE* fp,logh log){
+    fp = fopen( "hum.txt", "r");
+    
+    
+    
+    
+}
