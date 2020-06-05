@@ -31,6 +31,8 @@ typedef struct{
     time timestamp;
 } measureh;
 
+
+//Τύποι δεδομένων για την διατήρηση πολλών μετρήσεων των παραπάνω τύπων
 typedef struct{
     measureh* measurement;
     int size;
@@ -47,10 +49,11 @@ typedef struct{
 
 
 
-//Οι parsers
+//Οι arsers
 
 void loadh(FILE* fp,logh log){
     fp = fopen( "hum.txt", "r");
+    
     
     
     
