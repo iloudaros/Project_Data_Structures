@@ -49,7 +49,7 @@ typedef struct{
 
 
 
-//Οι arsers
+//Οι parsers
 
 void loadh(FILE* fp,logh log){
     fp = fopen( "hum.txt", "r");
