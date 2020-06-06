@@ -7,14 +7,26 @@
 //
 
 #include <stdio.h>
-#include "myrto.h"
-#include "koutou.h"
-#include "orestis.h"
+//#include "myrto.h"
+//#include "koutou.h"
+//#include "orestis.h"
 #include "johnnylouds.h"
 
 int main()
 {
+    FILE *test = NULL;
+    
+    logh testlog;
 
+    loadh(test, testlog);
+    
+    int i;
+    
+    for (i=0; i<testlog.size; i++) {
+        printf("%d,%d",testlog.measurement[testlog.size].timestamp.together,testlog.measurement[testlog.size].hum);
+    }
+    
+    
     return 0;
 
 

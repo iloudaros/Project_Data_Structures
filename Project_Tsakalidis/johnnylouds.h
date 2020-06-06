@@ -9,7 +9,7 @@
 #define johnnylouds_h
 
 
-/*
+
 //Χρόνος, για την εύκολη διαχείρηση των timestamps, ενδιαφέρον έχει το int together, σκοπός του είναι να κάνει ευκολότερο το sorting
 typedef struct{
     int year;
@@ -42,12 +42,13 @@ typedef struct{
     measuret* measurement;
     int size;
 } logt;
-*/
+
+
+
 
 //Parser Δεδομένων, αυτό το τμήμα του κώδικα έχει ως στόχο την ανάγνωση του αρχείου και την εισαγωγή των δεδομένων στο πρόγραμμα
 void loadh(FILE*,logh);
 void loadt(FILE*,logt);
-
 
 
 #endif johnnylouds_h

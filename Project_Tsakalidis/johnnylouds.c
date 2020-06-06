@@ -7,6 +7,7 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 
 //Χρόνος, για την εύκολη διαχείρηση των timestamps, ενδιαφέρον έχει το int together, σκοπός του είναι να κάνει ευκολότερο το sorting
 typedef struct{
@@ -53,12 +54,26 @@ typedef struct{
 //Οι Parsers
 
 void loadh(FILE* fp,logh* log){
+   
     fp = fopen( "hum.txt", "r");
-    char c = '\0';
+    printf("Opening \"hum.txt\"...\n");
+    
+    char c ;
     log->size=0;
+    printf("Loading Data");
+    
     
     while (c!=EOF){
-       
+        
+        system("cls");
+        printf("Measurement %d",log->size+1);
+        
+        //Κάνε χώρο μέσα στον πίνακα ώστε να μπει η επόμενη μέτρηση
+        log->measurement=realloc(log->measurement, log->size+1*sizeof(measureh));
+        
+       //Φτάσε μέχρι την αρχή της εγγραφής
+        c=getc(fp);
+        while (c!='"') c=getc(fp);
         
         //Διάβασε την ημερομηνία
     fscanf(fp,"%4d-%2d-%2dT%2d:%2d:%2d",&log->measurement[log->size].timestamp.year,&log->measurement[log->size].timestamp.month,&log->measurement[log->size].timestamp.day,&log->measurement[log->size].timestamp.hour,&log->measurement[log->size].timestamp.minute,&log->measurement[log->size].timestamp.sec);
@@ -72,12 +87,8 @@ void loadh(FILE* fp,logh* log){
         //Διάβασε την μέτρηση
     fscanf(fp, "%2d",&log->measurement[log->size].hum);
     log->size++;
-        
-        //Φτάσε μέχρι
-        
-        
     }
-    
+    printf("Done");
     
     
     
