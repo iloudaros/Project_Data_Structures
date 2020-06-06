@@ -69,8 +69,6 @@ int interpolationSearch(*p, int n, int x)
     int low = 0;
 	int high = (n - 1); 
   
-    // Since array is sorted, an element present 
-    // in array must be in range defined by corner 
     while (low <= high && x >= p[low].time.together && x <= p[high].time.together) 
     { 
         if (low == high) 
