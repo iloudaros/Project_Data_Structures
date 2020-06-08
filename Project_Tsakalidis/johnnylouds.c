@@ -17,7 +17,7 @@ typedef struct{
     int hour;
     int minute;
     int sec;
-    int together;
+    long int together;
 } time;
 
 
@@ -57,57 +57,66 @@ void loadh(logh* log){
    
     //Άνοιγμα αρχείου
     FILE *fp;
+    printf("Opening \"hum.txt\"...\n");
     fp = fopen("hum.txt", "r");
     
-    printf("Opened \"hum.txt\"...\n");
+    //Έλεγχος αρχείου
+    if (fp==NULL) printf("Something is wrong with this file\n");
+        else printf("Opened");
+        
+    
     
     //Προετοιμασία ανάγνωσης πρώτης μέτρησης
     printf("Creating a new entry\n");
     char c = '\0' ;
-    (*log).size=1;
+    log->size=1;
     printf("Loading Data\n");
     
     
-    while (c!=EOF){
+    while (c!=EOF)
+    {
         
         
-        printf("Measurement %d",log->size);
+        printf("Measurement %d\n",log->size);
         
         //Κάνε χώρο μέσα στον πίνακα ώστε να μπει η επόμενη μέτρηση
         (*log).measurement=(measureh *)realloc((*log).measurement, (*log).size*sizeof(measureh));
         
-       //Φτάσε μέχρι την αρχή της εγγραφής
-        
+       //Φτάσε μέχρι την αρχή της εγγραφής (Αν τελειώσει το αρχείο βγες από το loop)
         while (c!='"')
         {
-            c=getc(fp);
-            if (c==EOF) goto done;
+                c=getc(fp);
+                if (c==EOF)
+                {
+                    goto done;
+                    log->size--;
+                }
         }
         
         //Διάβασε την ημερομηνία
-    fscanf(fp,"%4d-%2d-%2dT%2d:%2d:%2d",&log->measurement[log->size].timestamp.year,&log->measurement[log->size].timestamp.month,&log->measurement[log->size].timestamp.day,&log->measurement[log->size].timestamp.hour,&log->measurement[log->size].timestamp.minute,&log->measurement[log->size].timestamp.sec);
+    fscanf(fp,"%4d-%2d-%2dT%2d:%2d:%2d",&log->measurement[log->size-1].timestamp.year,&log->measurement[log->size-1].timestamp.month,&log->measurement[log->size-1].timestamp.day,&log->measurement[log->size-1].timestamp.hour,&log->measurement[log->size-1].timestamp.minute,&log->measurement[log->size-1].timestamp.sec);
         
-        log->measurement[log->size].timestamp.together=100000000*log->measurement[log->size].timestamp.year+1000000*log->measurement[log->size].timestamp.month+10000*log->measurement[log->size].timestamp.day+100*log->measurement[log->size].timestamp.hour+log->measurement[log->size].timestamp.minute;
+        log->measurement[log->size-1].timestamp.together=100000000* (long)log->measurement[log->size-1].timestamp.year+(long)1000000*log->measurement[log->size-1].timestamp.month+(long)10000*log->measurement[log->size-1].timestamp.day+100*log->measurement[log->size-1].timestamp.hour+log->measurement[log->size-1].timestamp.minute;
         
         //Πήγαινε στην μέτρηση
     c=getc(fp);
+        c='0';
     while (c!='"') c=getc(fp);
         
         //Διάβασε την μέτρηση
-    fscanf(fp, "%2d",&log->measurement[log->size].hum);
+    fscanf(fp, "%2d",&log->measurement[log->size-1].hum);
     log->size++;
     c=getc(fp);
-        
-        //Κάνε χώρο μέσα στον πίνακα ώστε να μπει η επόμενη μέτρηση
-        log->measurement=realloc(log->measurement, log->size+1*sizeof(measureh));
+     c='0';
     }
-    
     
 done:
 
+    fclose(fp);
 printf("Done");
     
     
+    return;
     
     
 }

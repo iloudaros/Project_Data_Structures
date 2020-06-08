@@ -15,14 +15,17 @@
 int main()
 {
     
+    
+    
+    chdir("/Users/giannisloudaros/Documents/Code/HW/4th Semester/Project Δομές/Project_Tsakalidis/Project_Tsakalidis");
+    
     logh testlog;
-
     loadh(&testlog);
     
     int i;
     
     for (i=0; i<testlog.size; i++) {
-        printf("%d,%d",testlog.measurement[testlog.size].timestamp.together,testlog.measurement[testlog.size].hum);
+        printf("--Measurment %d-- %d,%d/n",i,testlog.measurement[testlog.size].timestamp.together,testlog.measurement[testlog.size].hum);
     }
     
     
