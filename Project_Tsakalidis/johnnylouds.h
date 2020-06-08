@@ -47,8 +47,9 @@ typedef struct{
 
 
 //Parser Δεδομένων, αυτό το τμήμα του κώδικα έχει ως στόχο την ανάγνωση του αρχείου και την εισαγωγή των δεδομένων στο πρόγραμμα
-void loadh(FILE*,logh);
-void loadt(FILE*,logt);
+void loadh(logh*);
+void loadt(logt*);
 
 
-#endif johnnylouds_h
+
+#endif //"johnnylouds_h"

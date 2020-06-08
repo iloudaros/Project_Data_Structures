@@ -14,11 +14,10 @@
 
 int main()
 {
-    FILE *test = NULL;
     
     logh testlog;
 
-    loadh(test, testlog);
+    loadh(&testlog);
     
     int i;
     
