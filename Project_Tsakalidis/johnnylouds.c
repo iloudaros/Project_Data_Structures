@@ -114,7 +114,7 @@ void loadh(logh* log){
 done:
 
     fclose(fp);
-printf("Done");
+printf("Done\n");
     
     
     return;
