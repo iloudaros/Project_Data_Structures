@@ -97,7 +97,7 @@ void loadh(logh* log){
         //Διάβασε την ημερομηνία
     fscanf(fp,"%4d-%2d-%2dT%2d:%2d:%2d",&log->measurement[log->size-1].timestamp.year,&log->measurement[log->size-1].timestamp.month,&log->measurement[log->size-1].timestamp.day,&log->measurement[log->size-1].timestamp.hour,&log->measurement[log->size-1].timestamp.minute,&log->measurement[log->size-1].timestamp.sec);
         
-        log->measurement[log->size-1].timestamp.together=100000000* (long)log->measurement[log->size-1].timestamp.year+(long)1000000*log->measurement[log->size-1].timestamp.month+(long)10000*log->measurement[log->size-1].timestamp.day+100*log->measurement[log->size-1].timestamp.hour+log->measurement[log->size-1].timestamp.minute;
+        log->measurement[log->size-1].timestamp.together=(long)100000000* (long)log->measurement[log->size-1].timestamp.year+(long)1000000*log->measurement[log->size-1].timestamp.month+(long)10000*log->measurement[log->size-1].timestamp.day+100*log->measurement[log->size-1].timestamp.hour+log->measurement[log->size-1].timestamp.minute;
         
         //Πήγαινε στην μέτρηση
     c=getc(fp);
