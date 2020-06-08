@@ -25,7 +25,7 @@ int main()
     int i;
     
     for (i=0; i<testlog.size; i++) {
-        printf("--Measurment %d-- %d,%d\n",i,testlog.measurement[testlog.size].timestamp.together,testlog.measurement[testlog.size].hum);
+        printf("--Measurment %d-- %d,%d\n",i,testlog.measurement[i].timestamp.together,testlog.measurement[i].hum);
     }
     
     
