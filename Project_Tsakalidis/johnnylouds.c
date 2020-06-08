@@ -53,27 +53,36 @@ typedef struct{
 
 //Οι Parsers
 
-void loadh(FILE* fp,logh* log){
+void loadh(logh* log){
    
-    fp = fopen( "hum.txt", "r");
-    printf("Opening \"hum.txt\"...\n");
+    //Άνοιγμα αρχείου
+    FILE *fp;
+    fp = fopen("hum.txt", "r");
     
-    char c ;
-    log->size=0;
-    printf("Loading Data");
+    printf("Opened \"hum.txt\"...\n");
+    
+    //Προετοιμασία ανάγνωσης πρώτης μέτρησης
+    printf("Creating a new entry\n");
+    char c = '\0' ;
+    (*log).size=1;
+    printf("Loading Data\n");
     
     
     while (c!=EOF){
         
-        system("cls");
-        printf("Measurement %d",log->size+1);
+        
+        printf("Measurement %d",log->size);
         
         //Κάνε χώρο μέσα στον πίνακα ώστε να μπει η επόμενη μέτρηση
-        log->measurement=realloc(log->measurement, log->size+1*sizeof(measureh));
+        (*log).measurement=(measureh *)realloc((*log).measurement, (*log).size*sizeof(measureh));
         
        //Φτάσε μέχρι την αρχή της εγγραφής
-        c=getc(fp);
-        while (c!='"') c=getc(fp);
+        
+        while (c!='"')
+        {
+            c=getc(fp);
+            if (c==EOF) goto done;
+        }
         
         //Διάβασε την ημερομηνία
     fscanf(fp,"%4d-%2d-%2dT%2d:%2d:%2d",&log->measurement[log->size].timestamp.year,&log->measurement[log->size].timestamp.month,&log->measurement[log->size].timestamp.day,&log->measurement[log->size].timestamp.hour,&log->measurement[log->size].timestamp.minute,&log->measurement[log->size].timestamp.sec);
@@ -87,8 +96,16 @@ void loadh(FILE* fp,logh* log){
         //Διάβασε την μέτρηση
     fscanf(fp, "%2d",&log->measurement[log->size].hum);
     log->size++;
+    c=getc(fp);
+        
+        //Κάνε χώρο μέσα στον πίνακα ώστε να μπει η επόμενη μέτρηση
+        log->measurement=realloc(log->measurement, log->size+1*sizeof(measureh));
     }
-    printf("Done");
+    
+    
+done:
+
+printf("Done");
     
     
     
