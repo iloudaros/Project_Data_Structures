@@ -88,8 +88,9 @@ void loadh(logh* log){
                 c=getc(fp);
                 if (c==EOF)
                 {
-                    goto done;
                     log->size--;
+                    goto done;
+                    
                 }
         }
         
