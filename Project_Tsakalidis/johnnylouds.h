@@ -17,7 +17,7 @@ typedef struct{
     int day;
     int hour;
     int minute;
-    int together;
+    long int together;
 } time;
 
 

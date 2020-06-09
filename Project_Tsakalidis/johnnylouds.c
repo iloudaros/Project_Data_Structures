@@ -77,7 +77,7 @@ void loadh(logh* log){
     {
         
         
-        printf("Measurement %d\n",log->size);
+     
         
         //Κάνε χώρο μέσα στον πίνακα ώστε να μπει η επόμενη μέτρηση
         (*log).measurement=(measureh *)realloc((*log).measurement, (*log).size*sizeof(measureh));
@@ -93,6 +93,7 @@ void loadh(logh* log){
                     
                 }
         }
+           printf("Measurement %d\n",log->size);
         
         //Διάβασε την ημερομηνία
     fscanf(fp,"%4d-%2d-%2dT%2d:%2d:%2d",&log->measurement[log->size-1].timestamp.year,&log->measurement[log->size-1].timestamp.month,&log->measurement[log->size-1].timestamp.day,&log->measurement[log->size-1].timestamp.hour,&log->measurement[log->size-1].timestamp.minute,&log->measurement[log->size-1].timestamp.sec);
