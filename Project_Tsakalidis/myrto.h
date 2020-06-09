@@ -11,11 +11,12 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
 
 //counting sort
 
 //xreiazomai akoma mia sunarthsh pou tha vriskei to megalutero stoixeio tou pinaka wste na pernaw sthn k to size tou count
-void countingSort(int arrayA[], int count[], int arrayB[]) {
+void countingSort(int A[], int count[], int B[]) {
 	int n; //to size twn A kai B
 	int k; //to size tou count
 	int i, j;
@@ -23,18 +24,25 @@ void countingSort(int arrayA[], int count[], int arrayB[]) {
 		count[i] = 0;
 	}
 	for(j = 0; j < n; j++){
-		count[arrayA[j]] = count[arrayA[j]] + 1;
+		count[A[j]] = count[A[j]] + 1;
 	}
 	for(i = 1; i < k; i++){
 		count[i] = count[i] + count[i-1];
 	}
 	for(j = n; j > 0; j--){
-		arrayB[count[arrayA[j]]] = arrayA[j];
-		count[arrayA[j]] = count[arrayA[j]] - 1; 
+		B[count[A[j]]] = A[j];
+		count[A[j]] = count[A[j]] - 1; 
 	}
 }
 
-item = heapArray[i]; //to periexomeno tis thesis i sti metavlhth item
+
+
+
+//heapsort
+
+void adjust(int heapArray[], int i, int n){
+	int j = (2 * i);	//j is left child of i
+	int item = heapArray[i]; //to periexomeno tis thesis i sti metavlhth item
 	
 	//oso uparxei ena stoixeio sti thesi j
 	while(j <= n){
@@ -69,6 +77,46 @@ void heapSort(int array[], int n){
 		array[i] = temp;
 	}
 }
+
+
+
+
+//binary interpolation search
+
+void access(int ts, int a[]){
+	
+	int n; //o arithmos twn timestamps/twn metrhsewn
+	
+	int left = 1;
+	int right = n;
+	
+	int sqr = sqrt(right - left);
+	
+	int next = (((ts - a[left]) / a[right] - a[left]) * (right - left));
+	while(ts != a[next] && left < right){
+		int i=0;
+		if(ts >= a[next]){
+			while(ts > a[next + i * sqr]){
+				i++;
+				right = i * sqr;
+				left = (i - 1) * sqr;
+			}
+		}
+		else if(ts <= a[next]){
+			while(ts > a[next - i * sqr]){
+				i++;
+				right = (i - 1) * sqr;
+				left = i * sqr;
+			}
+		}
+		next = ((ts - a[left]) / (a[right] - a[left]) * (right - left));
+	}
+	if(ts == a[next]){
+		printf("to stoixeio %d vrisketai sti thesi %d\n", ts, next);
+	}
+	else printf("to stoixeio %d den uparxei sti lista\n", ts);
+}
+
 
 
 
