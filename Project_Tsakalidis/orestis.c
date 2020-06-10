@@ -31,7 +31,7 @@ void swap(int *a, int *b)
     *b = temp;
 }
   
-void timesort(logh *p, int n) //kanw sort ton pinaka me vash ta timestamps gia na mporw meta na kanw binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+void timesort(logh* p, int n) //kanw sort ton pinaka me vash ta timestamps gia na mporw meta na kanw binary search poy ematha apo to vivlio toy kyrioy tsakalidi
 {
     int i, j, min_idx;
   
@@ -39,16 +39,16 @@ void timesort(logh *p, int n) //kanw sort ton pinaka me vash ta timestamps gia n
     {
         min_idx = i;
         for (j = i+1; j < n; j++)
-        if (p[j].time.together < p[min_idx].time.together)
+            if (p->measurement[j].timestamp.together < p->measurement[min_idx].timestamp.together)
             min_idx = j;
   
-        swap(&p[min_idx].time.together, &p[i].time.together);
+        swap(&p->measurement[min_idx].timestamp.together, &p->measurement[i].timestamp.together);
     }
 }
 
 //BINARY
 
-int binarySearch(logh *p, int x, int n) //psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+int binarySearch(logh* p, int x, int n) //psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
 {
     int high = n-1;
     int low = 0;
@@ -58,45 +58,46 @@ int binarySearch(logh *p, int x, int n) //psaxnw me vash to timestamp me th meth
     {
         mid = low + (high - low)/2;
 
-        if (p[mid].time.together == x) //an einai sth mesh parto
+        if(p->measurement[mid].timestamp.together == x) //an einai sth mesh parto
+        {
             return mid;
-
-        else if (p[mid].time.together > x) //psaxnw aristera
-            return binarySearch(logh *p, x, low, mid-1)
-
+        }
+        else if (p->measurement[mid].timestamp.together > x)//psaxnw aristera
+        {
+            return binarySearch(p, low, mid-1);
+        }
         else //psaxnw deksia
-            return binarySearch(logh *p, x, mid + 1, high)
-
+            return binarySearch(p, mid + 1, high);
+        }
     else //alliws ton poylo
-        return -1
+        return -1;
     }
-}
 
 //INTERPOLATION
 
-int interpolationSearch(logh *p, int n, int x)
+int interpolationSearch(logh* p, int n, int x)
 {
     int low = 0;
     int high = (n - 1);
   
-    while (low <= high && x >= p[low].time.together && x <= p[high].time.together)
+    while (low <= high && x >= p->measurement[low].timestamp.together && x <= p->measurement[high].timestamp.together)
     {
         if (low == high)
         {
-            if (p[low].time.together == x) return low;
+            if (p->measurement[low].timestamp.together == x) return low;
             return -1;
         }
 
         //vriskw th thesh me ton typo apo to vivlio toy kyrioy tsakalidi
         int pos = low + (((double)(high - low) /
-                          (p[high].time.together - p[low]).time.together) * (x - p[low].time.together));
+                          (p->measurement[high].timestamp.together - p->measurement[low].timestamp.together) * (x - p->measurement[low].timestamp.together)));
   
         //an to vrikame me th mia oyaoy
-        if (p[pos].time.together == x)
+        if (p->measurement[pos].timestamp.together == x)
             return pos;
   
         //an to x einai megalytero apo ayto poy vrikame des deksia
-        if (p[pos].time.together < x)
+        if (p->measurement[pos].timestamp.together < x)
             low = pos + 1;
   
         //an to x einai mikrotero apo ayto poy vrikame des aristera

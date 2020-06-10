@@ -21,6 +21,7 @@ int main()
     
     logh testlog;
     loadh(&testlog);
+    printf("%d",testlog.size);
     
     int i;
     

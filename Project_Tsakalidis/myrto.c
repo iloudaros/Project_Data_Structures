@@ -10,25 +10,35 @@
 #include<stdlib.h>
 #include<math.h>
 
+
+#include "johnnylouds.h"
+
+
+
 //counting sort
 
 //xreiazomai akoma mia sunarthsh pou tha vriskei to megalutero stoixeio tou pinaka wste na pernaw sthn k to size tou count
-void countingSort(int A[], int count[], int B[]) {
-    int n; //to size twn A kai B
+void countingSort(logh* a) {
+    
+    measureh sorted[a->size];
+    
+    int n = a->size; //to size twn A kai B
     int k; //to size tou count
     int i, j;
+    int count[k];
+    
     for(i = 0; i < k; i++){
         count[i] = 0;
     }
     for(j = 0; j < n; j++){
-        count[A[j]] = count[A[j]] + 1;
+        count[a->measurement[j].hum] = count[a->measurement[j].hum] + 1;
     }
     for(i = 1; i < k; i++){
         count[i] = count[i] + count[i-1];
     }
     for(j = n; j > 0; j--){
-        B[count[A[j]]] = A[j];
-        count[A[j]] = count[A[j]] - 1;
+        sorted[count[a->measurement[j].hum]].hum = a->measurement[j].hum;
+        count[a->measurement[j].hum] = count[a->measurement[j].hum] - 1;
     }
 }
 
@@ -80,38 +90,38 @@ void heapSort(int array[], int n){
 
 //binary interpolation search
 
-void access(int ts, int a[]){
+void bis(time ts, logh* a){
     
-    int n; //o arithmos twn timestamps/twn metrhsewn
+    int n = a->size;
     
     int left = 1;
     int right = n;
     
     int sqr = sqrt(right - left);
     
-    int next = (((ts - a[left]) / a[right] - a[left]) * (right - left));
-    while(ts != a[next] && left < right){
-        int i=0;
-        if(ts >= a[next]){
-            while(ts > a[next + i * sqr]){
+    long next = (((ts.together - a->measurement[left].timestamp.together) / a->measurement[right].timestamp.together - a->measurement[left].timestamp.together) * (right - left));
+    while(ts.together != a->measurement[next].timestamp.together && left < right){
+        int i = 0;
+        if(ts.together >= a->measurement[next].timestamp.together){
+            while(ts.together > a->measurement[next + i * sqr].timestamp.together){
                 i++;
                 right = i * sqr;
                 left = (i - 1) * sqr;
             }
         }
-        else if(ts <= a[next]){
-            while(ts > a[next - i * sqr]){
+        else if(ts.together <= a->measurement[next].timestamp.together){
+            while(ts.together > a->measurement[next - i * sqr].timestamp.together){
                 i++;
                 right = (i - 1) * sqr;
                 left = i * sqr;
             }
         }
-        next = ((ts - a[left]) / (a[right] - a[left]) * (right - left));
+        next = ((ts.together - a->measurement[left].timestamp.together) / (a->measurement[right].timestamp.together - a->measurement[left].timestamp.together) * (right - left));
     }
-    if(ts == a[next]){
-        printf("to stoixeio %d vrisketai sti thesi %d\n", ts, next);
+    if(ts.together == a->measurement[next].timestamp.together){
+        printf("to stoixeio %lf vrisketai sti thesi %lf\n", ts, next);
     }
-    else printf("to stoixeio %d den uparxei sti lista\n", ts);
+    else printf("to stoixeio %lf den uparxei sti lista\n", ts);
 }
 
 

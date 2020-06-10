@@ -17,6 +17,7 @@ typedef struct{
     int day;
     int hour;
     int minute;
+    int sec;
     long int together;
 } time;
 
@@ -24,7 +25,7 @@ typedef struct{
 
 //Τύποι δεδομένων για την καταγραφή των μετρήσεων. Ένας από τους δύο θα μπορούσε να παραληφθεί αλλά χρησιμοποιούνται για λόγους ευαναγνωσιμότητας
 typedef struct{
-    int temp;
+    float temp;
     time timestamp;
 } measuret;
 

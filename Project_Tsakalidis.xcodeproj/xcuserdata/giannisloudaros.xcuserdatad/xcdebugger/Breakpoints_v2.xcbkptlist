@@ -30,8 +30,8 @@
             filePath = "Project_Tsakalidis/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -50,6 +50,22 @@
             endingLineNumber = "115"
             landmarkName = "loadh(log)"
             landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6634649B-0D3F-4413-9D35-25D5C1240DF1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project_Tsakalidis/johnnylouds.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "measuret"
+            landmarkType = "16">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
