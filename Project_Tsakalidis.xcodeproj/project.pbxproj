@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		942D7586248A866B0017A263 /* johnnylouds.c in Sources */ = {isa = PBXBuildFile; fileRef = 942D7585248A866B0017A263 /* johnnylouds.c */; };
+		947D3C292490E31D0090190B /* orestis.c in Sources */ = {isa = PBXBuildFile; fileRef = 947D3C282490E31D0090190B /* orestis.c */; };
+		947D3C2B2490E5170090190B /* myrto.c in Sources */ = {isa = PBXBuildFile; fileRef = 947D3C2A2490E5170090190B /* myrto.c */; };
 		94E1F63C24819B050034A2D8 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 94E1F63A24819B050034A2D8 /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,8 @@
 		947D25362485934F00B46BB6 /* myrto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myrto.h; sourceTree = "<group>"; };
 		947D2537248594DB00B46BB6 /* koutou.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = koutou.h; sourceTree = "<group>"; };
 		947D25382485958100B46BB6 /* orestis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = orestis.h; sourceTree = "<group>"; };
+		947D3C282490E31D0090190B /* orestis.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = orestis.c; sourceTree = "<group>"; };
+		947D3C2A2490E5170090190B /* myrto.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = myrto.c; sourceTree = "<group>"; };
 		94E1F62F24819AE20034A2D8 /* Project_Tsakalidis */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Project_Tsakalidis; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E1F63924819B050034A2D8 /* hum.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hum.txt; sourceTree = "<group>"; };
 		94E1F63A24819B050034A2D8 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 				947D25382485958100B46BB6 /* orestis.h */,
 				941BA72D2485A5020017D891 /* johnnylouds.h */,
 				942D7585248A866B0017A263 /* johnnylouds.c */,
+				947D3C282490E31D0090190B /* orestis.c */,
+				947D3C2A2490E5170090190B /* myrto.c */,
 			);
 			path = Project_Tsakalidis;
 			sourceTree = "<group>";
@@ -135,7 +141,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				94E1F63C24819B050034A2D8 /* main.c in Sources */,
+				947D3C292490E31D0090190B /* orestis.c in Sources */,
 				942D7586248A866B0017A263 /* johnnylouds.c in Sources */,
+				947D3C2B2490E5170090190B /* myrto.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
