@@ -180,8 +180,7 @@ void loadt(logt* log){
     while (c!='"') c=getc(fp);
         
         //Διάβασε την μέτρηση
-    fscanf(fp, "\"%f\"",&log->measurement[log->size-1].temp);
-        printf("%f",log->measurement[log->size-1].temp);
+    fscanf(fp, "%f\"",&log->measurement[log->size-1].temp);
     log->size++;
     c=getc(fp);
      c='0';
