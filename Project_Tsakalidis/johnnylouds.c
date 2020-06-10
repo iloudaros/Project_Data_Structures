@@ -53,6 +53,8 @@ typedef struct{
 
 //Οι Parsers
 
+
+//Φορτώνει δεδομένα μετρήσεων υγρασίας
 void loadh(logh* log){
    
     //Άνοιγμα αρχείου
@@ -107,6 +109,79 @@ void loadh(logh* log){
         
         //Διάβασε την μέτρηση
     fscanf(fp, "%2d",&log->measurement[log->size-1].hum);
+    log->size++;
+    c=getc(fp);
+     c='0';
+    }
+    
+done:
+
+    fclose(fp);
+printf("Done\n");
+    
+    
+    return;
+    
+    
+}
+
+
+//Φορτώνει δεδομένα μετρήσεων θερμοκρασίας
+void loadt(logt* log){
+   
+    //Άνοιγμα αρχείου
+    FILE *fp;
+    printf("Opening \"tempm.txt\"...\n");
+    fp = fopen("tempm.txt", "r");
+    
+    //Έλεγχος αρχείου
+    if (fp==NULL) printf("Something is wrong with this file\n");
+        else printf("Opened\n");
+        
+    
+    
+    //Προετοιμασία ανάγνωσης πρώτης μέτρησης
+    printf("Creating a new entry\n");
+    char c = '\0' ;
+    log->size=1;
+    printf("Loading Data\n");
+    
+    
+    while (c!=EOF)
+    {
+        
+        
+     
+        
+        //Κάνε χώρο μέσα στον πίνακα ώστε να μπει η επόμενη μέτρηση
+        log->measurement=(measuret *)realloc((*log).measurement, log->size*sizeof(measuret));
+        
+       //Φτάσε μέχρι την αρχή της εγγραφής (Αν τελειώσει το αρχείο βγες από το loop)
+        while (c!='"')
+        {
+                c=getc(fp);
+                if (c==EOF)
+                {
+                    log->size--;
+                    goto done;
+                    
+                }
+        }
+           printf("Measurement %d\n",log->size);
+        
+        //Διάβασε την ημερομηνία
+    fscanf(fp,"%4d-%2d-%2dT%2d:%2d:%2d",&log->measurement[log->size-1].timestamp.year,&log->measurement[log->size-1].timestamp.month,&log->measurement[log->size-1].timestamp.day,&log->measurement[log->size-1].timestamp.hour,&log->measurement[log->size-1].timestamp.minute,&log->measurement[log->size-1].timestamp.sec);
+        
+        log->measurement[log->size-1].timestamp.together=(long)100000000* (long)log->measurement[log->size-1].timestamp.year+(long)1000000*log->measurement[log->size-1].timestamp.month+(long)10000*log->measurement[log->size-1].timestamp.day+100*log->measurement[log->size-1].timestamp.hour+log->measurement[log->size-1].timestamp.minute;
+        
+        //Πήγαινε στην μέτρηση
+    c=getc(fp);
+        c='0';
+    while (c!='"') c=getc(fp);
+        
+        //Διάβασε την μέτρηση
+    fscanf(fp, "\"%f\"",&log->measurement[log->size-1].temp);
+        printf("%f",log->measurement[log->size-1].temp);
     log->size++;
     c=getc(fp);
      c='0';

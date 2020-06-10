@@ -9,21 +9,21 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "johnnylouds.h"
 
 
 //TIMESORT
 
-void swap(int *a, int *b)  
+void swap(int *a, int *b);
 
   
-void timesort(*p, int n) //kanw sort ton pinaka me vash ta timestamps gia na mporw meta na kanw binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+void timesort(logh* p);//kanw sort ton pinaka me vash ta timestamps gia na mporw meta na kanw binary search poy ematha apo to vivlio toy kyrioy tsakalidi
 
 
-int binarySearch(*p, int x, int n) //psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+int binarySearch(logh* p, int x, int l, int h);//psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
 
 
-int interpolationSearch(*p, int n, int x) 
+int interpolationSearch(logh* p, int x);
 
 
 

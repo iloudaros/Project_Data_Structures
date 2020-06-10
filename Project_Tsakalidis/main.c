@@ -9,7 +9,7 @@
 #include <stdio.h>
 //#include "myrto.h"
 //#include "koutou.h"
-//#include "orestis.h"
+#include "orestis.h"
 #include "johnnylouds.h"
 
 int main()
@@ -19,15 +19,18 @@ int main()
     
     chdir("/Users/giannisloudaros/Documents/Code/HW/4th Semester/Project Δομές/Project_Tsakalidis/Project_Tsakalidis");
     
-    logh testlog;
-    loadh(&testlog);
-    printf("%d",testlog.size);
+    logt testlog;
+    loadt(&testlog);
+    printf("%d\n",testlog.size);
+    
+    
     
     int i;
     
     for (i=0; i<testlog.size; i++) {
-        printf("--Measurment %d-- %ld,%d\n",i,(long)testlog.measurement[i].timestamp.together,testlog.measurement[i].hum);
+        printf("%ld,%f\n",(long)testlog.measurement[i].timestamp.together,testlog.measurement[i].temp);
     }
+    
     
     
     return 0;

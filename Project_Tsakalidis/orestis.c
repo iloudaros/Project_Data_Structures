@@ -24,33 +24,51 @@
 
 //TIMESORT
 
-void swap(int *a, int *b)
+void swap(measureh *a, measureh *b)
 {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+    measureh temp = *a;
+    a->hum=b->hum;
+    a->timestamp.year=b->timestamp.year;
+    a->timestamp.month=b->timestamp.month;
+    a->timestamp.day=b->timestamp.day;
+    a->timestamp.minute=b->timestamp.minute;
+    a->timestamp.hour=b->timestamp.hour;
+    a->timestamp.sec=b->timestamp.sec;
+    a->timestamp.together=b->timestamp.together;
+    
+    b->hum=temp.hum;
+    b->timestamp.year=temp.timestamp.year;
+    b->timestamp.month=temp.timestamp.month;
+    b->timestamp.day=temp.timestamp.day;
+    b->timestamp.minute=temp.timestamp.minute;
+    b->timestamp.hour=temp.timestamp.hour;
+    b->timestamp.sec=temp.timestamp.sec;
+    b->timestamp.together=temp.timestamp.together;
+    
+    
 }
   
-void timesort(logh* p, int n) //kanw sort ton pinaka me vash ta timestamps gia na mporw meta na kanw binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+void timesort(logh* p) //kanw sort ton pinaka me vash ta timestamps gia na mporw meta na kanw binary search poy ematha apo to vivlio toy kyrioy tsakalidi
 {
+    int n = p->size;
     int i, j, min_idx;
   
-    for (i = 0; i < n-1; i++)
+    for (i = 0; i < n; i++)
     {
         min_idx = i;
         for (j = i+1; j < n; j++)
             if (p->measurement[j].timestamp.together < p->measurement[min_idx].timestamp.together)
             min_idx = j;
   
-        swap(&p->measurement[min_idx].timestamp.together, &p->measurement[i].timestamp.together);
+        swap(&p->measurement[min_idx], &p->measurement[i]);
     }
 }
 
 //BINARY
 
-int binarySearch(logh* p, int x, int n) //psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+int binarySearch(logh* p, int x, int l, int h) //psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi 
 {
-    int high = n-1;
+    int high = h-1;
     int low = 0;
     int mid;
     
@@ -60,14 +78,14 @@ int binarySearch(logh* p, int x, int n) //psaxnw me vash to timestamp me th meth
 
         if(p->measurement[mid].timestamp.together == x) //an einai sth mesh parto
         {
-            return mid;
+            return p->measurement[mid].hum;
         }
         else if (p->measurement[mid].timestamp.together > x)//psaxnw aristera
         {
-            return binarySearch(p, low, mid-1);
+            return binarySearch(p, x, low, mid-1);
         }
         else //psaxnw deksia
-            return binarySearch(p, mid + 1, high);
+            return binarySearch(p, x, mid-1, high);
         }
     else //alliws ton poylo
         return -1;
@@ -75,8 +93,9 @@ int binarySearch(logh* p, int x, int n) //psaxnw me vash to timestamp me th meth
 
 //INTERPOLATION
 
-int interpolationSearch(logh* p, int n, int x)
+int interpolationSearch(logh* p, int x)
 {
+    int n = p->size;
     int low = 0;
     int high = (n - 1);
   
@@ -94,7 +113,7 @@ int interpolationSearch(logh* p, int n, int x)
   
         //an to vrikame me th mia oyaoy
         if (p->measurement[pos].timestamp.together == x)
-            return pos;
+            return p->measurement[pos].hum;
   
         //an to x einai megalytero apo ayto poy vrikame des deksia
         if (p->measurement[pos].timestamp.together < x)
