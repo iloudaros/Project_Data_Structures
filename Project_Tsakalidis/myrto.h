@@ -5,9 +5,10 @@
 //  Και ο αλγόριθμος αναζήτησης bistimesearch()
 //  !!Φρόντισε να υπάρχει μια μικρή περιγραφή του τι κάνει ο αλγόριθμος πριν την δήλωση του <3
 
-#ifndef myrto.h
-#define myrto.h
+#ifndef myrto_h
+#define myrto_h
 
+#include "johnnylouds.h"
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -15,28 +16,20 @@
 
 //counting sort
 
-//xreiazomai akoma mia sunarthsh pou tha vriskei to megalutero stoixeio tou pinaka wste na pernaw sthn k to size tou count
-void countingSort(int A[], int count[], int B[])
+
+void countingSort(logh* a);
 
 
 
 //heapsort
 
-void adjust(int heapArray[], int i, int n)
-
-
-
-void heapify(int array[], int n)
-
-
-
-void heapSort(int array[], int n)
-
+void heapSort(logh* a);
+int maxHum(logh* a); //vriskei ti megaluteri ugrasia
 
 
 //binary interpolation search
 
-void access(int ts, int a[])
+void bis(time ts, logh* a);
 
 
 
@@ -53,5 +46,4 @@ void access(int ts, int a[])
 
 
 
-
-#endif myrto.h
+#endif 
