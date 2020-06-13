@@ -17,13 +17,13 @@
 
 //counting sort
 
-//xreiazomai akoma mia sunarthsh pou tha vriskei to megalutero stoixeio tou pinaka wste na pernaw sthn k to size tou count
+
 void countingSort(logh* a) {
     
     measureh sorted[a->size];
     
     int n = a->size; //to size twn A kai B
-    int k; //to size tou count
+    int k = maxHum(a); //to size tou count
     int i, j;
     int count[k];
     
@@ -47,45 +47,47 @@ void countingSort(logh* a) {
 
 //heapsort
 
-void adjust(int heapArray[], int i, int n){
-    int j = (2 * i);    //j is left child of i
-    int item = heapArray[i]; //to periexomeno tis thesis i sti metavlhth item
-    
-    //oso uparxei ena stoixeio sti thesi j
-    while(j <= n){
-        //sugkrinw to stoixeio tis j me to epomeno an uparxei
-        if(j < n && heapArray[j] < heapArray[j+1]){
-            j++;
-        }
-        if(item >= heapArray[j]){
-            break;
-        }
-        heapArray[j/2] = heapArray[j];
-        j = 2 * j;
-    }
-    heapArray[j/2] = item;
+
+void heapSort(logh* a){
+	int n = a->size;
+	int l = (n / 2) + 1;
+	int r = n;
+	int k;
+	int j;
+	int s;
+	
+	while(r >= 2){
+		if(l > 1){
+			l--;
+			j = l;
+		}
+		else{
+			r--;
+			j = l;
+		}
+	
+		s = a->measurement[j].hum;
+	
+		while(2 * j <= r){
+			k = 2 * j;
+			if(k < r && a->measurement[k].hum < a->measurement[k + 1].hum){
+				k++;
+			}
+			if(s < a->measurement[k].hum) {
+				a->measurement[j].hum = a->measurement[k].hum;
+				j = k;
+			}
+			else a->measurement[j].hum = s;
+		}
+	a->measurement[j].hum = s;
+	}
 }
 
-void heapify(int array[], int n){
-    int i;
-    for(i = n/2; i >= 1; i--){
-        adjust(array, i, n);
-    }
+int maxHum(logh* a){
+	int n = a->size;
+	heapSort(a);
+	return a->measurement[n].hum;
 }
-
-void heapSort(int array[], int n){
-    int i;
-    heapify(array, n);
-    int temp;
-    for(i = n; i >= 2; i--){
-        temp = array[1];
-        array[1] = array[i];
-        adjust(array, 1 ,i-1);
-        array[i] = temp;
-    }
-}
-
-
 
 
 //binary interpolation search
