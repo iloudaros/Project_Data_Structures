@@ -10,7 +10,6 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <assert.h>
-#include <stdbool.h>
 #include "johnnylouds.h"
 
 //MERGESORT
@@ -28,5 +27,15 @@ void swap( int *a, int *b );
 int partition( int *a, int low, int high );
 
 void quickSort( int *a, int low, int high ); 
+
+//BIS2SORT
+
+void bis2sortt(logt* p);
+
+void bis2sorth(logh* p);
+
+void swaptm(measuret *a, measuret *b);
+
+void swaphm(measureh *a, measureh *b);
 
 #endif koutou_h
