@@ -156,13 +156,15 @@ void loadt(logt* log){
         //Κάνε χώρο μέσα στον πίνακα ώστε να μπει η επόμενη μέτρηση
         log->measurement=(measuret *)realloc((*log).measurement, log->size*sizeof(measuret));
         
-       //Φτάσε μέχρι την αρχή της εγγραφής (Αν τελειώσει το αρχείο βγες από το loop)
+        
+       //Φτάσε μέχρι την αρχή της εγγραφής (Αν τελειώσει το αρχείο βγες από το loop φρόντισε να ελευθερώσεις τον επιπλέον χώρο που δέσμευσες στην προηγούμενη εντολή )
         while (c!='"')
         {
                 c=getc(fp);
                 if (c==EOF)
                 {
                     log->size--;
+                    log->measurement=(measuret *)realloc((*log).measurement, log->size*sizeof(measuret));
                     goto done;
                     
                 }
@@ -196,3 +198,9 @@ printf("Done\n");
     
     
 }
+
+logt takedayst(logt log){
+    logt result;
+    
+return result};
+
