@@ -31,7 +31,7 @@ int main()
     printf("%d\n", test.size);
     
     
-    heapSort(&test);
+    countingSort(&test);
     
     for (i=0; i<test.size; i++) {
         printf("%ld,%d\n",(long)test.measurement[i].timestamp.together,test.measurement[i].hum);
