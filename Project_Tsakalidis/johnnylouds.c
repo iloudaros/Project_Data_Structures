@@ -205,7 +205,7 @@ printf("Done\n");
 
 
 void takedayst(logt log,logt result){
-    logt result=log;
+   
     
    
     
