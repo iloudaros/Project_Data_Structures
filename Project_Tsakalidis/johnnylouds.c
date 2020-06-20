@@ -175,6 +175,7 @@ void loadt(logt* log){
         //Διάβασε την ημερομηνία
     fscanf(fp,"%4d-%2d-%2dT%2d:%2d:%2d",&log->measurement[log->size-1].timestamp.year,&log->measurement[log->size-1].timestamp.month,&log->measurement[log->size-1].timestamp.day,&log->measurement[log->size-1].timestamp.hour,&log->measurement[log->size-1].timestamp.minute,&log->measurement[log->size-1].timestamp.sec);
         
+        //Δημιουργία του "together"
         log->measurement[log->size-1].timestamp.together=(long)100000000* (long)log->measurement[log->size-1].timestamp.year+(long)1000000*log->measurement[log->size-1].timestamp.month+(long)10000*log->measurement[log->size-1].timestamp.day+100*log->measurement[log->size-1].timestamp.hour+log->measurement[log->size-1].timestamp.minute;
         
         //Πήγαινε στην μέτρηση
@@ -205,7 +206,18 @@ printf("Done\n");
 
 
 
-void takedayst(logt log,logt result){
+void takedayst(logt log,logt* result){
+    
+    int i;
+    int temp=log.measurement[i].temp;
+    int days=1;
+    for (i=1;i<log.size;i++)
+    {
+        if (log.measurement[i].timestamp.day==(log.measurement[i-1].timestamp.day)
+            {
+            
+        }
+    }
    
     
    
