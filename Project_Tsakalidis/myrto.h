@@ -14,17 +14,19 @@
 #include<stdlib.h>
 #include<math.h>
 
-//counting sort
-
-
-void countingSort(logh* a);
-
-
 
 //heapsort
 
 void heapSort(logh* a);
 int maxHum(logh* a); //vriskei ti megaluteri ugrasia
+
+
+
+
+//counting sort
+
+
+void countingSort(logh* a);
 
 
 //binary interpolation search

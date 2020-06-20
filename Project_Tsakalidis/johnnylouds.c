@@ -91,6 +91,7 @@ void loadh(logh* log){
                 if (c==EOF)
                 {
                     log->size--;
+                    (*log).measurement=(measureh *)realloc((*log).measurement, (*log).size*sizeof(measureh));
                     goto done;
                     
                 }

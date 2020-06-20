@@ -7,7 +7,7 @@
 //
 
 #include <stdio.h>
-//#include "myrto.h"
+#include "myrto.h"
 //#include "koutou.h"
 #include "orestis.h"
 #include "johnnylouds.h"
@@ -19,21 +19,28 @@ int main()
     
     chdir("/Users/giannisloudaros/Documents/Code/HW/4th Semester/Project Δομές/Project_Tsakalidis/Project_Tsakalidis");
     
-    logt testlog;
-    loadt(&testlog);
-    printf("%d\n",testlog.size);
     
     
     
     int i;
     
-    for (i=0; i<testlog.size; i++) {
-        printf("%ld,%f\n",(long)testlog.measurement[i].timestamp.together,testlog.measurement[i].temp);
+    
+    
+    logh test;
+    loadh(&test);
+    printf("%d\n", test.size);
+    
+    
+    heapSort(&test);
+    
+    for (i=0; i<test.size; i++) {
+        printf("%ld,%d\n",(long)test.measurement[i].timestamp.together,test.measurement[i].hum);
     }
-    
-    
+
     
     return 0;
+    
+    
 
 
 }
