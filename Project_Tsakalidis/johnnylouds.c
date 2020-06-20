@@ -199,8 +199,15 @@ printf("Done\n");
     
 }
 
-logt takedayst(logt log){
-    logt result;
+
+
+
+
+
+void takedayst(logt log,logt result){
+    logt result=log;
     
-return result};
+   
+    
+}
 
