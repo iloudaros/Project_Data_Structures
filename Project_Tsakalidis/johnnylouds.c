@@ -9,6 +9,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+
+
+
+//################ Structs #####################
+
 //Χρόνος, για την εύκολη διαχείρηση των timestamps, ενδιαφέρον έχει το int together, σκοπός του είναι να κάνει ευκολότερο το sorting
 typedef struct{
     int year;
@@ -51,7 +57,7 @@ typedef struct{
 
 
 
-//Οι Parsers
+//############# Οι Parsers #################
 
 
 //Φορτώνει δεδομένα μετρήσεων υγρασίας
@@ -203,6 +209,11 @@ done:
 
 
 
+
+
+
+//################ Takedays() #####################
+
 //Οι παρακάτω συναρτήσεις παίρνουν έναν πίνακα με μετρήσεις και έναν άλλο πίνακα τον οποίον γεμίζουν με τις μέσες μετρήσεις κάθε ημέρας του προηγούμενου πίνακα
 
 
@@ -315,4 +326,36 @@ void takedaysh(logh log,logh* result){
    
     
 }
+
+
+
+
+
+
+
+
+
+
+
+//################ Printers #####################
+
+
+
+
+//Οι παρακάτω συναρτήσεις διευκολύνουν την εκτύπωση των logs
+
+
+void printlogh(logh log){
+    
+    int i;
+    for(i=0;i<log.size;i++) printf("%d/%d/%d /t %d:%d:%d \t Measurement: %d",log.measurement[i].timestamp.day,log.measurement[i].timestamp.month,log.measurement[i].timestamp.year,log.measurement[i].timestamp.hour,log.measurement[i].timestamp.minute,log.measurement[i].timestamp.sec,log.measurement[i].hum);
+}
+
+void printlogt(logt log){
+    
+    int i;
+    for(i=0;i<log.size;i++) printf("%d/%d/%d /t %d:%d:%d \t Measurement: %f",log.measurement[i].timestamp.day,log.measurement[i].timestamp.month,log.measurement[i].timestamp.year,log.measurement[i].timestamp.hour,log.measurement[i].timestamp.minute,log.measurement[i].timestamp.sec,log.measurement[i].temp);
+}
+
+
 

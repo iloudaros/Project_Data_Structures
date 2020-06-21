@@ -58,5 +58,9 @@ void takedayst(logt log,logt* result);
 void takedaysh(logh log,logh* result);
 
 
+void printlogh(logh);
+void printlogt(logt);
+
+
 #endif //"johnnylouds_h"
 
