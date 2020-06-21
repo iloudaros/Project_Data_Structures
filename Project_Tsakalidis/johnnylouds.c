@@ -96,7 +96,7 @@ void loadh(logh* log){
                     
                 }
         }
-           printf("Measurement %d\n",log->size);
+           if(log->size % 500==0) printf("#");
         
         //Διάβασε την ημερομηνία
     fscanf(fp,"%4d-%2d-%2dT%2d:%2d:%2d",&log->measurement[log->size-1].timestamp.year,&log->measurement[log->size-1].timestamp.month,&log->measurement[log->size-1].timestamp.day,&log->measurement[log->size-1].timestamp.hour,&log->measurement[log->size-1].timestamp.minute,&log->measurement[log->size-1].timestamp.sec);
@@ -118,7 +118,7 @@ void loadh(logh* log){
 done:
 
     fclose(fp);
-printf("Done\n");
+    printf("Done after %d measurements\n",log->size);
     
     
     return;
@@ -170,7 +170,7 @@ void loadt(logt* log){
                     
                 }
         }
-           printf("Measurement %d\n",log->size);
+           if(log->size % 500==0) printf("#");
         
         //Διάβασε την ημερομηνία
     fscanf(fp,"%4d-%2d-%2dT%2d:%2d:%2d",&log->measurement[log->size-1].timestamp.year,&log->measurement[log->size-1].timestamp.month,&log->measurement[log->size-1].timestamp.day,&log->measurement[log->size-1].timestamp.hour,&log->measurement[log->size-1].timestamp.minute,&log->measurement[log->size-1].timestamp.sec);
@@ -193,7 +193,7 @@ void loadt(logt* log){
 done:
 
     fclose(fp);
-printf("Done\n");
+    printf("Done after %d measurements\n",log->size);
     
     
     return;
@@ -203,23 +203,115 @@ printf("Done\n");
 
 
 
-
+//Οι παρακάτω συναρτήσεις παίρνουν έναν πίνακα με μετρήσεις και έναν άλλο πίνακα τον οποίον γεμίζουν με τις μέσες μετρήσεις κάθε ημέρας του προηγούμενου πίνακα
 
 
 void takedayst(logt log,logt* result){
     
     int i;
-    int temp=log.measurement[i].temp;
-    int days=1;
+    float temp=log.measurement[0].temp;
+    int measurements=1;
+    
     for (i=1;i<log.size;i++)
     {
-        if (log.measurement[i].timestamp.day==(log.measurement[i-1].timestamp.day)
+        //Αν ακόμη βρισκόμαστε στην ίδια μέρα
+        if (log.measurement[i].timestamp.day==log.measurement[i-1].timestamp.day)
             {
-            
-        }
+                measurements++;
+                temp+=log.measurement[i].temp;
+            }
+        else
+            {
+                //κάνε χώρο στον πίνακα των αποτελεσμάτων για άλλη μια μέρα
+                result->size++;
+                result->measurement=(measuret *)realloc((*result).measurement, result->size*sizeof(measuret));
+                result->measurement[result->size-1].temp=temp/measurements;
+                result->measurement[result->size-1].timestamp.day=log.measurement[i-1].timestamp.day;
+                result->measurement[result->size-1].timestamp.year=log.measurement[i-1].timestamp.year;
+                result->measurement[result->size-1].timestamp.month=log.measurement[i-1].timestamp.month;
+                result->measurement[result->size-1].timestamp.hour=0;
+                result->measurement[result->size-1].timestamp.minute=0;
+                result->measurement[result->size-1].timestamp.sec=0;
+                
+                
+                temp=log.measurement[i].temp;
+                measurements=1;
+                
+            }
+        
     }
+    
+    //Βάλε την τελευταία μέρα
+   result->size++;
+   result->measurement=(measuret *)realloc((*result).measurement, result->size*sizeof(measuret));
+   result->measurement[result->size-1].temp=temp/measurements;
+   result->measurement[result->size-1].timestamp.day=log.measurement[i-1].timestamp.day;
+   result->measurement[result->size-1].timestamp.year=log.measurement[i-1].timestamp.year;
+   result->measurement[result->size-1].timestamp.month=log.measurement[i-1].timestamp.month;
+   result->measurement[result->size-1].timestamp.hour=0;
+   result->measurement[result->size-1].timestamp.minute=0;
+   result->measurement[result->size-1].timestamp.sec=0;
+    
+    
+    printf("Done after %d measurements\n",result->size);
    
     
+}
+
+
+
+
+
+
+
+void takedaysh(logh log,logh* result){
+    
+    int i;
+    int temp=log.measurement[0].hum;
+    int measurements=1;
+    
+    for (i=1;i<log.size;i++)
+    {
+        //Αν ακόμη βρισκόμαστε στην ίδια μέρα
+        if (log.measurement[i].timestamp.day==log.measurement[i-1].timestamp.day)
+            {
+                measurements++;
+                temp+=log.measurement[i].hum;
+            }
+        else
+            {
+                //κάνε χώρο στον πίνακα των αποτελεσμάτων για άλλη μια μέρα
+                result->size++;
+                result->measurement=(measureh *)realloc((*result).measurement, result->size*sizeof(measureh));
+                result->measurement[result->size-1].hum=temp/measurements;
+                result->measurement[result->size-1].timestamp.day=log.measurement[i-1].timestamp.day;
+                result->measurement[result->size-1].timestamp.year=log.measurement[i-1].timestamp.year;
+                result->measurement[result->size-1].timestamp.month=log.measurement[i-1].timestamp.month;
+                result->measurement[result->size-1].timestamp.hour=0;
+                result->measurement[result->size-1].timestamp.minute=0;
+                result->measurement[result->size-1].timestamp.sec=0;
+                
+                
+                temp=log.measurement[i].hum;
+                measurements=1;
+                
+            }
+        
+    }
+    
+    //Βάλε την τελευταία μέρα
+   result->size++;
+   result->measurement=(measureh *)realloc((*result).measurement, result->size*sizeof(measureh));
+   result->measurement[result->size-1].hum=temp/measurements;
+   result->measurement[result->size-1].timestamp.day=log.measurement[i-1].timestamp.day;
+   result->measurement[result->size-1].timestamp.year=log.measurement[i-1].timestamp.year;
+   result->measurement[result->size-1].timestamp.month=log.measurement[i-1].timestamp.month;
+   result->measurement[result->size-1].timestamp.hour=0;
+   result->measurement[result->size-1].timestamp.minute=0;
+   result->measurement[result->size-1].timestamp.sec=0;
+    
+    
+    printf("Done after %d measurements\n",result->size);
    
     
 }

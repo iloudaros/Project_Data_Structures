@@ -54,8 +54,8 @@ void loadt(logt*);
 //Οι παρακάτω συναρτήσεις παίρνουν όλες τις μετρήσεις που υπάρχουν σε μια λίστα εγγραφών logh ή logt και επιστρέφουν έναν πίνακα που περιέχει μόνο τις μέσες μετρήσεις κάθε ημέρας.
 
 
-void takedayst(logt log,logt result);
-void takedaysh(logh log,logh result);
+void takedayst(logt log,logt* result);
+void takedaysh(logh log,logh* result);
 
 
 #endif //"johnnylouds_h"

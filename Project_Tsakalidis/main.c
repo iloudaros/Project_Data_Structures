@@ -16,27 +16,23 @@ int main()
 {
     
     
-    
+    //Εδώ θα χρειαστεί να βάλετε το μονοπάτι στο οποίο βρίσκονται τα αρχεία από τα οποία χρειάζεται να τραβηχτούν τα δεδομένα 
     chdir("/Users/giannisloudaros/Documents/Code/HW/4th Semester/Project Δομές/Project_Tsakalidis/Project_Tsakalidis");
     
     
     
     
-    int i;
+    logt test;
+    loadt(&test);
     
+    logt testdays;
+    takedayst(test, &testdays);
     
-    
-    logh test;
-    loadh(&test);
-    printf("%d\n", test.size);
-    
-    
-    countingSort(&test);
-    
-    for (i=0; i<test.size; i++) {
-        printf("%ld,%d\n",(long)test.measurement[i].timestamp.together,test.measurement[i].hum);
+    for (int i=0; i<testdays.size; i++) {
+        printf(" %d Time: %d %d, Measurement: %f\n",i,testdays.measurement[i].timestamp.day,testdays.measurement[i].timestamp.month,testdays.measurement[i].temp);
     }
-
+    
+  
     
     return 0;
     
