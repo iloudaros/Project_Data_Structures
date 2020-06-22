@@ -49,39 +49,72 @@ int main()
             
             
             do{ //Τώρα ο Χρήστης επιλέγει το ερώτημα του πρώτου μέρους που τον ενδιαφέρει
-                printf("Ποιο ερώτημα σε ενδιαφέρει;\n 1. Ερώτημα (1)\n 2. Ερώτημα (2)\n 3. Ερώτημα (3)\n 4. Ερώτημα (4)\n 5. Πίσω\n");
-                scanf("%d",&choice);
-                dump=getchar();
-                if(choice>5 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
-            }while(choice>5 || choice<1);
+                    printf("Ποιο ερώτημα σε ενδιαφέρει;\n 1. Ερώτημα (1)\n 2. Ερώτημα (2)\n 3. Ερώτημα (3)\n 4. Ερώτημα (4)\n 5. Πίσω\n");
+                    scanf("%d",&choice);
+                    dump=getchar();
+                    if(choice>5 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
+                }while(choice>5 || choice<1);
                    
             switch (choice) {
                     
-                case 1: //Quick Sort και Merge Sort
+                case 1: // Quick Sort και Merge Sort
                     
                     break;
-                case 2: //
-                    
-                    
-                    
-                    break;
-                case 3:
+                case 2: // Heap Sort και Counting Sort
                     
                     
                     
                     break;
+                case 3: // Δυαδική Αναζήτηση και Αναζήτηση με Παρεμβολή
                     
-                case 4:
+                    
+                    
+                    break;
+                    
+                case 4: // Δυαδική Αναζήτηση Παρεμβολής
+                    
+                    break;
+                    
+                    
+                case 5:
+                    break;
+                    
+                    }
+            
+            break;
+        case 2: //Ο χρήστης επιλέγει το δεύτερο μέρος του Project
+           
+            
+            do{ //Τώρα ο Χρήστης επιλέγει το ερώτημα του δεύτερου μέρους που τον ενδιαφέρει
+                    printf("Ποιο ερώτημα σε ενδιαφέρει;\n 1. Ερώτημα (Α)\n 2. Ερώτημα (Β)\n 3. Ερώτημα (Γ)\n 4. Πίσω\n");
+                    scanf("%d",&choice);
+                    dump=getchar();
+                    if(choice>5 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
+                }while(choice>5 || choice<1);
+            
+            switch (choice) {
+                    
+                case 1: // Δυαδικό Δέντρο Αναζήτησης ως προς μέρα
+                    
+                    break;
+                case 2: // Δυαδικό Δέντρο ως προς μέτρηση
+                    
+                    
+                    
+                    break;
+                case 3: // Hashing
+                    
+                    
+                    
+                    break;
+                    
+                case 4: // Πίσω
                     
                     break;
                     
                     
                     
             }
-            
-            break;
-        case 2: //Ο χρήστης επιλέγει το δεύτερο μέρος του Project
-            
             
             break;
             
