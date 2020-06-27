@@ -10,9 +10,7 @@
 #include<stdlib.h>
 #include<math.h>
 
-
 #include "johnnylouds.h"
-
 
 
 //heapsort
@@ -24,6 +22,7 @@ void heapSort(logh* a){
     int r = n;
     int k;
     int j;
+    measureh t; //temp
     measureh s;
     
     while(r >= 2){
@@ -32,16 +31,33 @@ void heapSort(logh* a){
             j = l;
         }
         else{
+        	t.timestamp.year = a->measurement[1].timestamp.year;
+        	t.timestamp.month = a->measurement[1].timestamp.month;
+        	t.timestamp.day = a->measurement[1].timestamp.day;
+        	t.timestamp.hour = a->measurement[1].timestamp.hour;
+        	t.timestamp.minute = a->measurement[1].timestamp.minute;
+        	t.timestamp.sec = a->measurement[1].timestamp.sec;
+        	t.hum = a->measurement[1].hum;
+        	
+        	a->measurement[1].hum = a->measurement[j].hum;
+        	a->measurement[1].timestamp.year = a->measurement[j].timestamp.year;
+        	a->measurement[1].timestamp.month = a->measurement[j].timestamp.month;
+        	a->measurement[1].timestamp.day = a->measurement[j].timestamp.day;
+        	a->measurement[1].timestamp.minute = a->measurement[j].timestamp.minute;
+        	a->measurement[1].timestamp.sec = a->measurement[j].timestamp.sec;
+        	
+        	a->measurement[j].timestamp.year = t.timestamp.year;
+        	a->measurement[j].timestamp.month = t.timestamp.month;
+        	a->measurement[j].timestamp.day = t.timestamp.day;
+        	a->measurement[j].timestamp.minute = t.timestamp.minute;
+        	a->measurement[j].timestamp.sec = t.timestamp.sec;
+        	a->measurement[j].hum = t.hum;
+        	
+        
             r--;
             j = l;
         }
     
-        s.timestamp.year = a->measurement[j].timestamp.year;
-        s.timestamp.month = a->measurement[j].timestamp.month;
-        s.timestamp.day = a->measurement[j].timestamp.day;
-        s.timestamp.hour = a->measurement[j].timestamp.hour;
-        s.timestamp.minute = a->measurement[j].timestamp.minute;
-        s.timestamp.sec = a->measurement[j].timestamp.sec;
         s.hum = a->measurement[j].hum;
         
         while(2 * j <= r){
@@ -60,17 +76,19 @@ void heapSort(logh* a){
                 j = k;
             }
             else{
-                a->measurement[j].timestamp.year = s.timestamp.year;
-                a->measurement[j].timestamp.month = s.timestamp.month;
-                a->measurement[j].timestamp.day = s.timestamp.day;
-                a->measurement[j].timestamp.hour = s.timestamp.hour;
-                a->measurement[j].timestamp.minute = s.timestamp.minute;
-                a->measurement[j].timestamp.sec = s.timestamp.sec;
-                a->measurement[j].hum = s.hum;
+                goto E;
 
             }
         }
     }
+    E:
+    	a->measurement[j].timestamp.year = s.timestamp.year;
+    	a->measurement[j].timestamp.month = s.timestamp.month;
+        a->measurement[j].timestamp.day = s.timestamp.day;
+        a->measurement[j].timestamp.hour = s.timestamp.hour;
+        a->measurement[j].timestamp.minute = s.timestamp.minute;
+        a->measurement[j].timestamp.sec = s.timestamp.sec;
+        a->measurement[j].hum = s.hum;
 }
 
 
@@ -157,14 +175,55 @@ void bis(time ts, logt* a){
 
 
 
+//dentro
 
+struct node 
+{ 
+    int key; 
+    struct node *left, *right; 
+}; 
+   
+// A utility function to create a new BST node 
+struct node *newNode(int item) 
+{ 
+    struct node *temp =  (struct node *)malloc(sizeof(struct node)); 
+    temp->key = item; 
+    temp->left = temp->right = NULL; 
+    return temp; 
+} 
+   
+// A utility function to do inorder traversal of BST 
+void inorder(struct node *root) 
+{ 
+    if (root != NULL) 
+    { 
+        inorder(root->left); 
+        printf("%d \n", root->key); 
+        inorder(root->right); 
+    } 
+} 
+   
+/* A utility function to insert a new node with given key in BST */
+struct node* insert(struct node* node, long int key) 
+{ 
+    /* If the tree is empty, return a new node */
+    if (node == NULL) return newNode(key); 
+  
+    /* Otherwise, recur down the tree */
+    if (key < node->key) 
+        node->left  = insert(node->left, key); 
+    else if (key > node->key) 
+        node->right = insert(node->right, key);    
+  
+    /* return the (unchanged) node pointer */
+    return node; 
+} 
 
-
-
-
-
-
-
-
-
-
+void createBST(logt* a){
+	int i;
+	struct node *root = NULL;
+	for(i = 0; i < a->size; i++){
+		long int k = a->measurement[i].timestamp.together;
+		insert(root, k);
+	}
+}
