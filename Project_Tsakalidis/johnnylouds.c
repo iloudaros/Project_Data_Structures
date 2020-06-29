@@ -88,7 +88,7 @@ void loadh(logh* log){
      
         
         //Κάνε χώρο μέσα στον πίνακα ώστε να μπει η επόμενη μέτρηση
-        (*log).measurement=(measureh *)realloc((*log).measurement, (*log).size*sizeof(measureh));
+        log->measurement=(measureh *)realloc(log->measurement, log->size*sizeof(measureh));
         
        //Φτάσε μέχρι την αρχή της εγγραφής (Αν τελειώσει το αρχείο βγες από το loop)
         while (c!='"')

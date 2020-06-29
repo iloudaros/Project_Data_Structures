@@ -21,6 +21,8 @@ int main()
     
     logh hums;
     loadh(&hums);
+    printlogh(hums);
+   //loadh(&hums);
     //logh testhum;
     //passlogh(&hums, &testhum);
     /*
