@@ -36,9 +36,20 @@ void bis(time ts, logh* a);
 
 
 
+//dentro
+typedef struct node{
+    long int key;
+    struct node* left;
+    struct node* right;
+}node;
 
+// A utility function to do inorder traversal of BST
+void inorder(node *root);
+   
+/* A utility function to insert a new node with given key in BST */
+node* insert(node* node, long int key);
 
-
+void createBST(logt* a);
 
 
 

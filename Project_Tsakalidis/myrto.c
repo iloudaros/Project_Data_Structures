@@ -21,7 +21,7 @@ void heapSort(logh* a){
     int l = (n / 2) + 1;
     int r = n;
     int k;
-    int j;
+    int j = 0;
     measureh t; //temp
     measureh s;
     
@@ -31,26 +31,13 @@ void heapSort(logh* a){
             j = l;
         }
         else{
-        	t.timestamp.year = a->measurement[1].timestamp.year;
-        	t.timestamp.month = a->measurement[1].timestamp.month;
-        	t.timestamp.day = a->measurement[1].timestamp.day;
-        	t.timestamp.hour = a->measurement[1].timestamp.hour;
-        	t.timestamp.minute = a->measurement[1].timestamp.minute;
-        	t.timestamp.sec = a->measurement[1].timestamp.sec;
+             passtime(&(a->measurement[1].timestamp), &(t.timestamp));
         	t.hum = a->measurement[1].hum;
         	
+            passtime(&(a->measurement[1].timestamp), &(a->measurement[j].timestamp));
         	a->measurement[1].hum = a->measurement[j].hum;
-        	a->measurement[1].timestamp.year = a->measurement[j].timestamp.year;
-        	a->measurement[1].timestamp.month = a->measurement[j].timestamp.month;
-        	a->measurement[1].timestamp.day = a->measurement[j].timestamp.day;
-        	a->measurement[1].timestamp.minute = a->measurement[j].timestamp.minute;
-        	a->measurement[1].timestamp.sec = a->measurement[j].timestamp.sec;
-        	
-        	a->measurement[j].timestamp.year = t.timestamp.year;
-        	a->measurement[j].timestamp.month = t.timestamp.month;
-        	a->measurement[j].timestamp.day = t.timestamp.day;
-        	a->measurement[j].timestamp.minute = t.timestamp.minute;
-        	a->measurement[j].timestamp.sec = t.timestamp.sec;
+
+            passtime(&(a->measurement[j].timestamp), &(t.timestamp));
         	a->measurement[j].hum = t.hum;
         	
         
@@ -66,12 +53,7 @@ void heapSort(logh* a){
                 k++;
             }
             if(s.hum < a->measurement[k].hum) {
-                a->measurement[j].timestamp.year = a->measurement[k].timestamp.year;
-                a->measurement[j].timestamp.month = a->measurement[k].timestamp.month;
-                a->measurement[j].timestamp.day = a->measurement[k].timestamp.day;
-                a->measurement[j].timestamp.hour = a->measurement[k].timestamp.hour;
-                a->measurement[j].timestamp.minute = a->measurement[k].timestamp.minute;
-                a->measurement[j].timestamp.sec = a->measurement[k].timestamp.sec;
+                passtime(&(a->measurement[j].timestamp), &(a->measurement[k].timestamp));
                 a->measurement[j].hum = a->measurement[k].hum;
                 j = k;
             }
@@ -82,12 +64,7 @@ void heapSort(logh* a){
         }
     }
     E:
-    	a->measurement[j].timestamp.year = s.timestamp.year;
-    	a->measurement[j].timestamp.month = s.timestamp.month;
-        a->measurement[j].timestamp.day = s.timestamp.day;
-        a->measurement[j].timestamp.hour = s.timestamp.hour;
-        a->measurement[j].timestamp.minute = s.timestamp.minute;
-        a->measurement[j].timestamp.sec = s.timestamp.sec;
+        passtime(&(a->measurement[j].timestamp), &(s.timestamp));
         a->measurement[j].hum = s.hum;
 }
 
@@ -177,35 +154,31 @@ void bis(time ts, logt* a){
 
 //dentro
 
-struct node 
-{ 
-    int key; 
-    struct node *left, *right; 
-}; 
+typedef struct node{
+    long int key;
+    struct node* left;
+    struct node* right;
+}node;
    
 // A utility function to create a new BST node 
-struct node *newNode(int item) 
-{ 
-    struct node *temp =  (struct node *)malloc(sizeof(struct node)); 
+node *newNode(long int item){
+    node *temp =  (node *)malloc(sizeof(node));
     temp->key = item; 
     temp->left = temp->right = NULL; 
     return temp; 
 } 
    
 // A utility function to do inorder traversal of BST 
-void inorder(struct node *root) 
-{ 
-    if (root != NULL) 
-    { 
+void inorder(node *root){
+    if(root != NULL){ 
         inorder(root->left); 
-        printf("%d \n", root->key); 
+        printf("%ld \n", root->key);
         inorder(root->right); 
     } 
 } 
    
 /* A utility function to insert a new node with given key in BST */
-struct node* insert(struct node* node, long int key) 
-{ 
+node* insert(node* node, long int key){
     /* If the tree is empty, return a new node */
     if (node == NULL) return newNode(key); 
   

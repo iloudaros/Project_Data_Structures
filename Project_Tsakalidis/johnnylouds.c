@@ -348,14 +348,59 @@ void takedaysh(logh log,logh* result){
 void printlogh(logh log){
     
     int i;
-    for(i=0;i<log.size;i++) printf("%d/%d/%d /t %d:%d:%d \t Measurement: %d",log.measurement[i].timestamp.day,log.measurement[i].timestamp.month,log.measurement[i].timestamp.year,log.measurement[i].timestamp.hour,log.measurement[i].timestamp.minute,log.measurement[i].timestamp.sec,log.measurement[i].hum);
+    for(i=0;i<log.size;i++) printf("%d/%d/%d \t %2d:%2d:%d \t Measurement: %d\n",log.measurement[i].timestamp.year,log.measurement[i].timestamp.month,log.measurement[i].timestamp.day,log.measurement[i].timestamp.hour,log.measurement[i].timestamp.minute,log.measurement[i].timestamp.sec,log.measurement[i].hum);
 }
 
 void printlogt(logt log){
     
     int i;
-    for(i=0;i<log.size;i++) printf("%d/%d/%d /t %d:%d:%d \t Measurement: %f",log.measurement[i].timestamp.day,log.measurement[i].timestamp.month,log.measurement[i].timestamp.year,log.measurement[i].timestamp.hour,log.measurement[i].timestamp.minute,log.measurement[i].timestamp.sec,log.measurement[i].temp);
+    for(i=0;i<log.size;i++) printf("%d/%d/%d \t %2d:%2d:%d \t Measurement: %f\n",log.measurement[i].timestamp.year,log.measurement[i].timestamp.month,log.measurement[i].timestamp.day,log.measurement[i].timestamp.hour,log.measurement[i].timestamp.minute,log.measurement[i].timestamp.sec,log.measurement[i].temp);
 }
 
 
 
+
+//################ Βοηθητικές Συναρτήσεις #####################
+
+
+void passtime(time* a ,time* b){
+    b->year = a->year;
+    b->month = a->month;
+    b->day = a->day;
+    b->hour = a->hour;
+    b->minute = a->minute;
+    b->sec = a->sec;
+    b->together = a->together;
+    
+}
+
+
+
+void passlogh(logh* a,logh* b){
+   
+    b->size=a->size;
+    b->measurement=(measureh *)realloc(b->measurement, b->size*sizeof(measureh));
+    
+    for (int i=0; i<b->size; i++) {
+        b->measurement[i].hum=a->measurement[i].hum;
+        passtime(&b->measurement[i].timestamp,&a->measurement[i].timestamp);
+        
+    }
+    
+    
+}
+
+
+void passlogt(logt* a,logt* b){
+   
+    b->size=a->size;
+    b->measurement=(measuret *)realloc(b->measurement, b->size*sizeof(measuret));
+    
+    for (int i=0; i<b->size; i++) {
+        b->measurement[i].temp=a->measurement[i].temp;
+        passtime(&(b->measurement[i].timestamp),&(a->measurement[i].timestamp));
+        
+    }
+    
+    
+}

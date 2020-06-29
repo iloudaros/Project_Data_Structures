@@ -52,14 +52,26 @@ void loadh(logh*);
 void loadt(logt*);
 
 //Οι παρακάτω συναρτήσεις παίρνουν όλες τις μετρήσεις που υπάρχουν σε μια λίστα εγγραφών logh ή logt και επιστρέφουν έναν πίνακα που περιέχει μόνο τις μέσες μετρήσεις κάθε ημέρας.
-
-
 void takedayst(logt log,logt* result);
 void takedaysh(logh log,logh* result);
 
 
 void printlogh(logh);
 void printlogt(logt);
+
+
+
+//Συναρτήσεις για την διευκόλυνση περασμάτων τιμών
+void passtime(time*,time*);// αντιγράφει τα περιεχόμενα του πρώτου χρόνου στον δεύτερο
+
+
+void passlogh(logh*,logh*);// αντιγράφει τα περιεχόμενα του πρώτου log στο δεύτερο
+void passlogt(logt*,logt*);// αντιγράφει τα περιεχόμενα του πρώτου log στο δεύτερο
+
+
+
+
+
 
 
 #endif //"johnnylouds_h"

@@ -7,19 +7,24 @@
 //
 
 #include <stdio.h>
-//#include "myrto.h"
+//include "myrto.h"
 //#include "koutou.h"
 //#include "orestis.h"
 #include "johnnylouds.h"
-#include <time.h>
+//#include <time.h>
 
 int main()
 {
-    
-    
+   
     //Εδώ θα χρειαστεί να βάλετε το μονοπάτι στο οποίο βρίσκονται τα αρχεία από τα οποία χρειάζεται να τραβηχτούν τα δεδομένα 
     chdir("/Users/giannisloudaros/Documents/Code/HW/4th Semester/Project Δομές/Project_Tsakalidis/Project_Tsakalidis");
-    char end='n';
+    
+    logh hums;
+    loadh(&hums);
+    //logh testhum;
+    //passlogh(&hums, &testhum);
+    /*
+    char end='n'; //μεταβλητή ελέγχου εξόδου προγράμματος
     
     
     printf("Καλώς ορίσατε στο καλύτερο Project στις δομές δεδομένων\n Από τους: Χριστίνα Κρατημένου \t Λουδάρος Ιωάννης \t Ορέστης Σπυριδάκης \t Μυρτώ Δελυγιάννη\n (Για να συνεχίσεις πάτα ENTER)");
@@ -27,7 +32,7 @@ int main()
     getchar();
     
     do{
-       printf("Ποιο μέρος του Project θα ήθελες να χρησιμοποιήσεις;\n 1. Μέρος Πρώτο\n 2. Μέρος Δεύτερο\n 3.Έξοδος\n");
+       printf("Ποιο μέρος του Project θα ήθελες να χρησιμοποιήσεις;\n 1. Μέρος Πρώτο\n 2. Μέρος Δεύτερο\n 3. Έξοδος\n");
     
     //Ο χρήστης επιλέγει ποιο μέρος του project θέλει να εξετάσει
     int choice;
@@ -61,6 +66,9 @@ int main()
                     break;
                 case 2: // Heap Sort και Counting Sort
                     
+                    //passlogh(&hums, &testhum);
+                    //heapSort(&testhum);
+                    printlogh(hums);
                     
                     
                     break;
@@ -131,8 +139,8 @@ int main()
     printf("Φιλάκιααα <3\n");
     
     return 0;
+    */
     
-    
-
-
 }
+
+
