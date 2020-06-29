@@ -18,6 +18,7 @@
 //heapsort
 
 void heapSort(logh* a);
+void heapSortt(logh* a);
 
 int maxHum(logh* a); //vriskei ti megaluteri ugrasia
 

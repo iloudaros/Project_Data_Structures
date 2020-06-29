@@ -7,7 +7,7 @@
 //
 
 #include <stdio.h>
-//include "myrto.h"
+#include "myrto.h"
 //#include "koutou.h"
 //#include "orestis.h"
 #include "johnnylouds.h"
@@ -18,12 +18,10 @@ int main()
    
     //Εδώ θα χρειαστεί να βάλετε το μονοπάτι στο οποίο βρίσκονται τα αρχεία από τα οποία χρειάζεται να τραβηχτούν τα δεδομένα 
     chdir("/Users/giannisloudaros/Documents/Code/HW/4th Semester/Project Δομές/Project_Tsakalidis/Project_Tsakalidis");
-    
-    logh hums;
-    loadh(&hums);
-    //logh testhum;
-    //passlogh(&hums, &testhum);
-    /*
+    logh test;
+    loadh(&test);
+    logh h;
+
     char end='n'; //μεταβλητή ελέγχου εξόδου προγράμματος
     
     
@@ -65,11 +63,9 @@ int main()
                     
                     break;
                 case 2: // Heap Sort και Counting Sort
-                    
-                    //passlogh(&hums, &testhum);
-                    //heapSort(&testhum);
-                    printlogh(hums);
-                    
+                    passlogh(&test, &h);
+                    heapSortt(&h);
+                    printlogh(h);
                     
                     break;
                 case 3: // Δυαδική Αναζήτηση και Αναζήτηση με Παρεμβολή
@@ -139,7 +135,7 @@ int main()
     printf("Φιλάκιααα <3\n");
     
     return 0;
-    */
+    
     
 }
 

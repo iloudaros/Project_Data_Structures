@@ -363,27 +363,21 @@ void printlogt(logt log){
 //################ Βοηθητικές Συναρτήσεις #####################
 
 
-void passtime(time* a ,time* b){
-    b->year = a->year;
-    b->month = a->month;
-    b->day = a->day;
-    b->hour = a->hour;
-    b->minute = a->minute;
-    b->sec = a->sec;
-    b->together = a->together;
-    
-}
-
-
 
 void passlogh(logh* a,logh* b){
    
-    b->size=a->size;
-    b->measurement=(measureh *)realloc(b->measurement, b->size*sizeof(measureh));
-    
-    for (int i=0; i<b->size; i++) {
+    b->size = a->size;
+    b->measurement = (measureh *)realloc(b->measurement, a->size*sizeof(measureh));
+    int i;
+    for (i = 0; i < b->size; i++) {
         b->measurement[i].hum=a->measurement[i].hum;
-        passtime(&b->measurement[i].timestamp,&a->measurement[i].timestamp);
+        b->measurement[i].timestamp.year = a->measurement[i].timestamp.year;
+        b->measurement[i].timestamp.month = a->measurement[i].timestamp.month;
+        b->measurement[i].timestamp.day = a->measurement[i].timestamp.day;
+        b->measurement[i].timestamp.hour = a->measurement[i].timestamp.hour;
+        b->measurement[i].timestamp.minute = a->measurement[i].timestamp.minute;
+        b->measurement[i].timestamp.sec = a->measurement[i].timestamp.sec;
+        b->measurement[i].timestamp.together = a->measurement[i].timestamp.together;
         
     }
     
@@ -398,7 +392,13 @@ void passlogt(logt* a,logt* b){
     
     for (int i=0; i<b->size; i++) {
         b->measurement[i].temp=a->measurement[i].temp;
-        passtime(&(b->measurement[i].timestamp),&(a->measurement[i].timestamp));
+        b->measurement[i].timestamp.year = a->measurement[i].timestamp.year;
+        b->measurement[i].timestamp.month = a->measurement[i].timestamp.month;
+        b->measurement[i].timestamp.day = a->measurement[i].timestamp.day;
+        b->measurement[i].timestamp.hour = a->measurement[i].timestamp.hour;
+        b->measurement[i].timestamp.minute = a->measurement[i].timestamp.minute;
+        b->measurement[i].timestamp.sec = a->measurement[i].timestamp.sec;
+        b->measurement[i].timestamp.together = a->measurement[i].timestamp.together;
         
     }
     
