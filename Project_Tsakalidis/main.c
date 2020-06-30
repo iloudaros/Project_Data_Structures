@@ -2,8 +2,8 @@
 //  main.c
 //  Project_Domes
 //
-//  Created by Μυρτώ Δελυγιάννη, Ορέστης Σπυριδάκης, Ιωάννης Λουδάρος, Χριστίνα Κρατημένου on 21/5/20.
-//  Copyright © 2020 Ιωάννης Λουδάρος, Χριστίνα Κρατημένου, Μυρτώ Δελυγιάννη, Ορέστης Σπυριδάκης . All rights reserved.
+//  Created by Μυρτώ Δεληγιάννη, Ορέστης Σπυριδάκης, Ιωάννης Λουδάρος, Χριστίνα Κρατημένου on 21/5/20.
+//  Copyright © 2020 Ιωάννης Λουδάρος, Χριστίνα Κρατημένου, Μυρτώ Δεληγιάννη, Ορέστης Σπυριδάκης . All rights reserved.
 //
 
 #include <stdio.h>
@@ -21,11 +21,10 @@ int main()
     logh test;
     loadh(&test);
     logh h;
-
     char end='n'; //μεταβλητή ελέγχου εξόδου προγράμματος
     
     
-    printf("Καλώς ορίσατε στο καλύτερο Project στις δομές δεδομένων\n Από τους: Χριστίνα Κρατημένου \t Λουδάρος Ιωάννης \t Ορέστης Σπυριδάκης \t Μυρτώ Δελυγιάννη\n (Για να συνεχίσεις πάτα ENTER)");
+    printf("Καλώς ορίσατε στο καλύτερο Project στις Δομές Δεδομένων\n Από τους: Χριστίνα Κρατημένου \t Λουδάρος Ιωάννης \t Ορέστης Σπυριδάκης \t Μυρτώ Δεληγιάννη\n (Για να συνεχίσεις πάτα ENTER)");
     
     getchar();
     
@@ -64,7 +63,8 @@ int main()
                     break;
                 case 2: // Heap Sort και Counting Sort
                     passlogh(&test, &h);
-                    heapSort(&h);
+                   // heapSort(&h);
+                    countingSort(&h);
                     printlogh(h);
                     
                     break;
@@ -75,6 +75,43 @@ int main()
                     break;
                     
                 case 4: // Δυαδική Αναζήτηση Παρεμβολής
+                    
+                    printf("Σε ποια στιγμή είναι η μέτρηση που ψάχνεις;\n");
+                    timej usersearch;
+                    usersearch.year=2014;
+                    usersearch.sec=0;
+                    printf("Μήνας:");
+                    scanf("%d",&usersearch.month);
+                    printf("Μέρα:");
+                    scanf("%d",&usersearch.day);
+                    printf("Ώρα:");
+                    scanf("%d",&usersearch.hour);
+                    printf("Λεπτό:");
+                    scanf("%d",&usersearch.minute);
+                    usersearch.together=(long)100000000* (long)usersearch.year+(long)1000000*usersearch.month+(long)usersearch.day+100*usersearch.hour+usersearch.minute;
+                    
+                    
+                    do{
+                        printf("Θέλεις να ψάξεις:\n 1.Μόνο Θερμοκρασία\n 2.Μόνο Υγρασία\n 3.Και τα δύο\n");
+                        scanf("%d",&choice);
+                        dump=getchar();
+                        if(choice>3 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
+                    }while(choice>5 || choice<1);
+                    
+                    switch (choice) {
+                        case 1://Μόνο Θερμοκρασία
+                           // bist(usersearch, <#logt *a#>);
+                            break;
+                            
+                        case 2://Μόνο Υγρασία
+                           // bish(usersearch, <#logh *a#>);
+                            break;
+                            
+                        case 3://Και τα δύο
+                           // bish(usersearch, <#logh *a#>);
+                           // bist(usersearch, <#logt *a#>);
+                            break;
+                    }
                     
                     break;
                     

@@ -22,7 +22,7 @@ void heapSort(logh* a){
 
 
     //creating max heap array
-    for(i = 1; i < a->size; i++){
+    for(i = 0; i < a->size; i++){
         x = i;
         do{
             root = (x - 1) / 2;
@@ -151,9 +151,15 @@ void heapSort(logh* a){
 
 
 int maxHum(logh* a){
+    int i;
+    int max = a->measurement[0].hum;
     int n = a->size;
-    heapSort(a);
-    return a->measurement[n].hum;
+    for(i = 0; i < n; i++){
+        if(a->measurement[i].hum > max){
+            max = a->measurement[i].hum;
+        }
+    }
+    return max;
 }
 
 //counting sort
@@ -164,7 +170,7 @@ void countingSort(logh* a){
     measureh sorted[a->size];
 
     int n = a->size; //to size twn A kai B
-    int k = maxHum(a); //to size tou count
+    int k = maxHum(a)+1; //to size tou count
     int i, j;
     int count[k];
 
@@ -172,13 +178,19 @@ void countingSort(logh* a){
         count[i] = 0;
     }
     for(j = 0; j < n; j++){
-        count[a->measurement[j].hum] = count[a->measurement[j].hum] + 1;
+        count[a->measurement[j].hum]++;
     }
     for(i = 1; i < k; i++){
         count[i] = count[i] + count[i - 1];
     }
-    for(j = n; j > 0; j--){
+    for(j = 0; j < n; j++){
         sorted[count[a->measurement[j].hum]].hum = a->measurement[j].hum;
+        sorted[count[a->measurement[j].hum]].timestamp.year = a->measurement[j].timestamp.year;
+        sorted[count[a->measurement[j].hum]].timestamp.month = a->measurement[j].timestamp.month;
+        sorted[count[a->measurement[j].hum]].timestamp.day = a->measurement[j].timestamp.day;
+        sorted[count[a->measurement[j].hum]].timestamp.hour = a->measurement[j].timestamp.hour;
+        sorted[count[a->measurement[j].hum]].timestamp.minute = a->measurement[j].timestamp.minute;
+        sorted[count[a->measurement[j].hum]].timestamp.sec = a->measurement[j].timestamp.sec;
         count[a->measurement[j].hum] = count[a->measurement[j].hum] - 1;
     }
 }
@@ -192,7 +204,7 @@ void countingSort(logh* a){
 
 //binary interpolation search
 
-void bis(time ts, logt* a){
+void bish(timej ts, logh* a){
 
     int n = a->size;
 
@@ -221,10 +233,47 @@ void bis(time ts, logt* a){
         next = ((ts.together - a->measurement[left].timestamp.together) / (a->measurement[right].timestamp.together - a->measurement[left].timestamp.together) * (right - left));
     }
     if(ts.together == a->measurement[next].timestamp.together){
-        printf("i thermokrasia pou anhkei sthn hmeromhnia %ld einai %f\n", ts.together, a->measurement[next].temp);
+        printf("Η υγρασία που ψάχνεις είναι %d\n",a->measurement[next].hum);
     }
-    else printf("h hmeromhnia %ld den uparxei sti lista\n", ts.together);
+    else printf("Δεν υπάρχει μέτρηση για την συγκεκριμένη στιγμή :/ κλαψ\n");
 }
+
+
+
+void bist(timej ts, logt* a){
+
+    int n = a->size;
+
+    int left = 1;
+    int right = n;
+
+    int sqr = sqrt(right - left);
+
+    long int next = (((ts.together - a->measurement[left].timestamp.together) / a->measurement[right].timestamp.together - a->measurement[left].timestamp.together) * (right - left));
+    while(ts.together != a->measurement[next].timestamp.together && left < right){
+        int i = 0;
+        if(ts.together >= a->measurement[next].timestamp.together){
+            while(ts.together > a->measurement[next + i * sqr].timestamp.together){
+                i++;
+                right = i * sqr;
+                left = (i - 1) * sqr;
+            }
+        }
+        else if(ts.together <= a->measurement[next].timestamp.together){
+            while(ts.together > a->measurement[next - i * sqr].timestamp.together){
+                i++;
+                right = (i - 1) * sqr;
+                left = i * sqr;
+            }
+        }
+        next = ((ts.together - a->measurement[left].timestamp.together) / (a->measurement[right].timestamp.together - a->measurement[left].timestamp.together) * (right - left));
+    }
+    if(ts.together == a->measurement[next].timestamp.together){
+        printf("Η θερμοκρασία που ψάχνεις είναι %f\n",a->measurement[next].temp);
+    }
+    else printf("Δεν υπάρχει μέτρηση για την συγκεκριμένη στιγμή :/ κλαψ\n");
+}
+
 
 
 

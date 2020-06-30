@@ -348,7 +348,7 @@ void takedaysh(logh log,logh* result){
 void printlogh(logh log){
     
     int i;
-    for(i=0;i<log.size;i++) printf("%d/%d/%d \t %2d:%2d:%d \t Measurement: %d\n",log.measurement[i].timestamp.year,log.measurement[i].timestamp.month,log.measurement[i].timestamp.day,log.measurement[i].timestamp.hour,log.measurement[i].timestamp.minute,log.measurement[i].timestamp.sec,log.measurement[i].hum);
+    for(i=0;i<log.size;i++) printf("%d %d/%d/%d \t %2d:%2d:%d \t Measurement: %d\n",i,log.measurement[i].timestamp.year,log.measurement[i].timestamp.month,log.measurement[i].timestamp.day,log.measurement[i].timestamp.hour,log.measurement[i].timestamp.minute,log.measurement[i].timestamp.sec,log.measurement[i].hum);
 }
 
 void printlogt(logt log){

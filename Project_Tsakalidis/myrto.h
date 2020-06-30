@@ -32,7 +32,9 @@ void countingSort(logh* a);
 
 //binary interpolation search
 
-void bis(time ts, logh* a);
+void bish(timej ts, logh* a);
+void bist(timej ts, logt* a);
+
 
 
 
