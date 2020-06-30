@@ -19,19 +19,19 @@ typedef struct{
     int minute;
     int sec;
     long int together;
-} time;
+} timej;
 
 
 
 //Τύποι δεδομένων για την καταγραφή των μετρήσεων. Ένας από τους δύο θα μπορούσε να παραληφθεί αλλά χρησιμοποιούνται για λόγους ευαναγνωσιμότητας
 typedef struct{
     float temp;
-    time timestamp;
+    timej timestamp;
 } measuret;
 
 typedef struct{
     int hum;
-    time timestamp;
+    timej timestamp;
 } measureh;
 
 typedef struct{
@@ -62,8 +62,6 @@ void printlogt(logt);
 
 
 //Συναρτήσεις για την διευκόλυνση περασμάτων τιμών
-void passtime(time*,time*);// αντιγράφει τα περιεχόμενα του πρώτου χρόνου στον δεύτερο
-
 
 void passlogh(logh*,logh*);// αντιγράφει τα περιεχόμενα του πρώτου log στο δεύτερο
 void passlogt(logt*,logt*);// αντιγράφει τα περιεχόμενα του πρώτου log στο δεύτερο

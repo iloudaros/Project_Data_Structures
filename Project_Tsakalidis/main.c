@@ -11,7 +11,7 @@
 //#include "koutou.h"
 //#include "orestis.h"
 #include "johnnylouds.h"
-//#include <time.h>
+#include <time.h>
 
 int main()
 {
@@ -64,7 +64,7 @@ int main()
                     break;
                 case 2: // Heap Sort και Counting Sort
                     passlogh(&test, &h);
-                    heapSortt(&h);
+                    heapSort(&h);
                     printlogh(h);
                     
                     break;
