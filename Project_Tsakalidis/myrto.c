@@ -183,15 +183,31 @@ void countingSort(logh* a){
     for(i = 1; i < k; i++){
         count[i] = count[i] + count[i - 1];
     }
-    for(j = 0; j < n; j++){
-        sorted[count[a->measurement[j].hum]].hum = a->measurement[j].hum;
-        sorted[count[a->measurement[j].hum]].timestamp.year = a->measurement[j].timestamp.year;
-        sorted[count[a->measurement[j].hum]].timestamp.month = a->measurement[j].timestamp.month;
-        sorted[count[a->measurement[j].hum]].timestamp.day = a->measurement[j].timestamp.day;
-        sorted[count[a->measurement[j].hum]].timestamp.hour = a->measurement[j].timestamp.hour;
-        sorted[count[a->measurement[j].hum]].timestamp.minute = a->measurement[j].timestamp.minute;
-        sorted[count[a->measurement[j].hum]].timestamp.sec = a->measurement[j].timestamp.sec;
-        count[a->measurement[j].hum] = count[a->measurement[j].hum] - 1;
+    for(j = n-1; j > 0; j--){
+        sorted[count[a->measurement[j].hum]-1].hum = a->measurement[j].hum;
+        sorted[count[a->measurement[j].hum]-1].timestamp.year = a->measurement[j].timestamp.year;
+        sorted[count[a->measurement[j].hum]-1].timestamp.month = a->measurement[j].timestamp.month;
+        sorted[count[a->measurement[j].hum]-1].timestamp.day = a->measurement[j].timestamp.day;
+        sorted[count[a->measurement[j].hum]-1].timestamp.hour = a->measurement[j].timestamp.hour;
+        sorted[count[a->measurement[j].hum]-1].timestamp.minute = a->measurement[j].timestamp.minute;
+        sorted[count[a->measurement[j].hum]-1].timestamp.sec = a->measurement[j].timestamp.sec;
+        sorted[count[a->measurement[j].hum]-1].timestamp.together = a->measurement[j].timestamp.together;
+
+    }
+    
+    
+    for (j=0;i<a->size;i++){
+        
+        a->measurement[j].hum = sorted[j].hum;
+        a->measurement[j].timestamp.year = sorted[j].timestamp.year;
+        a->measurement[j].timestamp.month = sorted[j].timestamp.month;
+        a->measurement[j].timestamp.day = sorted[j].timestamp.day;
+        a->measurement[j].timestamp.hour = sorted[j].timestamp.hour;
+        a->measurement[j].timestamp.minute = sorted[j].timestamp.minute;
+        a->measurement[j].timestamp.sec = sorted[j].timestamp.sec;
+        a->measurement[j].timestamp.together = sorted[j].timestamp.together;
+        
+        
     }
 }
 
