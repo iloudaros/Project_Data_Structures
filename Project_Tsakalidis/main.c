@@ -21,6 +21,7 @@ int main()
     logh test;
     loadh(&test);
     logh h;
+    printlogh(test);
     char end='n'; //μεταβλητή ελέγχου εξόδου προγράμματος
     
     
