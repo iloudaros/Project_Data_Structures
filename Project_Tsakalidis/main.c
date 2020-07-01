@@ -34,8 +34,8 @@ int main()
     
     //Μεταβλητές που θα χρησιμοποιούμε για τις μετρήσεις μας
     clock_t start, mend;
-    double cpu_time_used;
-    double cpu_time_used2;
+    double time_taken;
+    double time_taken2;
 
     
     
@@ -95,9 +95,9 @@ int main()
                     
                     mend = clock();
                     
-                    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+                    time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
                     printlogh(h);
-                    printf("\nΟ Heapsort χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο κάνει ο Countingsort πάτησε (ENTER)",cpu_time_used);
+                    printf("\nΟ Heapsort χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο κάνει ο Countingsort πάτησε (ENTER)",time_taken);
                     
                     
                     getchar();
@@ -112,9 +112,9 @@ int main()
                     
                     mend = clock();
                     
-                    cpu_time_used2 = ((double) (end - start)) / CLOCKS_PER_SEC;
+                    time_taken2 = ((double) (mend - start)) / CLOCKS_PER_SEC;
                     printlogh(h);
-                    printf("\nΟ Countingsort χρειάστηκε %f δευτερόλεπτα\nΟ Heapsort χρειάστηκε %f δευτερόλεπτα\nΣυνεπώς καταλαβαίνουμε ότι ο Countingsort είναι γρηγορότερος κατά %f δευτερόλεπτα\n\n Για να συνεχίσεις πάτησε (ENTER)",cpu_time_used2,cpu_time_used,cpu_time_used-cpu_time_used2);
+                    printf("\nΟ Countingsort χρειάστηκε %f δευτερόλεπτα\nΟ Heapsort χρειάστηκε %f δευτερόλεπτα\nΣυνεπώς καταλαβαίνουμε ότι ο Countingsort είναι γρηγορότερος κατά %f δευτερόλεπτα\n\n Για να συνεχίσεις πάτησε (ENTER)",time_taken2,time_taken,time_taken-time_taken2);
                     
                     getchar();
                     
