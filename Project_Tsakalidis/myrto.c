@@ -296,6 +296,7 @@ void bist(timej ts, logt* a){
 
 typedef struct node{
     long int key;
+    measuret data;
     struct node* left;
     struct node* right;
 }node;
