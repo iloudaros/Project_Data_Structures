@@ -167,23 +167,20 @@ int maxHum(logh* a){
 
 void countingSort(logh* a){
 
-    measureh sorted[a->size];
 
     int n = a->size; //to size twn A kai B
-    int k = maxHum(a)+1; //to size tou count
+    measureh sorted[n];
+    int k = maxHum(a) + 1; //to size tou count
     int i, j;
     int count[k];
 
-    for(i = 0; i < k; i++){
-        count[i] = 0;
-    }
-    for(j = 0; j < n; j++){
-        count[a->measurement[j].hum]++;
-    }
-    for(i = 1; i < k; i++){
-        count[i] = count[i] + count[i - 1];
-    }
-    for(j = n-1; j > 0; j--){
+    for(i = 0; i < k; i++) count[i] = 0;
+    
+    for(j = 0; j < n; j++) count[a->measurement[j].hum]++;
+    
+    for(i = 1; i < k; i++) count[i] = count[i] + count[i - 1];
+
+    for(j = n - 1; j >= 0; j--){
         sorted[count[a->measurement[j].hum]-1].hum = a->measurement[j].hum;
         sorted[count[a->measurement[j].hum]-1].timestamp.year = a->measurement[j].timestamp.year;
         sorted[count[a->measurement[j].hum]-1].timestamp.month = a->measurement[j].timestamp.month;
@@ -192,12 +189,13 @@ void countingSort(logh* a){
         sorted[count[a->measurement[j].hum]-1].timestamp.minute = a->measurement[j].timestamp.minute;
         sorted[count[a->measurement[j].hum]-1].timestamp.sec = a->measurement[j].timestamp.sec;
         sorted[count[a->measurement[j].hum]-1].timestamp.together = a->measurement[j].timestamp.together;
-
+        count[a->measurement[j].hum]--;
     }
     
+   // for (j = 0; j < a->size; j++) printf("%d, %ld \n",sorted[j].hum, sorted[j].timestamp.together);
     
-    for (j=0;i<a->size;i++){
-        
+    
+    for (j = 0; j < a->size; j++){
         a->measurement[j].hum = sorted[j].hum;
         a->measurement[j].timestamp.year = sorted[j].timestamp.year;
         a->measurement[j].timestamp.month = sorted[j].timestamp.month;

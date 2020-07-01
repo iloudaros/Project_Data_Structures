@@ -348,13 +348,13 @@ void takedaysh(logh log,logh* result){
 void printlogh(logh log){
     
     int i;
-    for(i=0;i<log.size;i++) printf(" %04d/%02d/%02d \t %02d:%02d:%02d \t Measurement: %d\n",log.measurement[i].timestamp.day,log.measurement[i].timestamp.month,log.measurement[i].timestamp.year,log.measurement[i].timestamp.hour,log.measurement[i].timestamp.minute,log.measurement[i].timestamp.sec,log.measurement[i].hum);
+    for(i=0;i<log.size;i++) printf(" %02d/%02d/%04d \t %02d:%02d:%02d \t Measurement: %d\n",log.measurement[i].timestamp.day,log.measurement[i].timestamp.month,log.measurement[i].timestamp.year,log.measurement[i].timestamp.hour,log.measurement[i].timestamp.minute,log.measurement[i].timestamp.sec,log.measurement[i].hum);
 }
 
 void printlogt(logt log){
     
     int i;
-    for(i=0;i<log.size;i++) printf("%04d/%02d/%02d \t %2d:%2d:%d \t Measurement: %3.2f\n",log.measurement[i].timestamp.day,log.measurement[i].timestamp.month,log.measurement[i].timestamp.year,log.measurement[i].timestamp.hour,log.measurement[i].timestamp.minute,log.measurement[i].timestamp.sec,log.measurement[i].temp);
+    for(i=0;i<log.size;i++) printf("%02d/%02d/%04d \t %2d:%2d:%d \t Measurement: %3.2f\n",log.measurement[i].timestamp.day,log.measurement[i].timestamp.month,log.measurement[i].timestamp.year,log.measurement[i].timestamp.hour,log.measurement[i].timestamp.minute,log.measurement[i].timestamp.sec,log.measurement[i].temp);
 }
 
 
@@ -367,7 +367,7 @@ void printlogt(logt log){
 void passlogh(logh* a,logh* b){
    
     b->size = a->size;
-    b->measurement = (measureh *)realloc(b->measurement, a->size*sizeof(measureh));
+    b->measurement = (measureh *)realloc(b->measurement, b->size*sizeof(measureh));
     int i;
     for (i = 0; i < b->size; i++) {
         b->measurement[i].hum=a->measurement[i].hum;
