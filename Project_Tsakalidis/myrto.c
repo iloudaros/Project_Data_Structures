@@ -139,7 +139,7 @@ void heapSort(logh* a){
       
     }
     
-    printlogh(*a);
+    //printlogh(*a);
 
 }
 

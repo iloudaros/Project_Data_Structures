@@ -15,14 +15,28 @@
 
 int main()
 {
-   
+    
+    
+    
+    
+    system("clear");
     //Εδώ θα χρειαστεί να βάλετε το μονοπάτι στο οποίο βρίσκονται τα αρχεία από τα οποία χρειάζεται να τραβηχτούν τα δεδομένα 
     chdir("/Users/giannisloudaros/Documents/Code/HW/4th Semester/Project Δομές/Project_Tsakalidis/Project_Tsakalidis");
     logh test;
     loadh(&test);
     logh h;
-    //printlogh(test);
+    
+    logt temps;
+    loadt(&temps);
+    logt t;
+
     char end='n'; //μεταβλητή ελέγχου εξόδου προγράμματος
+    
+    //Μεταβλητές που θα χρησιμοποιούμε για τις μετρήσεις μας
+    clock_t start, mend;
+    double cpu_time_used;
+    double cpu_time_used2;
+
     
     
     printf("Καλώς ορίσατε στο καλύτερο Project στις Δομές Δεδομένων\n Από τους: Χριστίνα Κρατημένου \t Λουδάρος Ιωάννης \t Ορέστης Σπυριδάκης \t Μυρτώ Δεληγιάννη\n (Για να συνεχίσεις πάτα ENTER)");
@@ -30,19 +44,27 @@ int main()
     getchar();
     
     do{
+        
+       system("clear");
        printf("Ποιο μέρος του Project θα ήθελες να χρησιμοποιήσεις;\n 1. Μέρος Πρώτο\n 2. Μέρος Δεύτερο\n 3. Έξοδος\n");
     
     //Ο χρήστης επιλέγει ποιο μέρος του project θέλει να εξετάσει
     int choice;
-    int dump;
+    int dump; // Μεταβλητή που θα χρησιμοποιήσουμε για να καθαρίζουμε το Buffer
+        
+        
     do{
         
         
         scanf("%d",&choice);
         dump=getchar();
+        
         if ((choice!=1) && (choice!=2) && (choice!=3)) printf("Πρέπει να επιλέξεις 1, 2 ή 3\n");
         
     }while((choice!=1) && (choice!=2)&& (choice!=3));
+        
+        
+        
     
     switch (choice) {
             
@@ -63,10 +85,36 @@ int main()
                     
                     break;
                 case 2: // Heap Sort και Counting Sort
+                    
+                    //############ Heapsort #############
                     passlogh(&test, &h);
-                   // heapSort(&h);
-                    countingSort(&h);
+                    
+                    start = clock();
+                        
+                    heapSort(&h);
+                    
+                    mend = clock();
+                    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
                     printlogh(h);
+                    printf("\nΟ Heapsort χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο κάνει ο Countingsort πάτησε (ENTER)",cpu_time_used);
+                    
+                    
+                    getchar();
+                    
+                    
+                    //########### Countingsort #############
+                    passlogh(&test, &h); //Κάνουμε reset το log μας ώστε να ξαναγίνει sort
+
+                    start = clock();
+
+                    countingSort(&h);
+                    
+                    mend = clock();
+                    cpu_time_used2 = ((double) (end - start)) / CLOCKS_PER_SEC;
+                    printlogh(h);
+                    printf("\nΟ Countingsort χρειάστηκε %f δευτερόλεπτα\nΟ Heapsort χρειάστηκε %f δευτερόλεπτα\nΣυνεπώς καταλαβαίνουμε ότι ο Countingsort είναι γρηγορότερος κατά %f δευτερόλεπτα\n\n Για να συνεχίσεις πάτησε (ENTER)",cpu_time_used2,cpu_time_used,cpu_time_used-cpu_time_used2);
+                    
+                    getchar();
                     
                     break;
                 case 3: // Δυαδική Αναζήτηση και Αναζήτηση με Παρεμβολή
