@@ -94,6 +94,7 @@ int main()
                     heapSort(&h);
                     
                     mend = clock();
+                    
                     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
                     printlogh(h);
                     printf("\nΟ Heapsort χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο κάνει ο Countingsort πάτησε (ENTER)",cpu_time_used);
@@ -110,6 +111,7 @@ int main()
                     countingSort(&h);
                     
                     mend = clock();
+                    
                     cpu_time_used2 = ((double) (end - start)) / CLOCKS_PER_SEC;
                     printlogh(h);
                     printf("\nΟ Countingsort χρειάστηκε %f δευτερόλεπτα\nΟ Heapsort χρειάστηκε %f δευτερόλεπτα\nΣυνεπώς καταλαβαίνουμε ότι ο Countingsort είναι γρηγορότερος κατά %f δευτερόλεπτα\n\n Για να συνεχίσεις πάτησε (ENTER)",cpu_time_used2,cpu_time_used,cpu_time_used-cpu_time_used2);
