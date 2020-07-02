@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include "myrto.h"
-//#include "koutou.h"
+#include "koutou.h"
 //#include "orestis.h"
 #include "johnnylouds.h"
 #include <time.h>
@@ -82,7 +82,9 @@ int main()
             switch (choice) {
                     
                 case 1: // Quick Sort και Merge Sort
-                    
+                    passlogt(&temps, &t);
+                    mergesortt(&t,0,t.size-1);
+                    printlogt(t);
                     break;
                 case 2: // Heap Sort και Counting Sort
                     

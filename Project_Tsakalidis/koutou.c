@@ -1,13 +1,111 @@
 #include <stdio.h>
 #include <stdlib.h>
 //#include <conio.h>
-#include <assert.h>
+//#include <assert.h>
 #include "johnnylouds.h"
 
 
 //MERGESORT
 
-void split(logt* p, int max, int min) //Xwrizei to array sth mesh kathe fora
+void merge(logt* p,int min,int mid,int max)
+{
+  measuret tmp[p->size];
+  int i,j,k,m;
+  j=min;
+  m=mid+1;
+  for(i=min; j<=mid && m<=max ; i++)
+  {
+      if(p->measurement[j].temp <= p->measurement[m].temp)
+     {
+         tmp[i].temp = p->measurement[j].temp;
+         tmp[i].timestamp.sec = p->measurement[j].timestamp.sec;
+         tmp[i].timestamp.minute = p->measurement[j].timestamp.minute;
+         tmp[i].timestamp.hour = p->measurement[j].timestamp.hour;
+         tmp[i].timestamp.day = p->measurement[j].timestamp.day;
+         tmp[i].timestamp.month = p->measurement[j].timestamp.month;
+         tmp[i].timestamp.year = p->measurement[j].timestamp.year;
+         tmp[i].timestamp.together = p->measurement[j].timestamp.together;
+         
+         j++;
+     }
+     else
+     {
+         tmp[i].temp = p->measurement[m].temp;
+         tmp[i].timestamp.sec = p->measurement[m].timestamp.sec;
+         tmp[i].timestamp.minute = p->measurement[m].timestamp.minute;
+         tmp[i].timestamp.hour = p->measurement[m].timestamp.hour;
+         tmp[i].timestamp.day = p->measurement[m].timestamp.day;
+         tmp[i].timestamp.month = p->measurement[m].timestamp.month;
+         tmp[i].timestamp.year = p->measurement[m].timestamp.year;
+         tmp[i].timestamp.together = p->measurement[m].timestamp.together;
+         m++;
+     }
+  }
+  if(j>mid)
+  {
+     for(k=m; k<=max; k++)
+     {
+         tmp[i].temp = p->measurement[k].temp;
+         tmp[i].timestamp.sec = p->measurement[k].timestamp.sec;
+         tmp[i].timestamp.minute = p->measurement[k].timestamp.minute;
+         tmp[i].timestamp.hour = p->measurement[k].timestamp.hour;
+         tmp[i].timestamp.day = p->measurement[k].timestamp.day;
+         tmp[i].timestamp.month = p->measurement[k].timestamp.month;
+         tmp[i].timestamp.year = p->measurement[k].timestamp.year;
+         tmp[i].timestamp.together = p->measurement[k].timestamp.together;
+         i++;
+     }
+  }
+  else
+  {
+     for(k=j; k<=mid; k++)
+     {
+        tmp[i].temp = p->measurement[k].temp;
+        tmp[i].timestamp.sec = p->measurement[k].timestamp.sec;
+        tmp[i].timestamp.minute = p->measurement[k].timestamp.minute;
+        tmp[i].timestamp.hour = p->measurement[k].timestamp.hour;
+        tmp[i].timestamp.day = p->measurement[k].timestamp.day;
+        tmp[i].timestamp.month = p->measurement[k].timestamp.month;
+        tmp[i].timestamp.year = p->measurement[k].timestamp.year;
+        tmp[i].timestamp.together = p->measurement[k].timestamp.together;
+        i++;
+     }
+  }
+  for(k=min; k<max; k++)
+     tmp[k].temp = p->measurement[k].temp;
+     tmp[k].timestamp.sec = p->measurement[k].timestamp.sec;
+     tmp[k].timestamp.minute = p->measurement[k].timestamp.minute;
+     tmp[k].timestamp.hour = p->measurement[k].timestamp.hour;
+     tmp[k].timestamp.day = p->measurement[k].timestamp.day;
+     tmp[k].timestamp.month = p->measurement[k].timestamp.month;
+     tmp[k].timestamp.year = p->measurement[k].timestamp.year;
+     tmp[k].timestamp.together = p->measurement[k].timestamp.together;
+}
+
+
+
+void mergesortt(logt* p,int min,int max)
+{
+ int mid;
+ if(min<max)
+ {
+   mid=(min+max)/2;
+   mergesortt(p,min,mid);
+   mergesortt(p,mid+1,max);
+   merge(p,min,mid,max);
+ }
+}
+
+
+
+
+
+
+
+
+
+
+/*void split(logt* p, int max, int min) //Xwrizei to array sth mesh kathe fora
 {
     
     int n=p->size;
@@ -81,7 +179,9 @@ void mergeSort(logt* p,measuret max,measuret min) //Kanei to sort twn stoixeiwn 
 			merge(p,max,mid,min);
 		}
 	}
+*/
 
+/*
 //QUICKSORT
 
 void swap(measuret *a, measuret *b ) //Utility function gia swaping
@@ -178,3 +278,4 @@ void swaphm(measureh *a, measureh *b)
     *a       = *b;
     *b       = temp;
 }
+*/                                                                                                                                                                                                                                                                                                                                  

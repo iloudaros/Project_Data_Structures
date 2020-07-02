@@ -8,17 +8,15 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
+//#include <conio.h>
 #include <assert.h>
 #include "johnnylouds.h"
 
 //MERGESORT
 
-void split(logt* p); 
+void mergesortt(logt* p,int min,int max);
 
-void merge(logt* p,int max,int mid,int min);
-
-void mergeSort(logt* p,int max,int min);
+void merge(logt* p,int min,int mid,int max);
 
 //QUICKSORT
 
@@ -38,4 +36,4 @@ void swaptm(measuret *a, measuret *b);
 
 void swaphm(measureh *a, measureh *b);
 
-#endif koutou_h
+#endif //koutou_h

@@ -387,11 +387,11 @@ void passlogh(logh* a,logh* b){
 
 void passlogt(logt* a,logt* b){
    
-    b->size=a->size;
-    b->measurement=(measuret *)realloc(b->measurement, b->size*sizeof(measuret));
+    b->size = a->size;
+    b->measurement=(measuret *)malloc(b->size*sizeof(measuret));
     
     for (int i=0; i<b->size; i++) {
-        b->measurement[i].temp=a->measurement[i].temp;
+        b->measurement[i].temp = (float)a->measurement[i].temp;
         b->measurement[i].timestamp.year = a->measurement[i].timestamp.year;
         b->measurement[i].timestamp.month = a->measurement[i].timestamp.month;
         b->measurement[i].timestamp.day = a->measurement[i].timestamp.day;
