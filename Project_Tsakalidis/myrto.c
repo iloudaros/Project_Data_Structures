@@ -13,6 +13,7 @@
 #include "koutou.h"
 #include "johnnylouds.h"
 #include "orestis.h"
+#include "koutou.h"
 
 
 //heapsort
@@ -259,6 +260,8 @@ void bish(timej ts, logh* a){
 
 void bist(timej ts, logt* a){
 
+	bis2sortt(a);
+
     int n = a->size;
 
     int left = 1;
@@ -297,7 +300,6 @@ void bist(timej ts, logt* a){
 //dentro
 
 typedef struct node{
-    long int key;
     measuret data;
     struct node* left;
     struct node* right;
@@ -305,31 +307,31 @@ typedef struct node{
 
 // A utility function to create a new BST node
 node *newNode(long int item){
-    node *temp =  (node *)malloc(sizeof(node));
-    temp->key = item;
-    temp->left = temp->right = NULL;
-    return temp;
+    node *t =  (node *)malloc(sizeof(node));
+    t->data.timestamp.together = item;
+    t->left = t->right = NULL;
+    return t;
 }
 
 // A utility function to do inorder traversal of BST
 void inorder(node *root){
     if(root != NULL){
         inorder(root->left);
-        printf("%ld \n", root->key);
-        inorder(root->right);
+        printf("%ld \n", root->data);
+        inorder(root);
     }
 }
 
 /* A utility function to insert a new node with given key in BST */
-node* insert(node* node, long int key){
+node* insert(node* node, measuret data){
     /* If the tree is empty, return a new node */
-    if (node == NULL) return newNode(key);
+    if (node == NULL) return newNode(data.timestamp.together);
 
     /* Otherwise, recur down the tree */
-    if (key < node->key)
-        node->left  = insert(node->left, key);
-    else if (key > node->key)
-        node->right = insert(node->right, key);
+    if (data.timestamp.together < node->data.timestamp.together)
+        node->left  = insert(node->left, data);
+    else if (data.timestamp.together > node->data.timestamp.together)
+        node->right = insert(node->right, data);
 
     /* return the (unchanged) node pointer */
     return node;
@@ -337,9 +339,11 @@ node* insert(node* node, long int key){
 
 void createBST(logt* a){
 	int i;
+	measuret k;
 	struct node *root = NULL;
 	for(i = 0; i < a->size; i++){
-		long int k = a->measurement[i].timestamp.together;
+		k.timestamp.together = a->measurement[i].timestamp.together;
+		k.temp = a->measurement[i].temp;
 		insert(root, k);
 	}
 }
