@@ -132,7 +132,7 @@ int main()
                     printf("Σε ποια στιγμή είναι η μέτρηση που ψάχνεις;\n");
                     timej usersearch;
                     usersearch.year=2014;
-                    usersearch.sec=0;
+                    usersearch.sec=00;
                     printf("Μήνας:");
                     scanf("%d",&usersearch.month);
                     printf("Μέρα:");
@@ -144,6 +144,8 @@ int main()
                     usersearch.together=(long)100000000* (long)usersearch.year+(long)1000000*usersearch.month+(long)usersearch.day+100*usersearch.hour+usersearch.minute;
                     
                     
+                    
+                    
                     do{
                         printf("Θέλεις να ψάξεις:\n 1.Μόνο Θερμοκρασία\n 2.Μόνο Υγρασία\n 3.Και τα δύο\n");
                         scanf("%d",&choice);
@@ -153,16 +155,17 @@ int main()
                     
                     switch (choice) {
                         case 1://Μόνο Θερμοκρασία
-                           // bist(usersearch, <#logt *a#>);
+                            passlogt(&temps, &t);
+                            bist(usersearch, &t);
                             break;
                             
                         case 2://Μόνο Υγρασία
-                           // bish(usersearch, <#logh *a#>);
+                            //bish(usersearch, <#logh *a#>);
                             break;
                             
                         case 3://Και τα δύο
                            // bish(usersearch, <#logh *a#>);
-                           // bist(usersearch, <#logt *a#>);
+                            //bist(usersearch, <#logt *a#>);
                             break;
                     }
                     

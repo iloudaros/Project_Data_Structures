@@ -32,6 +32,8 @@ void bis2sortt(logt* p);
 
 void bis2sorth(logh* p);
 
+void swapt(measuret *a, measuret *b);
+
 void swaptm(measuret *a, measuret *b);
 
 void swaphm(measureh *a, measureh *b);

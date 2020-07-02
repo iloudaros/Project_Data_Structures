@@ -13,8 +13,6 @@
 #include "koutou.h"
 #include "johnnylouds.h"
 #include "orestis.h"
-#include "koutou.h"
-
 
 //heapsort
 
