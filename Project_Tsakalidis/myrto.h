@@ -40,7 +40,7 @@ void bist(timej ts, logt* a);
 
 //dentro
 typedef struct node{
-    long int key;
+    measuret data;
     struct node* left;
     struct node* right;
 }node;
@@ -49,7 +49,7 @@ typedef struct node{
 void inorder(node *root);
    
 /* A utility function to insert a new node with given key in BST */
-node* insert(node* node, long int key);
+node* insert(node* node, measuret data);
 
 void createBST(logt* a);
 
