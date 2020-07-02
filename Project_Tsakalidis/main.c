@@ -157,6 +157,7 @@ int main()
                         case 1://Μόνο Θερμοκρασία
                             passlogt(&temps, &t);
                             bist(usersearch, &t);
+                            printlogt(t);
                             break;
                             
                         case 2://Μόνο Υγρασία

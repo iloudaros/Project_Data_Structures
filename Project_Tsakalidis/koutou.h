@@ -27,12 +27,13 @@ int partition( int *a, int low, int high );
 void quickSort( int *a, int low, int high ); 
 
 //BIS2SORT
+void swapt(measuret *a, measuret *b);
 
 void bis2sortt(logt* p);
 
 void bis2sorth(logh* p);
 
-void swapt(measuret *a, measuret *b);
+
 
 void swaptm(measuret *a, measuret *b);
 

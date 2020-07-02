@@ -288,7 +288,7 @@ void bist(timej ts, logt* a){
     if(ts.together == a->measurement[next].timestamp.together){
         printf("Η θερμοκρασία που ψάχνεις είναι %f\n",a->measurement[next].temp);
     }
-    else printf("Δεν υπάρχει μέτρηση για την συγκεκριμένη στιγμή :/ κλαψ\n");
+    else printf("Δεν υπάρχει μέτρηση για την συγκεκριμένη στιγμή :/ κλαψ\n"); 
 }
 
 
