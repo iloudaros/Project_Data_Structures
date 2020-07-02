@@ -13,8 +13,7 @@
 //  Εδώ υπάρχουν οι αλγόριθμοι ταξινόμισης timesort(), bintimesearch(), intertimesearch()
 //  !!Φρόντισε να υπάρχει μια μικρή περιγραφή του τι κάνει ο αλγόριθμος πριν την δήλωση του <3
 
-#ifndef orestis_h
-#define orestis_h
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -131,4 +130,3 @@ int interpolationSearch(logh* p, int x)
 
 
 
-#endif orestis_h

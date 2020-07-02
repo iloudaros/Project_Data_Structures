@@ -11,6 +11,7 @@
 #include<math.h>
 
 #include "johnnylouds.h"
+#include "orestis.h"
 
 
 //heapsort
@@ -219,29 +220,30 @@ void countingSort(logh* a){
 //binary interpolation search
 
 void bish(timej ts, logh* a){
+	
+	timesort(a);
 
     int n = a->size;
 
     int left = 1;
     int right = n;
 
-    int sqr = sqrt(right - left);
 
     long int next = (((ts.together - a->measurement[left].timestamp.together) / a->measurement[right].timestamp.together - a->measurement[left].timestamp.together) * (right - left));
     while(ts.together != a->measurement[next].timestamp.together && left < right){
         int i = 0;
         if(ts.together >= a->measurement[next].timestamp.together){
-            while(ts.together > a->measurement[next + i * sqr].timestamp.together){
+            while(ts.together > a->measurement[(int)(next + i * sqrt(right - left))].timestamp.together){
                 i++;
-                right = i * sqr;
-                left = (i - 1) * sqr;
+                right = i * sqrt(right - left);
+                left = (i - 1) * sqrt(right - left);
             }
         }
         else if(ts.together <= a->measurement[next].timestamp.together){
-            while(ts.together > a->measurement[next - i * sqr].timestamp.together){
+            while(ts.together > a->measurement[(int)(next - i * sqrt(right - left))].timestamp.together){
                 i++;
-                right = (i - 1) * sqr;
-                left = i * sqr;
+                right = (i - 1) * sqrt(right - left);
+                left = i * sqrt(right - left);
             }
         }
         next = ((ts.together - a->measurement[left].timestamp.together) / (a->measurement[right].timestamp.together - a->measurement[left].timestamp.together) * (right - left));
@@ -261,23 +263,22 @@ void bist(timej ts, logt* a){
     int left = 1;
     int right = n;
 
-    int sqr = sqrt(right - left);
 
     long int next = (((ts.together - a->measurement[left].timestamp.together) / a->measurement[right].timestamp.together - a->measurement[left].timestamp.together) * (right - left));
     while(ts.together != a->measurement[next].timestamp.together && left < right){
         int i = 0;
         if(ts.together >= a->measurement[next].timestamp.together){
-            while(ts.together > a->measurement[next + i * sqr].timestamp.together){
+            while(ts.together > a->measurement[(int)(next + i * sqrt(right - left))].timestamp.together){
                 i++;
-                right = i * sqr;
-                left = (i - 1) * sqr;
+                right = i * sqrt(right - left);
+                left = (i - 1) * sqrt(right - left);
             }
         }
         else if(ts.together <= a->measurement[next].timestamp.together){
-            while(ts.together > a->measurement[next - i * sqr].timestamp.together){
+            while(ts.together > a->measurement[(int)(next - i * sqrt(right - left))].timestamp.together){
                 i++;
-                right = (i - 1) * sqr;
-                left = i * sqr;
+                right = (i - 1) * sqrt(right - left);
+                left = i * sqrt(right - left);
             }
         }
         next = ((ts.together - a->measurement[left].timestamp.together) / (a->measurement[right].timestamp.together - a->measurement[left].timestamp.together) * (right - left));
