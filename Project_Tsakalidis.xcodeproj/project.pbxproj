@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		942D7586248A866B0017A263 /* johnnylouds.c in Sources */ = {isa = PBXBuildFile; fileRef = 942D7585248A866B0017A263 /* johnnylouds.c */; };
+		943B12A424ADF215001EED5A /* koutou.c in Sources */ = {isa = PBXBuildFile; fileRef = 943B12A324ADF215001EED5A /* koutou.c */; };
 		947D3C292490E31D0090190B /* orestis.c in Sources */ = {isa = PBXBuildFile; fileRef = 947D3C282490E31D0090190B /* orestis.c */; };
 		947D3C2B2490E5170090190B /* myrto.c in Sources */ = {isa = PBXBuildFile; fileRef = 947D3C2A2490E5170090190B /* myrto.c */; };
 		94E1F63C24819B050034A2D8 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 94E1F63A24819B050034A2D8 /* main.c */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		941BA72D2485A5020017D891 /* johnnylouds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = johnnylouds.h; sourceTree = "<group>"; };
 		942D7585248A866B0017A263 /* johnnylouds.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = johnnylouds.c; sourceTree = "<group>"; };
+		943B12A324ADF215001EED5A /* koutou.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = koutou.c; sourceTree = "<group>"; };
 		947D25362485934F00B46BB6 /* myrto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myrto.h; sourceTree = "<group>"; };
 		947D2537248594DB00B46BB6 /* koutou.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = koutou.h; sourceTree = "<group>"; };
 		947D25382485958100B46BB6 /* orestis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = orestis.h; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				947D25362485934F00B46BB6 /* myrto.h */,
 				947D3C2A2490E5170090190B /* myrto.c */,
 				947D2537248594DB00B46BB6 /* koutou.h */,
+				943B12A324ADF215001EED5A /* koutou.c */,
 				947D25382485958100B46BB6 /* orestis.h */,
 				947D3C282490E31D0090190B /* orestis.c */,
 				941BA72D2485A5020017D891 /* johnnylouds.h */,
@@ -142,6 +145,7 @@
 			files = (
 				94E1F63C24819B050034A2D8 /* main.c in Sources */,
 				947D3C292490E31D0090190B /* orestis.c in Sources */,
+				943B12A424ADF215001EED5A /* koutou.c in Sources */,
 				942D7586248A866B0017A263 /* johnnylouds.c in Sources */,
 				947D3C2B2490E5170090190B /* myrto.c in Sources */,
 			);

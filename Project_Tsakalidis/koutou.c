@@ -1,21 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
+//#include <conio.h>
 #include <assert.h>
 #include "johnnylouds.h"
 
 
 //MERGESORT
 
-void split(logt* p, measuret max, measuret min) //Xwrizei to array sth mesh kathe fora
+void split(logt* p, int max, int min) //Xwrizei to array sth mesh kathe fora
 {
-  	measuret* sorted[p>size];
-	
-	measuret mid= p->size/2;
+    
+    int n=p->size;
+    measuret sorted[n];
+    int mid=p->[n/2];
 	
 	if(min<max)
 	{
-	  mid= max+(min-max)/2; //Vriskei thn mesh tou array kai to xwrizei anadromika
+	  mid= max+min/2; //Vriskei thn mesh tou array kai to xwrizei anadromika
 	  split(p,min,mid);     //To max+(min-max)/2 einai idio me to (max+min)/2 alla se pio megales times apotrepei to overflow
 	  split(p,mid+1,max);
 	  merge(p,min,mid,max);
@@ -31,7 +32,7 @@ void merge(logt* p, measuret max,meausuret mid,measuret min)  //Enwnei ta subarr
 	measuret* L[n1], R[n2]; //Temp arrays
 	
 	for(i=0; i<n1; i++)  //Antigrafh twn dedomenwn sta temp
-		L[i]= logt.measurement[i+max];
+		L[i]= p->measurement[i+max];
 	for(j=0; j<n2; j++)  
 		R[j]= logt.measurement[j+1+mid];
 	
