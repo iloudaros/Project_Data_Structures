@@ -10,6 +10,7 @@
 #include<stdlib.h>
 #include<math.h>
 
+#include "koutou.h"
 #include "johnnylouds.h"
 #include "orestis.h"
 
@@ -342,3 +343,5 @@ void createBST(logt* a){
 		insert(root, k);
 	}
 }
+
+
