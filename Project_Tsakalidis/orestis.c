@@ -108,7 +108,7 @@ int binarySearcht(logt* p, long int x, int low, int h) //psaxnw me vash to times
 
 //INTERPOLATION
 
-int interpolationSearch(logh* p, int x)
+int interpolationSearch(logh* p, long int x)
 {
     int n = p->size;
     int low = 0;
@@ -143,7 +143,7 @@ int interpolationSearch(logh* p, int x)
 
 
 
-int interpolationSearcht(logt* p, int x)
+int interpolationSearcht(logt* p, long int x)
 {
     int n = p->size;
     int low = 0;

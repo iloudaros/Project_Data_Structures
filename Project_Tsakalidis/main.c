@@ -83,7 +83,7 @@ int main()
                    
             switch (choice) {
                     
-                case 1: // Quick Sort και Merge Sort
+                case 1: // ############### Quick Sort και Merge Sort #################
                     passlogt(&temps, &t);
                     mergesortt(&t,0,t.size-1);
                     printlogt(t);
@@ -123,7 +123,7 @@ int main()
                     getchar();
                     
                     break;
-                case 3: // Δυαδική Αναζήτηση και Αναζήτηση με Παρεμβολή
+                case 3: //################ Δυαδική Αναζήτηση και Αναζήτηση με Παρεμβολή ######################
                     
                     passlogh(&test,&h);
                     passlogt(&temps,&t);
@@ -143,9 +143,30 @@ int main()
                         {
                                                         
                             timesortt(&t);
-                            int result = binarySearcht(&t, usersearch.together, 0, t.size);
-                            if (result==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
-                            else printf("%i",result);
+
+                            start = clock();
+                            
+                            float result1 = binarySearcht(&t, usersearch.together, 0, t.size);
+                            
+                            mend = clock();
+                            
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Δυαδική Αναζήτηση χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο χρειάστηκε η Αναζήτηση Παρεμβολής πάτησε (ENTER)",time_taken);
+                            if (result1==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("Θερμοκρασία :%0.2f",result1);
+                            
+                            
+                            
+                            start = clock();
+                            
+                            int result2 = interpolationSearcht(&t, usersearch.together);
+                            
+                            mend = clock();
+                            
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Αναζήτηση Παρεμβολής χρειάστηκε %f δευτερόλεπτα\n",time_taken);
+                            if (result2==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("Θερμοκρασία :%i",result2);
                             
                             printf("\nΓια να συνεχίσεις πάτησε (ENTER)");
                             getchar();
@@ -155,9 +176,28 @@ int main()
                         case 2://Μόνο Υγρασία
                         {
                             timesorth(&h);
+
+                            start = clock();
+                            
                             int result = binarySearchh(&h, usersearch.together, 0, t.size);
+                            
+                            mend = clock();
+                            
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Δυαδική Αναζήτηση χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο χρειάστηκε η Αναζήτηση Παρεμβολής πάτησε (ENTER)",time_taken);
                             if (result==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
-                            else printf("%i",result);
+                            else printf("Υγρασία :%i",result);
+                            
+                            start = clock();
+                            
+                            result = interpolationSearchh(&h, usersearch.together);
+                            
+                            mend = clock();
+                            
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Αναζήτηση Παρεμβολής χρειάστηκε %f δευτερόλεπτα",time_taken);
+                            if (result==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("Υγρασία :%i",result);
                             
                             printf("\nΓια να συνεχίσεις πάτησε (ENTER)");
                             getchar();
@@ -167,19 +207,65 @@ int main()
                             
                         case 3://Και τα δύο
                         {
-                                                        
-                            timesortt(&t);
-                            float result1 = binarySearcht(&t, usersearch.together, 0, t.size);
-                            if (result1==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
-                            else printf("%.02f",result1);
                             
-                            printf("\nΓια να συνεχίσεις πάτησε (ENTER)");
-                            getchar();
+                            //######Θερμοκρασία#######
+                            timesortt(&t);
+
+                            start = clock();
+                            
+                            float result1 = binarySearcht(&t, usersearch.together, 0, t.size);
+                            
+                            mend = clock();
+                            
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Δυαδική Αναζήτηση χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο χρειάστηκε η Αναζήτηση Παρεμβολής πάτησε (ENTER)",time_taken);
+                            if (result1==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("Θερμοκρασία :%0.2f",result1);
+                            
+                            
+                            
+                            start = clock();
+                            
+                            int result2 = interpolationSearcht(&t, usersearch.together);
+                            
+                            mend = clock();
+                            
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Αναζήτηση Παρεμβολής χρειάστηκε %f δευτερόλεπτα\n",time_taken);
+                            if (result2==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("Θερμοκρασία :%i",result2);
+                            
+                            
+                            //######Υγρασία#######
+
                             
                             timesorth(&h);
-                            int result2 = binarySearchh(&h, usersearch.together, 0, t.size);
-                            if (result2==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
-                            else printf("%i",result2);
+
+                            start = clock();
+                            
+                            int result = binarySearchh(&h, usersearch.together, 0, t.size);
+                            
+                            mend = clock();
+                            
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Δυαδική Αναζήτηση χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο χρειάστηκε η Αναζήτηση Παρεμβολής πάτησε (ENTER)",time_taken);
+                            if (result==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("Υγρασία :%i",result);
+                            
+                            start = clock();
+                            
+                            result = interpolationSearchh(&h, usersearch.together);
+                            
+                            mend = clock();
+                            
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Αναζήτηση Παρεμβολής χρειάστηκε %f δευτερόλεπτα",time_taken);
+                            if (result==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("Υγρασία :%i",result);
+                            
+                            
+                            
+                            
                             
                             printf("\nΓια να συνεχίσεις πάτησε (ENTER)");
                             getchar();
@@ -194,7 +280,7 @@ int main()
                     
                     break;
                     
-                case 4: // Δυαδική Αναζήτηση Παρεμβολής
+                case 4: //############## Δυαδική Αναζήτηση Παρεμβολής ###############
                     
                     passlogt(&temps, &t);
                 {
