@@ -57,10 +57,9 @@ void timesorth(logh* p) //kanw sort ton pinaka me vash ta timestamps gia na mpor
 
 //BINARY
 
-int binarySearchh(logh* p, long int x, int l, int h) //psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+int binarySearchh(logh* p, long int x, int low, int h) //psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
 {
     int high = h-1;
-    int low = 0;
     int mid;
     
     if (high >= low)
@@ -83,10 +82,9 @@ int binarySearchh(logh* p, long int x, int l, int h) //psaxnw me vash to timesta
     }
 
 
-int binarySearcht(logt* p, long int x, int l, int h) //psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+int binarySearcht(logt* p, long int x, int low, int h) //psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
 {
     int high = h-1;
-    int low = 0;
     int mid;
     
     if (high >= low)
@@ -102,7 +100,7 @@ int binarySearcht(logt* p, long int x, int l, int h) //psaxnw me vash to timesta
             return binarySearcht(p, x, low, mid-1);
         }
         else //psaxnw deksia
-            return binarySearcht(p, x, mid-1, high);
+            return binarySearcht(p, x, mid, high);
         }
     else //alliws ton poylo
         return -1;

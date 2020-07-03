@@ -128,7 +128,8 @@ int main()
                     passlogh(&test,&h);
                     passlogt(&temps,&t);
                     
-                    
+                    ask4date(&usersearch);
+
             
                     do{
                         printf("Θέλεις να ψάξεις:\n 1.Μόνο Θερμοκρασία\n 2.Μόνο Υγρασία\n 3.Και τα δύο\n");
@@ -139,29 +140,54 @@ int main()
                     
                     switch (choice) {
                         case 1://Μόνο Θερμοκρασία
-                            
-                            
-                            ask4date(&usersearch);
-                            
+                        {
+                                                        
                             timesortt(&t);
-                            printlogt(t);
                             int result = binarySearcht(&t, usersearch.together, 0, t.size);
                             if (result==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
                             else printf("%i",result);
                             
                             printf("\nΓια να συνεχίσεις πάτησε (ENTER)");
                             getchar();
-                            getchar();
+                        }
                             break;
                             
                         case 2://Μόνο Υγρασία
-                            binarySearchh(&h, usersearch.together, 0, t.size);
+                        {
+                            timesorth(&h);
+                            int result = binarySearchh(&h, usersearch.together, 0, t.size);
+                            if (result==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("%i",result);
+                            
+                            printf("\nΓια να συνεχίσεις πάτησε (ENTER)");
+                            getchar();
+                        }
                             
                             break;
                             
                         case 3://Και τα δύο
-                           // bish(usersearch, <#logh *a#>);
-                            //bist(usersearch, <#logt *a#>);
+                        {
+                                                        
+                            timesortt(&t);
+                            float result1 = binarySearcht(&t, usersearch.together, 0, t.size);
+                            if (result1==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("%.02f",result1);
+                            
+                            printf("\nΓια να συνεχίσεις πάτησε (ENTER)");
+                            getchar();
+                            
+                            timesorth(&h);
+                            int result2 = binarySearchh(&h, usersearch.together, 0, t.size);
+                            if (result2==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("%i",result2);
+                            
+                            printf("\nΓια να συνεχίσεις πάτησε (ENTER)");
+                            getchar();
+                        
+                            
+                            
+                        }
+                           
                             break;
                     }
                     
