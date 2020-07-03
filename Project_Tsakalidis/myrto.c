@@ -222,49 +222,7 @@ void countingSort(logh* a){
 void bish(timej ts, logh* a){
 	
 	timesorth(a);
-
-    int n = a->size;
-
-    int left = 1;
-    int right = n;
-
-
-    long int next = (((ts.together - a->measurement[left].timestamp.together) / a->measurement[right].timestamp.together - a->measurement[left].timestamp.together) * (right - left));
-    while(ts.together != a->measurement[next].timestamp.together && left < right){
-        int i = 0;
-        if(ts.together >= a->measurement[next].timestamp.together){
-            while(ts.together > a->measurement[(int)(next + i * sqrt(right - left))].timestamp.together){
-                i++;
-                right = i * sqrt(right - left);
-                left = (i - 1) * sqrt(right - left);
-            }
-        }
-        else if(ts.together <= a->measurement[next].timestamp.together){
-            while(ts.together > a->measurement[(int)(next - i * sqrt(right - left))].timestamp.together){
-                i++;
-                right = (i - 1) * sqrt(right - left);
-                left = i * sqrt(right - left);
-            }
-        }
-        next = ((ts.together - a->measurement[left].timestamp.together) / (a->measurement[right].timestamp.together - a->measurement[left].timestamp.together) * (right - left));
-    }
-    if(ts.together == a->measurement[next].timestamp.together){
-        printf("Η υγρασία που ψάχνεις είναι %d\n",a->measurement[next].hum);
-    }
-    else printf("Δεν υπάρχει μέτρηση για την συγκεκριμένη στιγμή :/ κλαψ\n");
-}
-
-
-
-
-
-
-
-
-void bist(timej ts, logt* a){
-
-	bis2sortt(a);
-    printlogt(*a);
+    
     int n = a->size - 1;
 
     int left = 1;
@@ -282,7 +240,8 @@ void bist(timej ts, logt* a){
         if(n <= 3){
             for(i = 0; i < a->size; i++){
                 if(ts.together == a->measurement[i].timestamp.together){
-                    printf("Η θερμοκρασία που ψάχνεις είναι %f\n",a->measurement[next].temp);
+                    printf("Η υγρασία που ψάχνεις είναι %d\n",a->measurement[next].hum);
+                    goto DONE;
                 }
             }
         }
@@ -305,9 +264,77 @@ void bist(timej ts, logt* a){
         next = left + ((right - left + 1) * (ts.together - a->measurement[left].timestamp.together) / (a->measurement[right].timestamp.together - a->measurement[left].timestamp.together)) - 1;
     }
     if(ts.together == a->measurement[next].timestamp.together){
-        printf("Η θερμοκρασία που ψάχνεις είναι %f\n",a->measurement[next].temp);
+        printf("Η υγρασία που ψάχνεις είναι %d\n",a->measurement[next].hum);
+        goto DONE;
     }
-    else printf("Δεν υπάρχει μέτρηση για την συγκεκριμένη στιγμή :/ κλαψ\n"); 
+    else printf("Δεν υπάρχει μέτρηση για την συγκεκριμένη στιγμή :/ κλαψ\n");
+DONE:
+    printf("Για να συνεχίσεις πάτα (ENTER)");
+    getchar();
+    
+    
+}
+
+
+
+
+
+
+
+
+void bist(timej ts, logt* a){
+
+	timesortt(a);
+    int n = a->size - 1;
+
+    int left = 1;
+    int right = n;
+
+    
+
+    n = right - left + 1;
+    
+    long int next = ((n * ((ts.together - a->measurement[left].timestamp.together) / (a->measurement[right].timestamp.together - a->measurement[left].timestamp.together))) + 1);
+    while(ts.together != a->measurement[next].timestamp.together){
+        int i = 0;
+        n = right - left + 1;
+        
+        if(n <= 3){
+            for(i = 0; i < a->size; i++){
+                if(ts.together == a->measurement[i].timestamp.together){
+                    printf("Η θερμοκρασία που ψάχνεις είναι %.02f\n",a->measurement[next].temp);
+                    goto DONE;
+
+                }
+            }
+        }
+        
+        if(ts.together >= a->measurement[next].timestamp.together){
+            while(ts.together > a->measurement[(int)(next + i * sqrt(right - left))].timestamp.together){
+                i++;
+            }
+            right = next + i * sqrt(n);
+            left = next + (i - 1) * sqrt(n);
+            
+        }
+        else if(ts.together < a->measurement[next].timestamp.together){
+            while(ts.together < a->measurement[(int)(next - i * sqrt(n))].timestamp.together + 1){
+                i++;
+            }
+            right = next - (i - 1) * sqrt(n);
+            left = next - i * sqrt(n);
+        }
+        next = left + ((right - left + 1) * (ts.together - a->measurement[left].timestamp.together) / (a->measurement[right].timestamp.together - a->measurement[left].timestamp.together)) - 1;
+    }
+    if(ts.together == a->measurement[next].timestamp.together){
+        printf("Η θερμοκρασία που ψάχνεις είναι %.02f\n",a->measurement[next].temp);
+        goto DONE;
+    }
+    else printf("Δεν υπάρχει μέτρηση για την συγκεκριμένη στιγμή :/ κλαψ\n");
+DONE:
+    printf("Για να συνεχίσεις πάτα (ENTER)");
+    getchar();
+    
 }
 
 

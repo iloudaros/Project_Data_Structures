@@ -185,16 +185,18 @@ int main()
                         case 1://Μόνο Θερμοκρασία
                             passlogt(&temps, &t);
                             bist(usersearch, &t);
-                            printlogt(t);
                             break;
                             
                         case 2://Μόνο Υγρασία
-                            //bish(usersearch, <#logh *a#>);
+                            passlogh(&test, &h);
+                            bish(usersearch, &h);
                             break;
                             
                         case 3://Και τα δύο
-                           // bish(usersearch, <#logh *a#>);
-                            //bist(usersearch, <#logt *a#>);
+                            passlogh(&test, &h);
+                            passlogt(&temps, &t);
+                            bish(usersearch, &h);
+                            bist(usersearch, &t);
                             break;
                     }
                     }

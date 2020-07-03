@@ -78,8 +78,8 @@
             filePath = "Project_Tsakalidis/myrto.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "bist(ts, a)"
             landmarkType = "9">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "Project_Tsakalidis/myrto.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "bist(ts, a)"
             landmarkType = "9">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "Project_Tsakalidis/myrto.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
             landmarkName = "bist(ts, a)"
             landmarkType = "9">
          </BreakpointContent>
