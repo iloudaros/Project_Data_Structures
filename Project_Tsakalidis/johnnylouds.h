@@ -66,10 +66,14 @@ void printlogt(logt);
 void passlogh(logh*,logh*);// αντιγράφει τα περιεχόμενα του πρώτου log στο δεύτερο
 void passlogt(logt*,logt*);// αντιγράφει τα περιεχόμενα του πρώτου log στο δεύτερο
 
+//routines
+void ask4date(timej* t);
 
 
+//Swaps 
 
-
+void swaph(measureh *a, measureh *b);
+void swapt(measuret *a, measuret *b);
 
 
 #endif //"johnnylouds_h"

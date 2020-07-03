@@ -14,14 +14,15 @@
 
 //TIMESORT
 
-void swap(int *a, int *b);
+
 
   
-void timesort(logh* p);//kanw sort ton pinaka me vash ta timestamps gia na mporw meta na kanw binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+void timesortt(logt* p);//kanw sort ton pinaka me vash ta timestamps gia na mporw meta na kanw binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+void timesorth(logh* p);
 
 
-int binarySearch(logh* p, int x, int l, int h);//psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
-
+int binarySearchh(logh* p, long int x, int l, int h);//psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+int binarySearcht(logt* p, long int x, int l, int h);
 
 int interpolationSearch(logh* p, int x);
 

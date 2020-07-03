@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include "myrto.h"
 #include "koutou.h"
-//#include "orestis.h"
+#include "orestis.h"
 #include "johnnylouds.h"
 #include <time.h>
 
@@ -29,7 +29,10 @@ int main()
     logt temps;
     loadt(&temps);
     logt t;
-
+    
+    timej usersearch;//Γενική μεταβλητή για αναζητήσεις
+   
+    
     char end='n'; //μεταβλητή ελέγχου εξόδου προγράμματος
     
     //Μεταβλητές που θα χρησιμοποιούμε για τις μετρήσεις μας
@@ -37,7 +40,6 @@ int main()
     double time_taken;
     double time_taken2;
 
-    
     
     printf("Καλώς ορίσατε στο καλύτερο Project στις Δομές Δεδομένων\n Από τους: Χριστίνα Κρατημένου \t Λουδάρος Ιωάννης \t Ορέστης Σπυριδάκης \t Μυρτώ Δεληγιάννη\n (Για να συνεχίσεις πάτα ENTER)");
     
@@ -123,29 +125,55 @@ int main()
                     break;
                 case 3: // Δυαδική Αναζήτηση και Αναζήτηση με Παρεμβολή
                     
+                    passlogh(&test,&h);
+                    passlogt(&temps,&t);
+                    
+                    
+            
+                    do{
+                        printf("Θέλεις να ψάξεις:\n 1.Μόνο Θερμοκρασία\n 2.Μόνο Υγρασία\n 3.Και τα δύο\n");
+                        scanf("%d",&choice);
+                        dump=getchar();
+                        if(choice>3 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
+                    }while(choice>5 || choice<1);
+                    
+                    switch (choice) {
+                        case 1://Μόνο Θερμοκρασία
+                            
+                            
+                            ask4date(&usersearch);
+                            
+                            timesortt(&t);
+                            printlogt(t);
+                            int result = binarySearcht(&t, usersearch.together, 0, t.size);
+                            if (result==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("%i",result);
+                            
+                            printf("\nΓια να συνεχίσεις πάτησε (ENTER)");
+                            getchar();
+                            getchar();
+                            break;
+                            
+                        case 2://Μόνο Υγρασία
+                            binarySearchh(&h, usersearch.together, 0, t.size);
+                            
+                            break;
+                            
+                        case 3://Και τα δύο
+                           // bish(usersearch, <#logh *a#>);
+                            //bist(usersearch, <#logt *a#>);
+                            break;
+                    }
                     
                     
                     break;
                     
                 case 4: // Δυαδική Αναζήτηση Παρεμβολής
                     
-                    printf("Σε ποια στιγμή είναι η μέτρηση που ψάχνεις;\n");
-                    timej usersearch;
-                    usersearch.year=2014;
-                    usersearch.sec=00;
-                    printf("Μήνας:");
-                    scanf("%d",&usersearch.month);
-                    printf("Μέρα:");
-                    scanf("%d",&usersearch.day);
-                    printf("Ώρα:");
-                    scanf("%d",&usersearch.hour);
-                    printf("Λεπτό:");
-                    scanf("%d",&usersearch.minute);
-                    usersearch.together=(long)100000000* (long)usersearch.year+(long)1000000*usersearch.month+(long)usersearch.day+100*usersearch.hour+usersearch.minute;
-                    
-                    
-                    
-                    
+                    passlogt(&temps, &t);
+                {
+                    ask4date(&usersearch);
+                                        
                     do{
                         printf("Θέλεις να ψάξεις:\n 1.Μόνο Θερμοκρασία\n 2.Μόνο Υγρασία\n 3.Και τα δύο\n");
                         scanf("%d",&choice);
@@ -168,6 +196,7 @@ int main()
                            // bish(usersearch, <#logh *a#>);
                             //bist(usersearch, <#logt *a#>);
                             break;
+                    }
                     }
                     
                     break;

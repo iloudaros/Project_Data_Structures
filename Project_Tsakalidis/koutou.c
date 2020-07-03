@@ -230,29 +230,6 @@ void quickSort(measuret *a, measuret low, measuret high )  //H sunarthsh pou ous
 
 */
 //BIS2SORT
-void swapt(measuret *a, measuret *b)
-{
-    measuret temp = *a;
-    a->temp=b->temp;
-    a->timestamp.year=b->timestamp.year;
-    a->timestamp.month=b->timestamp.month;
-    a->timestamp.day=b->timestamp.day;
-    a->timestamp.minute=b->timestamp.minute;
-    a->timestamp.hour=b->timestamp.hour;
-    a->timestamp.sec=b->timestamp.sec;
-    a->timestamp.together=b->timestamp.together;
-    
-    b->temp=temp.temp;
-    b->timestamp.year=temp.timestamp.year;
-    b->timestamp.month=temp.timestamp.month;
-    b->timestamp.day=temp.timestamp.day;
-    b->timestamp.minute=temp.timestamp.minute;
-    b->timestamp.hour=temp.timestamp.hour;
-    b->timestamp.sec=temp.timestamp.sec;
-    b->timestamp.together=temp.timestamp.together;
-    
-    
-}
 
 void bis2sortt(logt* p)
 {

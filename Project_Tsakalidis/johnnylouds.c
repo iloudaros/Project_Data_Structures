@@ -404,3 +404,96 @@ void passlogt(logt* a,logt* b){
     
     
 }
+
+
+void ask4date(timej* t){
+    printf("Σε ποια στιγμή είναι η μέτρηση που ψάχνεις;\n");//Ο χρήστης δίνει τα στοιχεία της αναζήτησης
+    t->year=2014;
+    t->sec=00;
+    printf("Μήνας:");
+    scanf("%d",&(t->month));
+    printf("Μέρα:");
+    scanf("%d",&(t->day));
+    printf("Ώρα:");
+    scanf("%d",&(t->hour));
+    printf("Λεπτό:");
+    scanf("%d",&(t->minute));
+    t->together=(long)100000000* (long)t->year+(long)1000000*t->month+(long)10000*t->day+100*t->hour+t->minute;
+}
+
+
+//############ Swaps ##############
+
+void swaph(measureh *a, measureh *b)
+{
+    measureh temp;
+    temp.hum=a->hum;
+    temp.timestamp.year=a->timestamp.year;
+    temp.timestamp.month=a->timestamp.month;
+    temp.timestamp.day=a->timestamp.day;
+    temp.timestamp.minute=a->timestamp.minute;
+    temp.timestamp.hour=a->timestamp.hour;
+    temp.timestamp.sec=a->timestamp.sec;
+    temp.timestamp.together=a->timestamp.together;
+    
+    a->hum=b->hum;
+    a->timestamp.year=b->timestamp.year;
+    a->timestamp.month=b->timestamp.month;
+    a->timestamp.day=b->timestamp.day;
+    a->timestamp.minute=b->timestamp.minute;
+    a->timestamp.hour=b->timestamp.hour;
+    a->timestamp.sec=b->timestamp.sec;
+    a->timestamp.together=b->timestamp.together;
+    
+    b->hum=temp.hum;
+    b->timestamp.year=temp.timestamp.year;
+    b->timestamp.month=temp.timestamp.month;
+    b->timestamp.day=temp.timestamp.day;
+    b->timestamp.minute=temp.timestamp.minute;
+    b->timestamp.hour=temp.timestamp.hour;
+    b->timestamp.sec=temp.timestamp.sec;
+    b->timestamp.together=temp.timestamp.together;
+    
+    
+}
+
+void swapt(measuret *a, measuret *b)
+{
+    measuret temp;
+    temp.temp=a->temp;
+    temp.timestamp.year=a->timestamp.year;
+    temp.timestamp.month=a->timestamp.month;
+    temp.timestamp.day=a->timestamp.day;
+    temp.timestamp.minute=a->timestamp.minute;
+    temp.timestamp.hour=a->timestamp.hour;
+    temp.timestamp.sec=a->timestamp.sec;
+    temp.timestamp.together=a->timestamp.together;
+    
+    
+    
+    a->temp=b->temp;
+    a->timestamp.year=b->timestamp.year;
+    a->timestamp.month=b->timestamp.month;
+    a->timestamp.day=b->timestamp.day;
+    a->timestamp.minute=b->timestamp.minute;
+    a->timestamp.hour=b->timestamp.hour;
+    a->timestamp.sec=b->timestamp.sec;
+    a->timestamp.together=b->timestamp.together;
+    
+    b->temp=temp.temp;
+    b->timestamp.year=temp.timestamp.year;
+    b->timestamp.month=temp.timestamp.month;
+    b->timestamp.day=temp.timestamp.day;
+    b->timestamp.minute=temp.timestamp.minute;
+    b->timestamp.hour=temp.timestamp.hour;
+    b->timestamp.sec=temp.timestamp.sec;
+    b->timestamp.together=temp.timestamp.together;
+    
+    
+}
+
+
+
+
+
+
