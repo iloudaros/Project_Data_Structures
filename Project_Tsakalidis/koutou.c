@@ -90,7 +90,7 @@ void mergesortt(logt* p,int min,int max)
  if(min<max)
  {
    mid=(min+max)/2;
-   mergesortt(p,min,max);
+   mergesortt(p,min,mid);
    mergesortt(p,mid+1,max);
    merge(p,min,mid,max);
  }
