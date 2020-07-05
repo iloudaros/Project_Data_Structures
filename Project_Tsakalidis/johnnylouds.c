@@ -333,10 +333,6 @@ void takedaysh(logh log,logh* result){
 
 
 
-
-
-
-
 //################ Printers #####################
 
 
