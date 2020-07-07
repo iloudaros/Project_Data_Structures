@@ -87,6 +87,11 @@ int main()
                     passlogt(&temps, &t);
                     mergesortt(&t,0,t.size-1);
                     printlogt(t);
+                    
+                    
+                    printf("\nΓια να συνεχίσεις πάτησε (ENTER)");
+                    getchar();
+                    
                     break;
                 case 2: // Heap Sort και Counting Sort
                     

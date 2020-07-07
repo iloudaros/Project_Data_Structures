@@ -13,6 +13,7 @@ void merge(logt* p,int min,int mid,int max)
   int i,j,k,m;
   j=min;
   m=mid+1;
+    
   for(i=min; j<=mid && m<=max ; i++)
   {
       if(p->measurement[j].temp <= p->measurement[m].temp)
@@ -38,6 +39,7 @@ void merge(logt* p,int min,int mid,int max)
          tmp[i].timestamp.month = p->measurement[m].timestamp.month;
          tmp[i].timestamp.year = p->measurement[m].timestamp.year;
          tmp[i].timestamp.together = p->measurement[m].timestamp.together;
+         
          m++;
      }
   }
@@ -71,15 +73,16 @@ void merge(logt* p,int min,int mid,int max)
         i++;
      }
   }
-  for(k=min; k<max; k++)
-     tmp[k].temp = p->measurement[k].temp;
-     tmp[k].timestamp.sec = p->measurement[k].timestamp.sec;
-     tmp[k].timestamp.minute = p->measurement[k].timestamp.minute;
-     tmp[k].timestamp.hour = p->measurement[k].timestamp.hour;
-     tmp[k].timestamp.day = p->measurement[k].timestamp.day;
-     tmp[k].timestamp.month = p->measurement[k].timestamp.month;
-     tmp[k].timestamp.year = p->measurement[k].timestamp.year;
-     tmp[k].timestamp.together = p->measurement[k].timestamp.together;
+    for(k=min; k<=max; k++){
+    p->measurement[k].temp = tmp[k].temp;
+    p->measurement[k].timestamp.sec = tmp[k].timestamp.sec;
+    p->measurement[k].timestamp.minute = tmp[k].timestamp.minute;
+    p->measurement[k].timestamp.hour = tmp[k].timestamp.hour;
+    p->measurement[k].timestamp.day = tmp[k].timestamp.day;
+    p->measurement[k].timestamp.month = tmp[k].timestamp.month;
+    p->measurement[k].timestamp.year = tmp[k].timestamp.year;
+    p->measurement[k].timestamp.together = tmp[k].timestamp.together;
+    }
 }
 
 
