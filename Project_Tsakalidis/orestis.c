@@ -57,9 +57,8 @@ void timesorth(logh* p) //kanw sort ton pinaka me vash ta timestamps gia na mpor
 
 //BINARY
 
-int binarySearchh(logh* p, long int x, int low, int h) //psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+int binarySearchh(logh* p, long int x, int low, int high) //psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
 {
-    int high = h-1;
     int mid;
     
     if (high >= low)
@@ -72,19 +71,18 @@ int binarySearchh(logh* p, long int x, int low, int h) //psaxnw me vash to times
         }
         else if (p->measurement[mid].timestamp.together > x)//psaxnw aristera
         {
-            return binarySearchh(p, x, low, mid-1);
+            return binarySearchh(p, x, low, mid);
         }
         else //psaxnw deksia
-            return binarySearchh(p, x, mid-1, high);
+            return binarySearchh(p, x, mid, high);
         }
     else //alliws ton poylo
-        return -1;
+        return -5;
     }
 
 
-int binarySearcht(logt* p, long int x, int low, int h) //psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+int binarySearcht(logt* p, long int x, int low, int high) //psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
 {
-    int high = h-1;
     int mid;
     
     if (high >= low)
@@ -97,13 +95,13 @@ int binarySearcht(logt* p, long int x, int low, int h) //psaxnw me vash to times
         }
         else if (p->measurement[mid].timestamp.together > x)//psaxnw aristera
         {
-            return binarySearcht(p, x, low, mid-1);
+            return binarySearcht(p, x, low, mid);
         }
         else //psaxnw deksia
             return binarySearcht(p, x, mid, high);
         }
     else //alliws ton poylo
-        return -1;
+        return -5;
     }
 
 //INTERPOLATION
@@ -119,7 +117,7 @@ int interpolationSearchh(logh* p, long int x)
         if (low == high)
         {
             if (p->measurement[low].timestamp.together == x) return low;
-            return -1;
+            return -5;
         }
 
         //vriskw th thesh me ton typo apo to vivlio toy kyrioy tsakalidi
@@ -138,7 +136,7 @@ int interpolationSearchh(logh* p, long int x)
         else
             high = pos - 1;
     }
-    return -1;
+    return -5;
 }
 
 
@@ -154,7 +152,7 @@ int interpolationSearcht(logt* p, long int x)
         if (low == high)
         {
             if (p->measurement[low].timestamp.together == x) return low;
-            return -1;
+            return -5;
         }
 
         //vriskw th thesh me ton typo apo to vivlio toy kyrioy tsakalidi
@@ -173,7 +171,7 @@ int interpolationSearcht(logt* p, long int x)
         else
             high = pos - 1;
     }
-    return -1;
+    return -5;
 }
 
 

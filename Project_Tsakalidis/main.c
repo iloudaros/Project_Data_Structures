@@ -96,7 +96,7 @@ int main()
                     
                     time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
                     printlogt(t);
-                    printf("\nΟ MergeSort χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο κάνει ο QuickSort πάτησε (ENTER)",time_taken);
+                    printf("\nΟ MergeSort χρειάστηκε %lf δευτερόλεπτα\n\n Για να δεις πόσο χρόνο κάνει ο QuickSort πάτησε (ENTER)",time_taken);
                     
                     
                     getchar();
@@ -112,7 +112,7 @@ int main()
                     
                     time_taken2 = ((double) (mend - start)) / CLOCKS_PER_SEC;
                     printlogt(t);
-                    printf("\nΟ Quicksort χρειάστηκε %f δευτερόλεπτα\nΟ Mergesort χρειάστηκε %f δευτερόλεπτα\nΣυνεπώς καταλαβαίνουμε ότι ο Mergesort είναι γρηγορότερος κατά %f δευτερόλεπτα\n\n Για να συνεχίσεις πάτησε (ENTER)",time_taken2,time_taken,time_taken-time_taken2);
+                    printf("\nΟ Quicksort χρειάστηκε %lf δευτερόλεπτα\nΟ Mergesort χρειάστηκε %lf δευτερόλεπτα\nΣυνεπώς καταλαβαίνουμε ότι ο Mergesort είναι γρηγορότερος κατά %lf δευτερόλεπτα\n\n Για να συνεχίσεις πάτησε (ENTER)",time_taken2,time_taken,time_taken2-time_taken);
                     
                     getchar();
                     
@@ -130,7 +130,7 @@ int main()
                     
                     time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
                     printlogh(h);
-                    printf("\nΟ Heapsort χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο κάνει ο Countingsort πάτησε (ENTER)",time_taken);
+                    printf("\nΟ Heapsort χρειάστηκε %lf δευτερόλεπτα\n\n Για να δεις πόσο χρόνο κάνει ο Countingsort πάτησε (ENTER)",time_taken);
                     
                     
                     getchar();
@@ -147,7 +147,7 @@ int main()
                     
                     time_taken2 = ((double) (mend - start)) / CLOCKS_PER_SEC;
                     printlogh(h);
-                    printf("\nΟ Countingsort χρειάστηκε %f δευτερόλεπτα\nΟ Heapsort χρειάστηκε %f δευτερόλεπτα\nΣυνεπώς καταλαβαίνουμε ότι ο Countingsort είναι γρηγορότερος κατά %f δευτερόλεπτα\n\n Για να συνεχίσεις πάτησε (ENTER)",time_taken2,time_taken,time_taken-time_taken2);
+                    printf("\nΟ Countingsort χρειάστηκε %lf δευτερόλεπτα\nΟ Heapsort χρειάστηκε %f δευτερόλεπτα\nΣυνεπώς καταλαβαίνουμε ότι ο Countingsort είναι γρηγορότερος κατά %lf δευτερόλεπτα\n\n Για να συνεχίσεις πάτησε (ENTER)",time_taken2,time_taken,time_taken-time_taken2);
                     
                     getchar();
                     
@@ -180,22 +180,22 @@ int main()
                             mend = clock();
                             
                             time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
-                            printf("\nΗ Δυαδική Αναζήτηση χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο χρειάστηκε η Αναζήτηση Παρεμβολής πάτησε (ENTER)",time_taken);
-                            if (result1==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
-                            else printf("Θερμοκρασία :%0.2f",result1);
+                            printf("\nΗ Δυαδική Αναζήτηση χρειάστηκε %lf δευτερόλεπτα",time_taken);
+                            if (result1==-5) printf("\nΔεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("\nΘερμοκρασία :%02.02f",result1);
                             
                             
                             
                             start = clock();
                             
-                            int result2 = interpolationSearcht(&t, usersearch.together);
+                            float result2 = interpolationSearcht(&t, usersearch.together);
                             
                             mend = clock();
                             
                             time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
-                            printf("\nΗ Αναζήτηση Παρεμβολής χρειάστηκε %f δευτερόλεπτα\n",time_taken);
-                            if (result2==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
-                            else printf("Θερμοκρασία :%i",result2);
+                            printf("\nΗ Αναζήτηση Παρεμβολής χρειάστηκε %lf δευτερόλεπτα",time_taken);
+                            if (result2==-5) printf("\nΔεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("\nΘερμοκρασία :%02.02f",result2);
                             
                             printf("\nΓια να συνεχίσεις πάτησε (ENTER)");
                             getchar();
@@ -213,9 +213,9 @@ int main()
                             mend = clock();
                             
                             time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
-                            printf("\nΗ Δυαδική Αναζήτηση χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο χρειάστηκε η Αναζήτηση Παρεμβολής πάτησε (ENTER)",time_taken);
-                            if (result==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
-                            else printf("Υγρασία :%i",result);
+                            printf("\nΗ Δυαδική Αναζήτηση χρειάστηκε %lf δευτερόλεπτα",time_taken);
+                            if (result==-5) printf("\nΔεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("\nΥγρασία :%i",result);
                             
                             start = clock();
                             
@@ -224,9 +224,9 @@ int main()
                             mend = clock();
                             
                             time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
-                            printf("\nΗ Αναζήτηση Παρεμβολής χρειάστηκε %f δευτερόλεπτα",time_taken);
-                            if (result==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
-                            else printf("Υγρασία :%i",result);
+                            printf("\nΗ Αναζήτηση Παρεμβολής χρειάστηκε %lf δευτερόλεπτα",time_taken);
+                            if (result==-5) printf("\nΔεν υπάρχει αυτή η μέτρηση :/");
+                            else printf("\nΥγρασία :%i",result);
                             
                             printf("\nΓια να συνεχίσεις πάτησε (ENTER)");
                             getchar();
@@ -247,22 +247,22 @@ int main()
                             mend = clock();
                             
                             time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
-                            printf("\nΗ Δυαδική Αναζήτηση χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο χρειάστηκε η Αναζήτηση Παρεμβολής πάτησε (ENTER)",time_taken);
-                            if (result1==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
-                            else printf("Θερμοκρασία :%0.2f",result1);
+                            printf("\nΗ Δυαδική Αναζήτηση χρειάστηκε %lf δευτερόλεπτα\n",time_taken);
+                            if (result1==-5) printf("Δεν υπάρχει αυτή η μέτρηση :/\n");
+                            else printf("Θερμοκρασία :%0.02f\n",result1);
                             
                             
                             
                             start = clock();
                             
-                            int result2 = interpolationSearcht(&t, usersearch.together);
+                            float result2 = interpolationSearcht(&t, usersearch.together);
                             
                             mend = clock();
                             
                             time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
-                            printf("\nΗ Αναζήτηση Παρεμβολής χρειάστηκε %f δευτερόλεπτα\n",time_taken);
-                            if (result2==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
-                            else printf("Θερμοκρασία :%i",result2);
+                            printf("\nΗ Αναζήτηση Παρεμβολής χρειάστηκε %lf δευτερόλεπτα\n",time_taken);
+                            if (result2==-5) printf("Δεν υπάρχει αυτή η μέτρηση :/\n");
+                            else printf("Θερμοκρασία :%02.02f\n",result2);
                             
                             
                             //######Υγρασία#######
@@ -277,9 +277,9 @@ int main()
                             mend = clock();
                             
                             time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
-                            printf("\nΗ Δυαδική Αναζήτηση χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο χρειάστηκε η Αναζήτηση Παρεμβολής πάτησε (ENTER)",time_taken);
-                            if (result==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
-                            else printf("Υγρασία :%i",result);
+                            printf("\nΗ Δυαδική Αναζήτηση χρειάστηκε %lf δευτερόλεπτα\n",time_taken);
+                            if (result==-5) printf("Δεν υπάρχει αυτή η μέτρηση :/\n");
+                            else printf("Υγρασία :%i\n",result);
                             
                             start = clock();
                             
@@ -288,9 +288,9 @@ int main()
                             mend = clock();
                             
                             time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
-                            printf("\nΗ Αναζήτηση Παρεμβολής χρειάστηκε %f δευτερόλεπτα",time_taken);
-                            if (result==-1) printf("Δεν υπάρχει αυτή η μέτρηση :/");
-                            else printf("Υγρασία :%i",result);
+                            printf("\nΗ Αναζήτηση Παρεμβολής χρειάστηκε %lf δευτερόλεπτα\n",time_taken);
+                            if (result==-5) printf("Δεν υπάρχει αυτή η μέτρηση :/\n");
+                            else printf("Υγρασία :%i\n",result);
                             
                             
                             

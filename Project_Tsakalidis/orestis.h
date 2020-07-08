@@ -21,8 +21,8 @@ void timesortt(logt* p);//kanw sort ton pinaka me vash ta timestamps gia na mpor
 void timesorth(logh* p);
 
 
-int binarySearchh(logh* p, long int x, int low, int h);//psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
-int binarySearcht(logt* p, long int x, int low, int h);
+int binarySearchh(logh* p, long int x, int low, int high);//psaxnw me vash to timestamp me th methodo binary search poy ematha apo to vivlio toy kyrioy tsakalidi
+int binarySearcht(logt* p, long int x, int low, int high);
 
 int interpolationSearchh(logh* p,long int x);
 int interpolationSearcht(logt* p,long int x);
