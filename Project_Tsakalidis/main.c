@@ -85,11 +85,35 @@ int main()
                     
                 case 1: // ############### Quick Sort και Merge Sort #################
                     passlogt(&temps, &t);
+                    
+                    //############ Mergesort #############
+                    
+                    start = clock();
+                        
                     mergesortt(&t,0,t.size-1);
+
+                    mend = clock();
+                    
+                    time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
                     printlogt(t);
+                    printf("\nΟ MergeSort χρειάστηκε %f δευτερόλεπτα\n\n Για να δεις πόσο χρόνο κάνει ο QuickSort πάτησε (ENTER)",time_taken);
                     
                     
-                    printf("\nΓια να συνεχίσεις πάτησε (ENTER)");
+                    getchar();
+                    
+                    
+                    //########### Quicksort #############
+                    passlogt(&temps, &t); //Κάνουμε reset το log μας ώστε να ξαναγίνει sort
+
+                    start = clock();
+
+                    quick_sort(&t, 0, t.size-1);
+                    mend = clock();
+                    
+                    time_taken2 = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                    printlogt(t);
+                    printf("\nΟ Quicksort χρειάστηκε %f δευτερόλεπτα\nΟ Mergesort χρειάστηκε %f δευτερόλεπτα\nΣυνεπώς καταλαβαίνουμε ότι ο Mergesort είναι γρηγορότερος κατά %f δευτερόλεπτα\n\n Για να συνεχίσεις πάτησε (ENTER)",time_taken2,time_taken,time_taken-time_taken2);
+                    
                     getchar();
                     
                     break;

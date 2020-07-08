@@ -76,5 +76,11 @@ void swaph(measureh *a, measureh *b);
 void swapt(measuret *a, measuret *b);
 
 
+//Pass measurement
+
+void passmeasurementh(measureh *a, measureh *b);
+void passmeasurementt(measuret *a, measuret *b);
+
+
 #endif //"johnnylouds_h"
 

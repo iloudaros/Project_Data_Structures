@@ -102,7 +102,7 @@ void loadh(logh* log){
                     
                 }
         }
-           if(log->size % 500==0) printf("#");
+           if(log->size % 2000==0) printf("#");
         
         //Διάβασε την ημερομηνία
     fscanf(fp,"%4d-%2d-%2dT%2d:%2d:%2d",&log->measurement[log->size-1].timestamp.year,&log->measurement[log->size-1].timestamp.month,&log->measurement[log->size-1].timestamp.day,&log->measurement[log->size-1].timestamp.hour,&log->measurement[log->size-1].timestamp.minute,&log->measurement[log->size-1].timestamp.sec);
@@ -176,7 +176,7 @@ void loadt(logt* log){
                     
                 }
         }
-           if(log->size % 500==0) printf("#");
+           if(log->size % 2000==0) printf("#");
         
         //Διάβασε την ημερομηνία
     fscanf(fp,"%4d-%2d-%2dT%2d:%2d:%2d",&log->measurement[log->size-1].timestamp.year,&log->measurement[log->size-1].timestamp.month,&log->measurement[log->size-1].timestamp.day,&log->measurement[log->size-1].timestamp.hour,&log->measurement[log->size-1].timestamp.minute,&log->measurement[log->size-1].timestamp.sec);
@@ -489,6 +489,33 @@ void swapt(measuret *a, measuret *b)
 }
 
 
+void passmeasurementt(measuret *a, measuret *b)
+{
+    
+    b->temp = a->temp;
+    b->timestamp.year = a->timestamp.year;
+    b->timestamp.month = a->timestamp.month;
+    b->timestamp.day = a->timestamp.day;
+    b->timestamp.minute = a->timestamp.minute;
+    b->timestamp.hour = a->timestamp.hour;
+    b->timestamp.sec = a->timestamp.sec;
+    b->timestamp.together = a->timestamp.together;
+    
+}
+
+void passmeasurementh(measureh *a, measureh *b)
+{
+    
+    b->hum = a->hum;
+    b->timestamp.year = a->timestamp.year;
+    b->timestamp.month = a->timestamp.month;
+    b->timestamp.day = a->timestamp.day;
+    b->timestamp.minute = a->timestamp.minute;
+    b->timestamp.hour = a->timestamp.hour;
+    b->timestamp.sec = a->timestamp.sec;
+    b->timestamp.together = a->timestamp.together;
+    
+}
 
 
 

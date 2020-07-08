@@ -24,7 +24,9 @@ void swap( int *a, int *b );
 
 int partition( int *a, int low, int high );
 
-void quickSort( int *a, int low, int high ); 
+void quickSort( logt *p, int low, int high );
+
+void quick_sort(logt* p,int first,int last);
 
 //BIS2SORT
 void bis2sortt(logt* p);
