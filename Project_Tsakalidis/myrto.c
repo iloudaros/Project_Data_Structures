@@ -503,6 +503,36 @@ node* insert(node* node, measuret data){
     return node;
 }
 
+node* delete(node* root, measuret data){
+	if(root == NULL){
+		return root;
+	}
+	if (data.timestamp.together < root->data.timestamp.together){
+		root->left = delete(root->left, data);
+	}
+	else if(data.timestamp.together > root->data.timestamp.together){
+		root->right = delete(root->right, data);
+	}
+	else{
+		if(root->left == NULL){
+			node *temp = root->right;
+			free(root);
+			return temp;
+		}
+		else if(root->right == NULL){
+			node *temp = root->left;
+			free(root);
+			return temp;
+		}
+		node* temp = minValueNode(root->right);
+		
+		root->data.timestamp.together = temp->data.timestamp.together;
+		
+		root->right = deleteNode(root->right, temp->data.timestamp.together);
+	}
+	return root;
+}
+
 void createBST(logt* a){
 	int i;
 	measuret k;
