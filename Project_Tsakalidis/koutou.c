@@ -135,7 +135,7 @@ void quickSort(logt* p, int low, int high )  //H sunarthsh pou ousiastika ulopoi
 }
 
 
-
+/*
 //BIS2SORT
 
 void bis2sortt(logt* p)
@@ -172,4 +172,5 @@ void bis2sorth(logh* p)
         swaph(&p->measurement[min_idx], &p->measurement[i]);
     }
 }
-                                                                                                                                                                  
+
+ */

@@ -35,7 +35,10 @@ void countingSort(logh* a);
 void bish(timej ts, logh* a);
 void bist(timej ts, logt* a);
 
+//binary interpolation search variation
 
+void bishv(timej ts, logh* h);
+void bistv(timej ts, logt* t);
 
 
 //dentro

@@ -325,19 +325,90 @@ int main()
                     switch (choice) {
                         case 1://Μόνο Θερμοκρασία
                             passlogt(&temps, &t);
+                           
+                            printf("Η Δυική Αναζήτηση Παρεμβολής επέστρεψε:\n");
+                            
+                            start = clock();
                             bist(usersearch, &t);
+                            mend = clock();
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Δυική Αναζήτηση Παρεμβολής χρειάστηκε %lf δευτερόλεπτα\n\n",time_taken);
+                            
+            
+                            
+                            printf("Η Παραλλαγή της Δυικής Αναζήτησης Παρεμβολής επέστρεψε:\n");
+                            
+                            start = clock();
+                            bistv(usersearch, &t);
+                            mend = clock();
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Παραλλαγή της Δυικής Αναζήτησης Παρεμβολής χρειάστηκε %lf δευτερόλεπτα\n\n",time_taken);
+                            
                             break;
                             
                         case 2://Μόνο Υγρασία
                             passlogh(&test, &h);
+                            printf("Η Δυική Αναζήτηση Παρεμβολής επέστρεψε:\n");
+                            
+                            start = clock();
                             bish(usersearch, &h);
+                            mend = clock();
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Δυική Αναζήτηση Παρεμβολής χρειάστηκε %lf δευτερόλεπτα\n\n",time_taken);
+                            
+                            printf("Η Παραλλαγή της Δυικής Αναζήτησης Παρεμβολής επέστρεψε:\n");
+                            
+                            start = clock();
+                            bishv(usersearch, &h);
+                            mend = clock();
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Παραλλαγή της Δυικής Αναζήτησης Παρεμβολής χρειάστηκε %lf δευτερόλεπτα\n\n",time_taken);
+
                             break;
                             
                         case 3://Και τα δύο
                             passlogh(&test, &h);
                             passlogt(&temps, &t);
+                            printf("Η Δυική Αναζήτηση Παρεμβολής επέστρεψε:\n");
+                            
+                            start = clock();
                             bish(usersearch, &h);
+                            mend = clock();
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Δυική Αναζήτηση Παρεμβολής χρειάστηκε %lf δευτερόλεπτα\n\n",time_taken);
+
+                            
+                            printf("Η Παραλλαγή της Δυικής Αναζήτησης Παρεμβολής επέστρεψε:\n");
+                            
+                            start = clock();
+                            bishv(usersearch, &h);
+                            mend = clock();
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Παραλλαγή της Δυικής Αναζήτησης Παρεμβολής χρειάστηκε %lf δευτερόλεπτα\n\n",time_taken);
+
+                            
+                            printf("Η Δυική Αναζήτηση Παρεμβολής επέστρεψε:\n");
+                            
+                            start = clock();
                             bist(usersearch, &t);
+                            mend = clock();
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Δυική Αναζήτηση Παρεμβολής χρειάστηκε %lf δευτερόλεπτα\n\n",time_taken);
+
+                            
+                            printf("Η Παραλλαγή της Δυικής Αναζήτησης Παρεμβολής επέστρεψε:\n");
+                            
+                            start = clock();
+                            bistv(usersearch, &t);
+                            mend = clock();
+                            time_taken = ((double) (mend - start)) / CLOCKS_PER_SEC;
+                            printf("\nΗ Παραλλαγή της Δυικής Αναζήτησης Παρεμβολής χρειάστηκε %lf δευτερόλεπτα\n\n",time_taken);
+
+                            
+                            
+                            printf("(Για να συνεχίσεις πάτα ENTER)\n");
+                            getchar();
+                            
                             break;
                     }
                     }

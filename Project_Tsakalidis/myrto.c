@@ -339,6 +339,128 @@ DONE:
 
 
 
+//binary interpolation search variation
+
+void bishv(timej ts, logh* a){
+    
+    timesorth(a);
+    
+    int n = a->size - 1;
+
+    int left = 1;
+    int right = n;
+
+    
+
+    n = right - left + 1;
+    
+    long int next = ((n * ((ts.together - a->measurement[left].timestamp.together) / (a->measurement[right].timestamp.together - a->measurement[left].timestamp.together))) + 1);
+    while(ts.together != a->measurement[next].timestamp.together){
+        int i = 0;
+        n = right - left + 1;
+        
+        if(n <= 3){
+            for(i = 0; i < a->size; i = 2 * i){
+                binarySearchh(a, ts.together, 0, n);
+            }
+        }
+        
+        if(ts.together >= a->measurement[next].timestamp.together){
+            while(ts.together > a->measurement[(int)(next + i * sqrt(right - left))].timestamp.together){
+                i++;
+            }
+            right = next + i * sqrt(n);
+            left = next + (i - 1) * sqrt(n);
+            
+        }
+        else if(ts.together < a->measurement[next].timestamp.together){
+            while(ts.together < a->measurement[(int)(next - i * sqrt(n))].timestamp.together + 1){
+                i++;
+            }
+            right = next - (i - 1) * sqrt(n);
+            left = next - i * sqrt(n);
+        }
+        next = left + ((right - left + 1) * (ts.together - a->measurement[left].timestamp.together) / (a->measurement[right].timestamp.together - a->measurement[left].timestamp.together)) - 1;
+    }
+    if(ts.together == a->measurement[next].timestamp.together){
+        printf("Η υγρασία που ψάχνεις είναι %d\n",a->measurement[next].hum);
+        goto DONE;
+    }
+    else printf("Δεν υπάρχει μέτρηση για την συγκεκριμένη στιγμή :/ κλαψ\n");
+DONE:
+    printf("Για να συνεχίσεις πάτα (ENTER)");
+    getchar();
+    
+    
+}
+
+
+
+
+
+
+
+
+void bistv(timej ts, logt* a){
+
+    timesortt(a);
+    int n = a->size - 1;
+
+    int left = 1;
+    int right = n;
+
+    
+
+    n = right - left + 1;
+    
+    long int next = ((n * ((ts.together - a->measurement[left].timestamp.together) / (a->measurement[right].timestamp.together - a->measurement[left].timestamp.together))) + 1);
+    while(ts.together != a->measurement[next].timestamp.together){
+        int i = 0;
+        n = right - left + 1;
+        
+        if(n <= 3){
+            for(i = 0; i < a->size; i = 2 * i){
+                binarySearcht(a, ts.together, 0, n);
+            }
+        }
+        
+        if(ts.together >= a->measurement[next].timestamp.together){
+            while(ts.together > a->measurement[(int)(next + i * sqrt(right - left))].timestamp.together){
+                i++;
+            }
+            right = next + i * sqrt(n);
+            left = next + (i - 1) * sqrt(n);
+            
+        }
+        else if(ts.together < a->measurement[next].timestamp.together){
+            while(ts.together < a->measurement[(int)(next - i * sqrt(n))].timestamp.together + 1){
+                i++;
+            }
+            right = next - (i - 1) * sqrt(n);
+            left = next - i * sqrt(n);
+        }
+        next = left + ((right - left + 1) * (ts.together - a->measurement[left].timestamp.together) / (a->measurement[right].timestamp.together - a->measurement[left].timestamp.together)) - 1;
+    }
+    if(ts.together == a->measurement[next].timestamp.together){
+        printf("Η θερμοκρασία που ψάχνεις είναι %.02f\n",a->measurement[next].temp);
+        goto DONE;
+    }
+    else printf("Δεν υπάρχει μέτρηση για την συγκεκριμένη στιγμή :/ κλαψ\n");
+DONE:
+    printf("Για να συνεχίσεις πάτα (ENTER)");
+    getchar();
+    
+}
+
+
+
+
+
+
+
+
+
+
 
 
 //dentro
