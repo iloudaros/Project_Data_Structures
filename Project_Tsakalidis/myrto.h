@@ -54,7 +54,13 @@ void inorder(node *root);
 /* A utility function to insert a new node with given key in BST */
 node* insert(node* node, measuret data);
 
-void createBST(logt* a);
+node* newNode(long int item);
+
+node* minValueNode(node* node);
+
+node* delete(node* root, measuret data);
+
+node* createBST(logt* a);
 
 
 

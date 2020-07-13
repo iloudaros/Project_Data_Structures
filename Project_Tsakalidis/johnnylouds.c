@@ -220,8 +220,9 @@ done:
 void takedayst(logt log,logt* result){
     
     int i;
-    float temp=log.measurement[0].temp;
-    int measurements=1;
+    float temp = log.measurement[0].temp;
+    int measurements = 1;
+    result->size=0;
     
     for (i=1;i<log.size;i++)
     {
@@ -235,7 +236,7 @@ void takedayst(logt log,logt* result){
             {
                 //κάνε χώρο στον πίνακα των αποτελεσμάτων για άλλη μια μέρα
                 result->size++;
-                result->measurement=(measuret *)realloc((*result).measurement, result->size*sizeof(measuret));
+                result->measurement=(measuret *)realloc(result->measurement, result->size*sizeof(measuret));
                 result->measurement[result->size-1].temp=temp/measurements;
                 result->measurement[result->size-1].timestamp.day=log.measurement[i-1].timestamp.day;
                 result->measurement[result->size-1].timestamp.year=log.measurement[i-1].timestamp.year;
@@ -243,7 +244,7 @@ void takedayst(logt log,logt* result){
                 result->measurement[result->size-1].timestamp.hour=0;
                 result->measurement[result->size-1].timestamp.minute=0;
                 result->measurement[result->size-1].timestamp.sec=0;
-                
+                result->measurement[result->size-1].timestamp.together=(long)100000000* (long)result->measurement[result->size-1].timestamp.year+(long)1000000*result->measurement[result->size-1].timestamp.month+(long)10000*result->measurement[result->size-1].timestamp.day+100*result->measurement[result->size-1].timestamp.hour+result->measurement[result->size-1].timestamp.minute;
                 
                 temp=log.measurement[i].temp;
                 measurements=1;

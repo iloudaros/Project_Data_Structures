@@ -29,6 +29,9 @@ int main()
     logt temps;
     loadt(&temps);
     logt t;
+    logt tt;
+    
+    node* r = NULL;
     
     timej usersearch;//Γενική μεταβλητή για αναζητήσεις
    
@@ -435,17 +438,20 @@ int main()
             switch (choice) {
                     
                 case 1: // Δυαδικό Δέντρο Αναζήτησης ως προς μέρα
-                    
+                    takedayst(temps, &tt);
+                    r=createBST(&tt);
                     do{
                     system("clear");
-                    printf("1. Απεικόνιση Δένδρου\n2. Αναζήτηση Θερμοκρασίας βάσει ημέρας\n3. Τροποποίηση Θερμοκρασίας ημέρας\n4. Διαγραφή Εγγραφής\n5. Έξοδος  ");
+                    printf("1. Απεικόνιση Δένδρου\n2. Αναζήτηση Θερμοκρασίας βάσει ημέρας\n3. Τροποποίηση Θερμοκρασίας ημέρας\n4. Διαγραφή Εγγραφής\n5. Έξοδος\n");
                     scanf("%d",&choice);
                         dump=getchar();
                         if(choice>5 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
                     }while(choice>5 || choice<1);
                     
                     switch (choice) {
-                        case 1: //
+                        case 1: //Η απεικόνιση του δένδρου με ενδοδιατεταγμένη διάσχιση:
+                            inorder(r);
+                            
                             
                             break;
                         case 2:

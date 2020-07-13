@@ -472,9 +472,9 @@ typedef struct node{
 }node;
 
 // A utility function to create a new BST node
-node *newNode(long int item){
+node* newNode(measuret input){
     node *t =  (node *)malloc(sizeof(node));
-    t->data.timestamp.together = item;
+    passmeasurementt(&input, &t->data);
     t->left = t->right = NULL;
     return t;
 }
@@ -483,24 +483,33 @@ node *newNode(long int item){
 void inorder(node *root){
     if(root != NULL){
         inorder(root->left);
-        printf("%d/%d/%d    %d:%d:%d:   %f \n", root->data.timestamp.day, root->data.timestamp.month, root->data.timestamp.year, root->data.timestamp.hour, root->data.timestamp.minute, root->data.timestamp.sec, root->data.temp);
-        inorder(root);
+        printf("Date: %d/%d/%d Temperature: %f -- ", root->data.timestamp.day, root->data.timestamp.month, root->data.timestamp.year, root->data.temp);
+        inorder(root->right);
     }
 }
 
 /* A utility function to insert a new node with given key in BST */
 node* insert(node* node, measuret data){
     /* If the tree is empty, return a new node */
-    if (node == NULL) return newNode(data.timestamp.together);
+    if (node == NULL) return newNode(data);
 
     /* Otherwise, recur down the tree */
     if (data.timestamp.together < node->data.timestamp.together)
-        node->left  = insert(node->left, data);
+        node->left = insert(node->left, data);
     else if (data.timestamp.together > node->data.timestamp.together)
         node->right = insert(node->right, data);
 
     /* return the (unchanged) node pointer */
     return node;
+}
+
+node* minValueNode(node* node){
+    struct node *current = node;
+    
+    while(current && current->left != NULL){
+        current = current->left;
+    }
+    return current;
 }
 
 node* delete(node* root, measuret data){
@@ -528,20 +537,21 @@ node* delete(node* root, measuret data){
 		
 		root->data.timestamp.together = temp->data.timestamp.together;
 		
-		root->right = deleteNode(root->right, temp->data.timestamp.together);
+		root->right = delete(root->right, temp->data);
 	}
 	return root;
 }
 
-void createBST(logt* a){
+node* createBST(logt* a){
 	int i;
 	measuret k;
 	struct node *root = NULL;
 	for(i = 0; i < a->size; i++){
-		k.timestamp.together = a->measurement[i].timestamp.together;
-		k.temp = a->measurement[i].temp;
-		insert(root, k);
+        passmeasurementt(&a->measurement[i], &k);
+		root=insert(root, k);
 	}
+    
+    return root;
 }
 
 
