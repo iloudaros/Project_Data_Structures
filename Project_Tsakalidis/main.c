@@ -320,7 +320,7 @@ int main()
                         scanf("%d",&choice);
                         dump=getchar();
                         if(choice>3 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
-                    }while(choice>5 || choice<1);
+                    }while(choice>3 || choice<1);
                     
                     switch (choice) {
                         case 1://Μόνο Θερμοκρασία
@@ -436,6 +436,42 @@ int main()
                     
                 case 1: // Δυαδικό Δέντρο Αναζήτησης ως προς μέρα
                     
+                    do{
+                    system("clear");
+                    printf("1. Απεικόνιση Δένδρου\n2. Αναζήτηση Θερμοκρασίας βάσει ημέρας\n3. Τροποποίηση Θερμοκρασίας ημέρας\n4. Διαγραφή Εγγραφής\n5. Έξοδος  ");
+                    scanf("%d",&choice);
+                        dump=getchar();
+                        if(choice>5 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
+                    }while(choice>5 || choice<1);
+                    
+                    switch (choice) {
+                        case 1: //
+                            
+                            break;
+                        case 2:
+                            
+                            
+                            
+                            break;
+                        case 3:
+                            
+                        
+                            
+                            break;
+                        case 4:
+                            
+                            
+                            
+                            break;
+                            
+                            
+                        case 5:
+                            break;
+                            
+                            
+                    }
+                            
+                            
                     break;
                 case 2: // Δυαδικό Δέντρο ως προς μέτρηση
                     
