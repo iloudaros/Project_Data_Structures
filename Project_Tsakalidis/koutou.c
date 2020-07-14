@@ -137,17 +137,6 @@ void quickSort(logt* p, int low, int high )  //H sunarthsh pou ousiastika ulopoi
 
 //Δέντρο
 
-node* createBSTtemp(logt* a){
-    int i;
-    struct node *root = NULL;
-    for(i = 0; i < a->size; i++){
-        root=insert(root, a->measurement[i]);
-    }
-    
-    return root;
-}
-
-
 /* A utility function to insert a new node with given key in BST */
 node* inserttemp(node* node, measuret data){
     /* If the tree is empty, return a new node */
@@ -162,6 +151,20 @@ node* inserttemp(node* node, measuret data){
     /* return the (unchanged) node pointer */
     return node;
 }
+
+node* createBSTtemp(logt* a){
+    int i;
+    struct node *root = NULL;
+    for(i = 0; i < a->size; i++){
+        root=inserttemp(root, a->measurement[i]);
+    }
+    
+    return root;
+}
+
+
+
+
 
 
 
