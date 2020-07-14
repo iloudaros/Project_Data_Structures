@@ -8,8 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include <conio.h>
-#include <assert.h>
+#include "myrto.h"
 #include "johnnylouds.h"
 
 //MERGESORT
@@ -22,10 +21,12 @@ void merge(logt* p,int min,int mid,int max);
 
 void quick_sort(logt* p,int first,int last);
 
-//BIS2SORT
-void bis2sortt(logt* p);
+//Δέντρο
 
-void bis2sorth(logh* p);
+node* createBSTtemp(logt* a);
 
+node* inserttemp(node* node, measuret data);
+
+node* maxValueNode(node* node);
 
 #endif //koutou_h

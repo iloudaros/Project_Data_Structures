@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include <conio.h>
-//#include <assert.h>
+#include "myrto.h"
 #include "johnnylouds.h"
 
 
@@ -135,42 +134,44 @@ void quickSort(logt* p, int low, int high )  //H sunarthsh pou ousiastika ulopoi
 }
 
 
-/*
-//BIS2SORT
 
-void bis2sortt(logt* p)
-{
-	int n = p->size;
-    int i, j, min_idx;
-  
-    for (i = 0; i < n; i++)
-    {
-        min_idx = i;
-        for (j = i+1; j < n; j++)
-            if (p->measurement[j].timestamp.together < p->measurement[min_idx].timestamp.together)
-            min_idx = j;
-  
-        swapt(&p->measurement[min_idx], &p->measurement[i]);
+//Δέντρο
+
+node* createBSTtemp(logt* a){
+    int i;
+    struct node *root = NULL;
+    for(i = 0; i < a->size; i++){
+        root=insert(root, a->measurement[i]);
     }
+    
+    return root;
+}
+
+
+/* A utility function to insert a new node with given key in BST */
+node* inserttemp(node* node, measuret data){
+    /* If the tree is empty, return a new node */
+    if (node == NULL) return newNode(data);
+
+    /* Otherwise, recur down the tree */
+    if (data.temp < node->data.temp)
+        node->left = inserttemp(node->left, data);
+    else if (data.temp > node->data.temp)
+        node->right = inserttemp(node->right, data);
+
+    /* return the (unchanged) node pointer */
+    return node;
 }
 
 
 
 
-void bis2sorth(logh* p)
-{
-	int n = p->size;
-    int i, j, min_idx;
-  
-    for (i = 0; i < n; i++)
-    {
-        min_idx = i;
-        for (j = i+1; j < n; j++)
-            if (p->measurement[j].timestamp.together < p->measurement[min_idx].timestamp.together)
-            min_idx = j;
-  
-        swaph(&p->measurement[min_idx], &p->measurement[i]);
-    }
-}
 
- */
+node* maxValueNode(node* node){
+    struct node *current = node;
+    
+    while(current && current->right != NULL){
+        current = current->right;
+    }
+    return current;
+}

@@ -31,6 +31,8 @@ int main()
     logt t;
     logt tt;
     node* r = NULL;
+    node* r2 = NULL;
+    node* result = NULL;
     takedayst(temps, &tt);
     r=createBST(&tt);
     
@@ -440,80 +442,106 @@ int main()
                     
                 case 1: // Δυαδικό Δέντρο Αναζήτησης ως προς μέρα
                     
-                    do{
-                    system("clear");
-                    printf("1. Απεικόνιση Δένδρου\n2. Αναζήτηση Θερμοκρασίας βάσει ημέρας\n3. Τροποποίηση Θερμοκρασίας ημέρας\n4. Διαγραφή Εγγραφής\n5. Επαρχικοποίηση Δέντρου\n 6.Έξοδος\n");
-                    scanf("%d",&choice);
-                        dump=getchar();
-                        if(choice>6 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
-                    }while(choice>6 || choice<1);
+                        do{
+                            system("clear");
+                            printf("1. Απεικόνιση Δένδρου\n2. Αναζήτηση Θερμοκρασίας βάσει ημέρας\n3. Τροποποίηση Θερμοκρασίας ημέρας\n4. Διαγραφή Εγγραφής\n5. Επαρχικοποίηση Δέντρου\n 6.Έξοδος\n");
+                            scanf("%d",&choice);
+                            dump=getchar();
+                            if(choice>6 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
+                        }while(choice>6 || choice<1);
                     
-                    switch (choice) {
-                        case 1: //Η απεικόνιση του δένδρου με ενδοδιατεταγμένη διάσχιση:
+                        switch (choice) {
+                            case 1: //Η απεικόνιση του δένδρου με ενδοδιατεταγμένη διάσχιση:
                             
-                            inorder(r);
+                                inorder(r);
                             
-                            break;
-                        case 2://Αναζήτηση Μέσης Θερμοκρασίας βάσει Ημέρας
-                        {
-                            ask4day(&usersearch);
-                            float result = findTemp(r, usersearch);
-                            if (result == -5) printf("Δεν υπάρχει αυτή η μέτρηση :/\n");
-                            else printf("Θερμοκρασία :%0.02f\n", result);
-                        }
-                            break;
-                        case 3://Τροποποίηση Μέσης Θερμοκρασίας που αντιστοιχεί σε συγκεκριμένη μερα
-                        {
-                            float c;
+                                break;
+                            case 2://Αναζήτηση Μέσης Θερμοκρασίας βάσει Ημέρας
+                                {
+                                ask4day(&usersearch);
+                                float result = findTemp(r, usersearch);
+                                if (result == -5) printf("Δεν υπάρχει αυτή η μέτρηση :/\n");
+                                else printf("Θερμοκρασία :%0.02f\n", result);
+                                }
+                                break;
+                            case 3://Τροποποίηση Μέσης Θερμοκρασίας που αντιστοιχεί σε συγκεκριμένη μερα
+                                {
+                                float c;
                             
-                            ask4day(&usersearch);
-                            printf("Ποια είναι η νέα μέση θερμοκρασία;\n");
-                            scanf("%f", &c);
+                                ask4day(&usersearch);
+                                printf("Ποια είναι η νέα μέση θερμοκρασία;\n");
+                                scanf("%f", &c);
+                                
+                                changeTemp(r, usersearch, c);
                             
-                            changeTemp(r, usersearch, c);
+                                float check = findTemp(r, usersearch);
                             
-                            float check = findTemp(r, usersearch);
-                            
-                            if (check == -5) printf("Η αλλαγή απέτυχε :/\n");
-                            else if(check == c) printf("Η αλλαγή πέτυχε, Νέα Θερμοκρασία :%0.02f\n", c);
+                                if (check == -5) printf("Η αλλαγή απέτυχε :/\n");
+                                else if(check == c) printf("Η αλλαγή πέτυχε, Νέα Θερμοκρασία :%0.02f\n", c);
                             
                             
                             
-                        }
+                                }
                             
-                        printf("(Για να συνεχίσεις πάτα ENTER)\n");
-                        getchar();
+                                printf("(Για να συνεχίσεις πάτα ENTER)\n");
+                                getchar();
                             
-                            break;
-                        case 4://Διαγραφή μιας εγγραφής που αντιστοιχεί σε συγκεκεριμένη ημέρα
+                                break;
+                            case 4://Διαγραφή μιας εγγραφής που αντιστοιχεί σε συγκεκεριμένη ημέρα
                             
-                            printf("Ψάξε την ημέρα που θες να διαγράψεις.\n");
-                            ask4day(&usersearch);
+                                printf("Ψάξε την ημέρα που θες να διαγράψεις.\n");
+                                ask4day(&usersearch);
                             
-                            r = delete(r, usersearch);
+                                r = delete(r, usersearch);
                             
-                            printf("Το νέο δέντρο είναι:\n");
-                            inorder(r);
+                                printf("Το νέο δέντρο είναι:\n");
+                                inorder(r);
     
-                            break;
+                                break;
                             
                             
-                        case 5:
-                            r=createBST(&tt);
-                            printf("Το δέντρο επαναρχικοποιήθηκε.");
-                            break;
+                            case 5:
+                                r=createBST(&tt);
+                                printf("Το δέντρο επαναρχικοποιήθηκε.");
+                                break;
                             
-                        case 6:
+                            case 6:
                             
-                            break;
+                                break;
                             
                             
-                    }
+                            }
                             
                             
                     break;
                 case 2: // Δυαδικό Δέντρο ως προς μέτρηση
+                            r2 = createBSTtemp(&tt);
+                            do{
+                            system("clear");
+                            printf("1. Εύρεση Μέρας/Ημερών με την Ελάχιστη Μέση Θερμοκρασία\n2. Εύρεση Μέρας/Ημερών με την Μέγιστη Μέση Θερμοκρασία\n3.Έξοδος\n");
+                            scanf("%d",&choice);
+                            dump=getchar();
+                            if(choice>3 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
+                            }while(choice>3 || choice<1);
                     
+                    
+                        switch (choice) {
+                            case 1: //Εύρεση Μέρας/Ημερών με την Ελάχιστη Μέση Θερμοκρασία
+                            {
+                                result = minValueNode(r2);
+                                printf("Η Ελάχιστη Μέση Θερμοκρασία εμφανίζεται: %d/%d/%d Temperature: %f", result->data.timestamp.day, result->data.timestamp.month, result->data.timestamp.year, result->data.temp);
+                            }
+                        
+                                break;
+                            case 2://Εύρεση Μέρας/Ημερών με την Μέγιστη Μέση Θερμοκρασία
+                            {
+                                result = maxValueNode(r2);
+                                printf("Η Μέγιστη Μέση Θερμοκρασία εμφανίζεται: %d/%d/%d Temperature: %f", result->data.timestamp.day, result->data.timestamp.month, result->data.timestamp.year, result->data.temp);
+                            }
+                                break;
+                            case 3://Έξοδος
+                                break;
+                            }
                     
                     
                     break;

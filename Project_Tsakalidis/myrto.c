@@ -10,7 +10,6 @@
 #include<stdlib.h>
 #include<math.h>
 
-#include "koutou.h"
 #include "johnnylouds.h"
 #include "orestis.h"
 
@@ -544,11 +543,9 @@ node* delete(node* root, timej d){
 
 node* createBST(logt* a){
 	int i;
-	measuret k;
 	struct node *root = NULL;
 	for(i = 0; i < a->size; i++){
-        passmeasurementt(&a->measurement[i], &k);
-		root=insert(root, k);
+		root=insert(root, a->measurement[i]);
 	}
     
     return root;
