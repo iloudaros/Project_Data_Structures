@@ -418,6 +418,18 @@ void ask4date(timej* t){
     t->together=(long)100000000* (long)t->year+(long)1000000*t->month+(long)10000*t->day+100*t->hour+t->minute;
 }
 
+void ask4day(timej* t){
+    printf("Σε ποια στιγμή είναι η μέτρηση που ψάχνεις;\n");//Ο χρήστης δίνει τα στοιχεία της αναζήτησης
+    t->year=2014;
+    t->sec=00;
+    t->hour=00;
+    t->minute=00;
+    printf("Μήνας:");
+    scanf("%d",&(t->month));
+    printf("Μέρα:");
+    scanf("%d",&(t->day));
+    t->together=(long)100000000* (long)t->year+(long)1000000*t->month+(long)10000*t->day+100*t->hour+t->minute;
+}
 
 //############ Swaps ##############
 

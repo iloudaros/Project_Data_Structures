@@ -54,17 +54,17 @@ void inorder(node *root);
 /* A utility function to insert a new node with given key in BST */
 node* insert(node* node, measuret data);
 
-node* newNode(long int item);
+node* newNode(measuret input);
 
 node* minValueNode(node* node);
 
-node* delete(node* root, measuret data);
+node* delete(node* root, timej d);
 
 node* createBST(logt* a);
 
+float findTemp(node* root, timej search);
 
-
-
+void changeTemp(node* root, timej search, float change);
 
 
 

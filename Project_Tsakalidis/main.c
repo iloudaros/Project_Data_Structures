@@ -30,8 +30,9 @@ int main()
     loadt(&temps);
     logt t;
     logt tt;
-    
     node* r = NULL;
+    takedayst(temps, &tt);
+    r=createBST(&tt);
     
     timej usersearch;//Γενική μεταβλητή για αναζητήσεις
    
@@ -438,40 +439,72 @@ int main()
             switch (choice) {
                     
                 case 1: // Δυαδικό Δέντρο Αναζήτησης ως προς μέρα
-                    takedayst(temps, &tt);
-                    r=createBST(&tt);
+                    
                     do{
                     system("clear");
-                    printf("1. Απεικόνιση Δένδρου\n2. Αναζήτηση Θερμοκρασίας βάσει ημέρας\n3. Τροποποίηση Θερμοκρασίας ημέρας\n4. Διαγραφή Εγγραφής\n5. Έξοδος\n");
+                    printf("1. Απεικόνιση Δένδρου\n2. Αναζήτηση Θερμοκρασίας βάσει ημέρας\n3. Τροποποίηση Θερμοκρασίας ημέρας\n4. Διαγραφή Εγγραφής\n5. Επαρχικοποίηση Δέντρου\n 6.Έξοδος\n");
                     scanf("%d",&choice);
                         dump=getchar();
-                        if(choice>5 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
-                    }while(choice>5 || choice<1);
+                        if(choice>6 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
+                    }while(choice>6 || choice<1);
                     
                     switch (choice) {
                         case 1: //Η απεικόνιση του δένδρου με ενδοδιατεταγμένη διάσχιση:
+                            
                             inorder(r);
                             
+                            break;
+                        case 2://Αναζήτηση Μέσης Θερμοκρασίας βάσει Ημέρας
+                        {
+                            ask4day(&usersearch);
+                            float result = findTemp(r, usersearch);
+                            if (result == -5) printf("Δεν υπάρχει αυτή η μέτρηση :/\n");
+                            else printf("Θερμοκρασία :%0.02f\n", result);
+                        }
+                            break;
+                        case 3://Τροποποίηση Μέσης Θερμοκρασίας που αντιστοιχεί σε συγκεκριμένη μερα
+                        {
+                            float c;
+                            
+                            ask4day(&usersearch);
+                            printf("Ποια είναι η νέα μέση θερμοκρασία;\n");
+                            scanf("%f", &c);
+                            
+                            changeTemp(r, usersearch, c);
+                            
+                            float check = findTemp(r, usersearch);
+                            
+                            if (check == -5) printf("Η αλλαγή απέτυχε :/\n");
+                            else if(check == c) printf("Η αλλαγή πέτυχε, Νέα Θερμοκρασία :%0.02f\n", c);
+                            
+                            
+                            
+                        }
+                            
+                        printf("(Για να συνεχίσεις πάτα ENTER)\n");
+                        getchar();
                             
                             break;
-                        case 2:
+                        case 4://Διαγραφή μιας εγγραφής που αντιστοιχεί σε συγκεκεριμένη ημέρα
                             
+                            printf("Ψάξε την ημέρα που θες να διαγράψεις.\n");
+                            ask4day(&usersearch);
                             
+                            r = delete(r, usersearch);
                             
-                            break;
-                        case 3:
-                            
-                        
-                            
-                            break;
-                        case 4:
-                            
-                            
-                            
+                            printf("Το νέο δέντρο είναι:\n");
+                            inorder(r);
+    
                             break;
                             
                             
                         case 5:
+                            r=createBST(&tt);
+                            printf("Το δέντρο επαναρχικοποιήθηκε.");
+                            break;
+                            
+                        case 6:
+                            
                             break;
                             
                             

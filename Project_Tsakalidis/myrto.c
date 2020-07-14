@@ -512,15 +512,15 @@ node* minValueNode(node* node){
     return current;
 }
 
-node* delete(node* root, measuret data){
+node* delete(node* root, timej d){
 	if(root == NULL){
 		return root;
 	}
-	if (data.timestamp.together < root->data.timestamp.together){
-		root->left = delete(root->left, data);
+	if (d.together < root->data.timestamp.together){
+		root->left = delete(root->left, d);
 	}
-	else if(data.timestamp.together > root->data.timestamp.together){
-		root->right = delete(root->right, data);
+	else if(d.together > root->data.timestamp.together){
+		root->right = delete(root->right, d);
 	}
 	else{
 		if(root->left == NULL){
@@ -537,7 +537,7 @@ node* delete(node* root, measuret data){
 		
 		root->data.timestamp.together = temp->data.timestamp.together;
 		
-		root->right = delete(root->right, temp->data);
+        root->right = delete(root->right, temp->data.timestamp);
 	}
 	return root;
 }
@@ -554,4 +554,25 @@ node* createBST(logt* a){
     return root;
 }
 
+float findTemp(node* root, timej search){
+    if (root!=NULL){
+        if (root->data.timestamp.together==search.together)return root->data.temp;
+        else if (search.together>root->data.timestamp.together)return findTemp(root->right, search);
+        else return findTemp(root->left, search);
+    
+    }
+    return -5;
+}
+
+
+
+void changeTemp(node* root, timej search, float change){
+    
+    if (root!=NULL){
+        if (root->data.timestamp.together == search.together) root->data.temp = change ;
+        else if (search.together>root->data.timestamp.together) changeTemp(root->right, search, change);
+        else  changeTemp(root->left, search, change);
+    }
+   
+}
 

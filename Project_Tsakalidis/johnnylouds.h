@@ -68,6 +68,7 @@ void passlogt(logt*,logt*);// αντιγράφει τα περιεχόμενα �
 
 //routines
 void ask4date(timej* t);
+void ask4day(timej* t);
 
 
 //Swaps 
