@@ -548,7 +548,15 @@ int main()
                     
                     break;
                 case 3: // Hashing
-
+                    
+                {
+                    hashtable l;
+                    l.table=NULL;
+                    l.eleCount=19;
+                    
+                    
+                    for (int i=0; i<tt.size; i++) insertToHash(tt.measurement[i],&l);
+                    
                     do{
                     printf("1. Αναζήτηση μέσης θερμοκρασίας βάσει της ημέρας\n2. Τροποποίηση εγγραφής βάσει μέρας\n3.Διαγραφή εγγραφής\n4. Έξοδος");
                     scanf("%d",&choice);
@@ -559,14 +567,27 @@ int main()
                     switch (choice) {
                             
                         case 1: //1. Αναζήτηση μέσης θερμοκρασίας βάσει της ημέρας
+                            ask4day(&usersearch);
+                            searchInHash(usersearch.together,&l);
                             break;
                         case 2: //2. Τροποποίηση εγγραφής βάσει μέρας
+                            ask4day(&usersearch);
+                            float c;
+                            printf("Ποια είναι η νέα μέση θερμοκρασία;\n");
+                            scanf("%f", &c);
+                            changeInHash(usersearch.together, c, &l);
+                            
                             break;
                         case 3: //3. Διαγραφή εγγραφής
-                            break
+                            ask4day(&usersearch);
+                            deleteFromHash(usersearch.together, &l);
+                            
+                            break;
                         case 4: //4. Έξοδος
-                            rtfcdfcdxfxcgxderrdfdfrtcvdfgrterdfertertxcvertdf4rt
+                           
+                            break;
                     }
+                }
                     break;
                 case 4: // Πίσω
                     

@@ -12,7 +12,6 @@
 #include "johnnylouds.h"
 
 
-//TIMESORT
 
 
 //1st part
@@ -29,19 +28,39 @@ int interpolationSearcht(logt* p,long int x);
 
 //2nd part
 
+//Structs
+
+typedef struct{
+    measuret data;
+    struct nodeO* next;
+    long int key;
+
+} nodeO;
+
+
+typedef struct{
+    nodeO* head;
+    int count;
+} hash;
+
+typedef struct{
+    hash* table;
+    int eleCount;
+} hashtable;
+
+
+
 int digitsum(timej measurement);
 
-struct nodeO {
-    measuret data;
-    struct node *next;
-};
+//HashTable Manipulation
+void insertToHash(measuret input,hashtable* a);
 
-void insertToHash(measuret input);
+void deleteFromHash(long int key, hashtable* a);
 
-void deleteFromHash(long int key);
+void searchInHash(long int key, hashtable* a);
 
-void searchInHash(long int key);
+void changeInHash(long int key,float change, hashtable* a);
 
-void display();
+void display(hashtable* a);
 
 #endif //orestis_h
