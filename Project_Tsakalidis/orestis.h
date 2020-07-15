@@ -15,7 +15,7 @@
 //TIMESORT
 
 
-
+//1st part
   
 void timesortt(logt* p);//kanw sort ton pinaka me vash ta timestamps gia na mporw meta na kanw binary search poy ematha apo to vivlio toy kyrioy tsakalidi
 void timesorth(logh* p);
@@ -27,7 +27,21 @@ int binarySearcht(logt* p, long int x, int low, int high);
 int interpolationSearchh(logh* p,long int x);
 int interpolationSearcht(logt* p,long int x);
 
+//2nd part
 
+int digitsum(timej measurement);
 
+struct nodeO {
+    measuret data;
+    struct node *next;
+};
+
+void insertToHash(measuret input);
+
+void deleteFromHash(long int key);
+
+void searchInHash(long int key);
+
+void display();
 
 #endif //orestis_h

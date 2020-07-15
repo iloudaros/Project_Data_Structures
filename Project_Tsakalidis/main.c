@@ -77,6 +77,7 @@ int main()
     switch (choice) {
             
         case 1: // Ο χρήστης επιλέγει το πρώτο μέρος του Project
+            system("clear");
             printf("Έχεις επιλέξει το πρώτο μέρος του Project\n");
             
             
@@ -429,7 +430,9 @@ int main()
             
             break;
         case 2: //Ο χρήστης επιλέγει το δεύτερο μέρος του Project
-           
+           system("clear");
+            printf("Έχεις επιλέξει το δεύτερο μέρος του Project\n");
+            
             
             do{ //Τώρα ο Χρήστης επιλέγει το ερώτημα του δεύτερου μέρους που τον ενδιαφέρει
                     printf("Ποιο ερώτημα σε ενδιαφέρει;\n 1. Ερώτημα (Α)\n 2. Ερώτημα (Β)\n 3. Ερώτημα (Γ)\n 4. Πίσω\n");
@@ -441,9 +444,8 @@ int main()
             switch (choice) {
                     
                 case 1: // Δυαδικό Δέντρο Αναζήτησης ως προς μέρα
-                    
+                    system("clear");
                         do{
-                            system("clear");
                             printf("1. Απεικόνιση Δένδρου\n2. Αναζήτηση Θερμοκρασίας βάσει ημέρας\n3. Τροποποίηση Θερμοκρασίας ημέρας\n4. Διαγραφή Εγγραφής\n5. Επαρχικοποίηση Δέντρου\n 6.Έξοδος\n");
                             scanf("%d",&choice);
                             dump=getchar();
@@ -516,8 +518,8 @@ int main()
                     break;
                 case 2: // Δυαδικό Δέντρο ως προς μέτρηση
                             r2 = createBSTtemp(&tt);
-                            do{
                             system("clear");
+                            do{
                             printf("1. Εύρεση Μέρας/Ημερών με την Ελάχιστη Μέση Θερμοκρασία\n2. Εύρεση Μέρας/Ημερών με την Μέγιστη Μέση Θερμοκρασία\n3.Έξοδος\n");
                             scanf("%d",&choice);
                             dump=getchar();
@@ -546,11 +548,26 @@ int main()
                     
                     break;
                 case 3: // Hashing
+
+                    do{
+                    printf("1. Αναζήτηση μέσης θερμοκρασίας βάσει της ημέρας\n2. Τροποποίηση εγγραφής βάσει μέρας\n3.Διαγραφή εγγραφής\n4. Έξοδος");
+                    scanf("%d",&choice);
+                    dump=getchar();
+                    if(choice>4 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
+                    }while(choice>4 || choice<1);
                     
-                    
-                    
+                    switch (choice) {
+                            
+                        case 1: //1. Αναζήτηση μέσης θερμοκρασίας βάσει της ημέρας
+                            break;
+                        case 2: //2. Τροποποίηση εγγραφής βάσει μέρας
+                            break;
+                        case 3: //3. Διαγραφή εγγραφής
+                            break
+                        case 4: //4. Έξοδος
+                            rtfcdfcdxfxcgxderrdfdfrtcvdfgrterdfertertxcvertdf4rt
+                    }
                     break;
-                    
                 case 4: // Πίσω
                     
                     break;
