@@ -465,6 +465,8 @@ int main()
                                 if (result == -5) printf("Δεν υπάρχει αυτή η μέτρηση :/\n");
                                 else printf("Θερμοκρασία :%0.02f\n", result);
                                 }
+                                printf("(Για να συνεχίσεις πάτα ENTER)\n");
+                                getchar();
                                 break;
                             case 3://Τροποποίηση Μέσης Θερμοκρασίας που αντιστοιχεί σε συγκεκριμένη μερα
                                 {
@@ -531,15 +533,18 @@ int main()
                             case 1: //Εύρεση Μέρας/Ημερών με την Ελάχιστη Μέση Θερμοκρασία
                             {
                                 result = minValueNode(r2);
-                                printf("Η Ελάχιστη Μέση Θερμοκρασία εμφανίζεται: %d/%d/%d Temperature: %f", result->data.timestamp.day, result->data.timestamp.month, result->data.timestamp.year, result->data.temp);
+                                printf("Η Ελάχιστη Μέση Θερμοκρασία εμφανίζεται: %d/%d/%d Temperature: %f\n", result->data.timestamp.day, result->data.timestamp.month, result->data.timestamp.year, result->data.temp);
                             }
-                        
+                                printf("(Για να συνεχίσεις πάτα ENTER)\n");
+                                getchar();
                                 break;
                             case 2://Εύρεση Μέρας/Ημερών με την Μέγιστη Μέση Θερμοκρασία
                             {
                                 result = maxValueNode(r2);
-                                printf("Η Μέγιστη Μέση Θερμοκρασία εμφανίζεται: %d/%d/%d Temperature: %f", result->data.timestamp.day, result->data.timestamp.month, result->data.timestamp.year, result->data.temp);
+                                printf("Η Μέγιστη Μέση Θερμοκρασία εμφανίζεται: %d/%d/%d Temperature: %f\n", result->data.timestamp.day, result->data.timestamp.month, result->data.timestamp.year, result->data.temp);
                             }
+                                printf("(Για να συνεχίσεις πάτα ENTER)\n");
+                                getchar();
                                 break;
                             case 3://Έξοδος
                                 break;
