@@ -55,7 +55,7 @@ void loadt(logt*);
 void takedayst(logt log,logt* result);
 void takedaysh(logh log,logh* result);
 
-
+//Ειδικές συναρτήσεις για την εκτύπωση των στοιχείων ενός log
 void printlogh(logh);
 void printlogt(logt);
 
@@ -63,10 +63,13 @@ void printlogt(logt);
 
 //Συναρτήσεις για την διευκόλυνση περασμάτων τιμών
 
-void passlogh(logh*,logh*);// αντιγράφει τα περιεχόμενα του πρώτου log στο δεύτερο
-void passlogt(logt*,logt*);// αντιγράφει τα περιεχόμενα του πρώτου log στο δεύτερο
+void passlogh(logh*,logh*);// αντιγράφει τα περιεχόμενα του πρώτου log στο δεύτερο (για υγρασίες)
+void passlogt(logt*,logt*);// αντιγράφει τα περιεχόμενα του πρώτου log στο δεύτερο (για θερμοκρασίες)
 
-//routines
+void passmeasurementh(measureh *a, measureh *b);//Αντιγράφει τα περιεχόμενα της πρώτης μέτρησης στην δεύτερη (για υγρασίες)
+void passmeasurementt(measuret *a, measuret *b);//Αντιγράφει τα περιεχόμενα της πρώτης μέτρησης στην δεύτερη (για θερμοκρασίες)
+
+//Ρουτίνες για είσοδο ημερομηνίας
 void ask4date(timej* t);
 void ask4day(timej* t);
 
@@ -75,13 +78,6 @@ void ask4day(timej* t);
 
 void swaph(measureh *a, measureh *b);
 void swapt(measuret *a, measuret *b);
-
-
-//Pass measurement
-
-void passmeasurementh(measureh *a, measureh *b);
-void passmeasurementt(measuret *a, measuret *b);
-
 
 #endif //"johnnylouds_h"
 
