@@ -179,7 +179,7 @@ int interpolationSearcht(logt* p, long int x)
 
 
 
-//PART 2
+//################### PART 2 #######################
 
 
 //Structs
@@ -207,10 +207,8 @@ typedef struct{
 
 
 
-
-
 nodeO * createNode(measuret input) {
-    nodeO *newnode;
+    nodeO* newnode;
     newnode = (nodeO *) malloc(sizeof(nodeO));
     passmeasurementt(&input, &newnode->data);
     newnode->next = NULL;
@@ -220,11 +218,11 @@ nodeO * createNode(measuret input) {
 
 
 
+//Helper function for hashing
 
-
-int digitsum(timej measurement)
+int digitsum(long int key)
 {
-    long int temp = measurement.together/10000;
+    long int temp = key/10000;
     char c = '-';
     
     int sum = 0;
@@ -238,28 +236,26 @@ int digitsum(timej measurement)
         temp = temp/10;
     }
     
-    int result = (int)temp+3*(int)c;
+    int result = (int)sum+2*(int)c;
     
     return result;
 }
 
 
 void insertToHash(measuret input,hashtable* a) {
-    int hashIndex = digitsum(input.timestamp) % a->eleCount;
+    int hashIndex = digitsum(input.timestamp.together) % a->eleCount;
     nodeO *newnode = createNode(input);
+    
     /* head of list for the bucket with index "hashIndex" */
     if (!a->table[hashIndex].head) {
         a->table[hashIndex].head = newnode;
         a->table[hashIndex].count = 1;
         return;
-    }
+        }
     
     /* adding new node to the list */
     newnode->next = (a->table[hashIndex].head);
-    /*
-     * update the head of the list and no of
-     * nodes in the current bucket
-     */
+   
     a->table[hashIndex].head = newnode;
     a->table[hashIndex].count++;
     return;
@@ -267,12 +263,12 @@ void insertToHash(measuret input,hashtable* a) {
 
 void deleteFromHash(long int key, hashtable* a) {
     /* find the bucket using hash index */
-    int hashIndex = key % a->eleCount, flag = 0;
+    int hashIndex = digitsum(key) % a->eleCount, flag = 0;
     nodeO *temp, *myNode;
     /* get the list head from current bucket */
     myNode = a->table[hashIndex].head;
     if (!myNode) {
-        printf("Given data is not present in hash Table!!\n");
+        printf("Η Μέτρηση δεν βρέθηκε\n");
         return;
     }
     temp = myNode;
@@ -293,39 +289,39 @@ void deleteFromHash(long int key, hashtable* a) {
         myNode = myNode->next;
     }
     if (flag)
-        printf("Data deleted successfully from Hash Table\n");
+        printf("Η διαγραφή ολοκληρώθηκε\n");
     else
-        printf("Given data is not present in hash Table!!!!\n");
+        printf("Η Μέτρηση δεν βρέθηκε\n");
     return;
     }
 
     void searchInHash(long int key, hashtable* a) {
-        int hashIndex = key % a->eleCount, flag = 0;
+        int hashIndex = digitsum(key) % a->eleCount, flag = 0;
         nodeO *myNode;
         myNode = a->table[hashIndex].head;
         if (!myNode) {
-            printf("Search element unavailable in hash table\n");
+            printf("Η Μέτρηση δεν βρέθηκε\n");
             return;
         }
         while (myNode != NULL) {
             if (myNode->key == key) {
-                printf("Key  : %ld\n-->\tDate: %d/%d/%d Temperature: %f  ", myNode->key,myNode->data.timestamp.day, myNode->data.timestamp.month, myNode->data.timestamp.year, myNode->data.temp);
+                printf("Key  : %ld\n-->\tDate: %d/%d/%d Temperature: %f\n", myNode->key,myNode->data.timestamp.day, myNode->data.timestamp.month, myNode->data.timestamp.year, myNode->data.temp);
                 flag = 1;
                 break;
             }
         myNode = myNode->next;
         }
         if (!flag)
-            printf("Search element unavailable in hash table\n");
+            printf("Η Μέτρηση δεν βρέθηκε\n");
         return;
     }
 
     void changeInHash(long int key,float change, hashtable* a) {
-        int hashIndex = key % a->eleCount, flag = 0;
+        int hashIndex = digitsum(key) % a->eleCount, flag = 0;
         nodeO *myNode;
         myNode = a->table[hashIndex].head;
         if (!myNode) {
-            printf("Search element unavailable in hash table\n");
+            printf("Η Μέτρηση δεν βρέθηκε\n");
             return;
         }
         while (myNode != NULL) {
@@ -337,11 +333,11 @@ void deleteFromHash(long int key, hashtable* a) {
         myNode = myNode->next;
         }
         if (!flag)
-            printf("Search element unavailable in hash table\n");
+            printf("Η Μέτρηση δεν βρέθηκε\n");
         return;
     }
 
-    void display(hashtable* a) {
+   /* void display(hashtable* a) {
         nodeO *myNode;
         int i;
         for (i = 0; i < a->eleCount; i++) {
@@ -350,16 +346,18 @@ void deleteFromHash(long int key, hashtable* a) {
             myNode = a->table[i].head;
             if (!myNode)
                 continue;
-            printf("\nData at index %d in Hash Table:\n", i);
-            printf("    Key     Measurement      Date   \n");
+            printf("\nΜέτρηση στην θέση %d του πίνακα Κατακερματισμού:\n", i);
+            printf("Measurement      Date   \n");
             printf("--------------------------------\n");
             while (myNode != NULL) {
-                printf("%-15ld\t%02.02f\t\t%02d/%02d/%04d",myNode->key, myNode->data.temp,myNode->data.timestamp.day,myNode->data.timestamp.month,myNode->data.timestamp.year);
+                printf("%02.02f\t\t%02d/%02d/%04d", myNode->data.temp,myNode->data.timestamp.day,myNode->data.timestamp.month,myNode->data.timestamp.year);
                 myNode = myNode->next;
             }
         }
         return;
     }
+    
+    */
 
 
 

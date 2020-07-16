@@ -431,139 +431,152 @@ int main()
             break;
         case 2: //Ο χρήστης επιλέγει το δεύτερο μέρος του Project
            system("clear");
-            printf("Έχεις επιλέξει το δεύτερο μέρος του Project\n");
+            printf("Έχεις επιλέξει το Δεύτερο μέρος του Project\n");
             
             
-            do{ //Τώρα ο Χρήστης επιλέγει το ερώτημα του δεύτερου μέρους που τον ενδιαφέρει
-                    printf("Ποιο ερώτημα σε ενδιαφέρει;\n 1. Ερώτημα (Α)\n 2. Ερώτημα (Β)\n 3. Ερώτημα (Γ)\n 4. Πίσω\n");
+            do{ //Τώρα ο Χρήστης επιλέγει την δομή στην οποία θέλει να αποθηκευτούν τα δεδομένα
+                    printf("Θέλεις να γίνει φόρτωση:\n 1. Σε Δυαδικό Δέντρο Αναζήτησης\n 2. Σε δομή Κατακερματισμού με αλυσίδες\n 3. Πίσω\n");
                     scanf("%d",&choice);
                     dump=getchar();
-                    if(choice>5 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
-                }while(choice>5 || choice<1);
+                    if(choice>3 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
+                }while(choice>3 || choice<1);
             
             switch (choice) {
                     
-                case 1: // Δυαδικό Δέντρο Αναζήτησης ως προς μέρα
-                    system("clear");
-                        do{
-                            printf("1. Απεικόνιση Δένδρου\n2. Αναζήτηση Θερμοκρασίας βάσει ημέρας\n3. Τροποποίηση Θερμοκρασίας ημέρας\n4. Διαγραφή Εγγραφής\n5. Επαρχικοποίηση Δέντρου\n 6.Έξοδος\n");
-                            scanf("%d",&choice);
-                            dump=getchar();
-                            if(choice>6 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
-                        }while(choice>6 || choice<1);
+                case 1: // Δυαδικό Δέντρο Αναζήτησης
                     
-                        switch (choice) {
-                            case 1: //Η απεικόνιση του δένδρου με ενδοδιατεταγμένη διάσχιση:
+                    
+                    do{ //Τώρα ο Χρήστης επιλέγει το ερώτημα (Α) ή (Β)
+                        printf("Θέλεις να γίνει φόρτωση με βάσει την:\n1.Ημέρα\n2.Μέση Θερμοκρασία");
+                        scanf("%d",&choice);
+                        dump=getchar();
+                        if(choice>2 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
+                    }while(choice>2 || choice<1);
+                    
+                    switch (choice) {
+                        case 1: // Δυαδικό Δέντρο Αναζήτησης ως προς μέρα
+
+                                system("clear");
+                                do{
+                                printf("1. Απεικόνιση Δένδρου\n2. Αναζήτηση Θερμοκρασίας βάσει ημέρας\n3. Τροποποίηση Θερμοκρασίας ημέρας\n4. Διαγραφή Εγγραφής\n5. Επαρχικοποίηση Δέντρου\n6. Πίσω\n");
+                                scanf("%d",&choice);
+                                dump=getchar();
+                                if(choice>6 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
+                                }while(choice>6 || choice<1);
+                                            
+                                switch (choice) {
+                                    case 1: //Η απεικόνιση του δένδρου με ενδοδιατεταγμένη διάσχιση:
+                                    
+                                        inorder(r);
+                                    
+                                        break;
+                                    case 2://Αναζήτηση Μέσης Θερμοκρασίας βάσει Ημέρας
+                                        {
+                                        ask4day(&usersearch);
+                                        float result = findTemp(r, usersearch);
+                                        if (result == -5) printf("Δεν υπάρχει αυτή η μέτρηση :/\n");
+                                            else printf("Θερμοκρασία :%0.02f\n", result);
+                                        }
+                                        printf("(Για να συνεχίσεις πάτα ENTER)\n");
+                                        getchar();
+                                        break;
+                                    case 3://Τροποποίηση Μέσης Θερμοκρασίας που αντιστοιχεί σε συγκεκριμένη μερα
+                                        {
+                                        float c;
+                                    
+                                        ask4day(&usersearch);
+                                        printf("Ποια είναι η νέα μέση θερμοκρασία;\n");
+                                        scanf("%f", &c);
+                                        
+                                        changeTemp(r, usersearch, c);
+                                                    
+                                        float check = findTemp(r, usersearch);
+                                                
+                                        if (check == -5) printf("Η αλλαγή απέτυχε :/\n");
+                                        else if(check == c) printf("Η αλλαγή πέτυχε, Νέα Θερμοκρασία :%0.02f\n", c);
+                                    
+                                    
+                                    
+                                        }
+                                        
+                                        printf("(Για να συνεχίσεις πάτα ENTER)\n");
+                                        getchar();
+                                                    
+                                        break;
+                                    case 4://Διαγραφή μιας εγγραφής που αντιστοιχεί σε συγκεκεριμένη ημέρα
+                                    
+                                        printf("Ψάξε την ημέρα που θες να διαγράψεις.\n");
+                                        ask4day(&usersearch);
+                                                
+                                        r = delete(r, usersearch);
+                                                    
+                                        printf("Το νέο δέντρο είναι:\n");
+                                        inorder(r);
                             
-                                inorder(r);
-                            
-                                break;
-                            case 2://Αναζήτηση Μέσης Θερμοκρασίας βάσει Ημέρας
-                                {
-                                ask4day(&usersearch);
-                                float result = findTemp(r, usersearch);
-                                if (result == -5) printf("Δεν υπάρχει αυτή η μέτρηση :/\n");
-                                else printf("Θερμοκρασία :%0.02f\n", result);
-                                }
-                                printf("(Για να συνεχίσεις πάτα ENTER)\n");
-                                getchar();
-                                break;
-                            case 3://Τροποποίηση Μέσης Θερμοκρασίας που αντιστοιχεί σε συγκεκριμένη μερα
-                                {
-                                float c;
-                            
-                                ask4day(&usersearch);
-                                printf("Ποια είναι η νέα μέση θερμοκρασία;\n");
-                                scanf("%f", &c);
+                                        break;
+                                                    
+                                                    
+                                    case 5:
+                                        r=createBST(&tt);
+                                        printf("Το δέντρο επαναρχικοποιήθηκε.");
+                                        break;
+                                                    
+                                    case 6:
+                                                    
+                                        break;
                                 
-                                changeTemp(r, usersearch, c);
+                                    }
+                            break;
                             
-                                float check = findTemp(r, usersearch);
-                            
-                                if (check == -5) printf("Η αλλαγή απέτυχε :/\n");
-                                else if(check == c) printf("Η αλλαγή πέτυχε, Νέα Θερμοκρασία :%0.02f\n", c);
-                            
-                            
-                            
-                                }
-                            
-                                printf("(Για να συνεχίσεις πάτα ENTER)\n");
-                                getchar();
-                            
-                                break;
-                            case 4://Διαγραφή μιας εγγραφής που αντιστοιχεί σε συγκεκεριμένη ημέρα
-                            
-                                printf("Ψάξε την ημέρα που θες να διαγράψεις.\n");
-                                ask4day(&usersearch);
-                            
-                                r = delete(r, usersearch);
-                            
-                                printf("Το νέο δέντρο είναι:\n");
-                                inorder(r);
-    
-                                break;
+                            case 2:// Δυαδικό Δέντρο ως προς μέτρηση
+                                    r2 = createBSTtemp(&tt);
+                                    system("clear");
+                                    do{
+                                    printf("1. Εύρεση Μέρας/Ημερών με την Ελάχιστη Μέση Θερμοκρασία\n2. Εύρεση Μέρας/Ημερών με την Μέγιστη Μέση Θερμοκρασία\n3. Πίσω\n");
+                                    scanf("%d",&choice);
+                                    dump=getchar();
+                                    if(choice>3 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
+                                    }while(choice>3 || choice<1);
                             
                             
-                            case 5:
-                                r=createBST(&tt);
-                                printf("Το δέντρο επαναρχικοποιήθηκε.");
-                                break;
+                                switch (choice) {
+                                    case 1: //Εύρεση Μέρας/Ημερών με την Ελάχιστη Μέση Θερμοκρασία
+                                    {
+                                        result = minValueNode(r2);
+                                        printf("Η Ελάχιστη Μέση Θερμοκρασία εμφανίζεται: %d/%d/%d Temperature: %f\n", result->data.timestamp.day, result->data.timestamp.month, result->data.timestamp.year, result->data.temp);
+                                    }
+                                        printf("(Για να συνεχίσεις πάτα ENTER)\n");
+                                        getchar();
+                                        break;
+                                    case 2://Εύρεση Μέρας/Ημερών με την Μέγιστη Μέση Θερμοκρασία
+                                    {
+                                        result = maxValueNode(r2);
+                                        printf("Η Μέγιστη Μέση Θερμοκρασία εμφανίζεται: %d/%d/%d Temperature: %f\n", result->data.timestamp.day, result->data.timestamp.month, result->data.timestamp.year, result->data.temp);
+                                    }
+                                        printf("(Για να συνεχίσεις πάτα ENTER)\n");
+                                        getchar();
+                                        break;
+                                    case 3://Έξοδος
+                                        break;
+                                    }
                             
-                            case 6:
-                            
-                                break;
-                            
-                            
-                            }
-                            
-                            
-                    break;
-                case 2: // Δυαδικό Δέντρο ως προς μέτρηση
-                            r2 = createBSTtemp(&tt);
-                            system("clear");
-                            do{
-                            printf("1. Εύρεση Μέρας/Ημερών με την Ελάχιστη Μέση Θερμοκρασία\n2. Εύρεση Μέρας/Ημερών με την Μέγιστη Μέση Θερμοκρασία\n3.Έξοδος\n");
-                            scanf("%d",&choice);
-                            dump=getchar();
-                            if(choice>3 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
-                            }while(choice>3 || choice<1);
-                    
-                    
-                        switch (choice) {
-                            case 1: //Εύρεση Μέρας/Ημερών με την Ελάχιστη Μέση Θερμοκρασία
-                            {
-                                result = minValueNode(r2);
-                                printf("Η Ελάχιστη Μέση Θερμοκρασία εμφανίζεται: %d/%d/%d Temperature: %f\n", result->data.timestamp.day, result->data.timestamp.month, result->data.timestamp.year, result->data.temp);
-                            }
-                                printf("(Για να συνεχίσεις πάτα ENTER)\n");
-                                getchar();
-                                break;
-                            case 2://Εύρεση Μέρας/Ημερών με την Μέγιστη Μέση Θερμοκρασία
-                            {
-                                result = maxValueNode(r2);
-                                printf("Η Μέγιστη Μέση Θερμοκρασία εμφανίζεται: %d/%d/%d Temperature: %f\n", result->data.timestamp.day, result->data.timestamp.month, result->data.timestamp.year, result->data.temp);
-                            }
-                                printf("(Για να συνεχίσεις πάτα ENTER)\n");
-                                getchar();
-                                break;
-                            case 3://Έξοδος
-                                break;
-                            }
-                    
+                            break;
+                    }
                     
                     break;
-                case 3: // Hashing
+               
+                case 2: // Hashing
                     
                 {
                     hashtable l;
-                    l.table=NULL;
                     l.eleCount=19;
-                    
+                    l.table = (hash *) calloc(l.eleCount, sizeof(hash));
                     
                     for (int i=0; i<tt.size; i++) insertToHash(tt.measurement[i],&l);
                     
+                    system("clear");
                     do{
-                    printf("1. Αναζήτηση μέσης θερμοκρασίας βάσει της ημέρας\n2. Τροποποίηση εγγραφής βάσει μέρας\n3.Διαγραφή εγγραφής\n4. Έξοδος");
+                    printf("1.Αναζήτηση μέσης θερμοκρασίας βάσει της ημέρας\n2.Τροποποίηση εγγραφής βάσει μέρας\n3.Διαγραφή εγγραφής\n4.Έξοδος\n");
                     scanf("%d",&choice);
                     dump=getchar();
                     if(choice>4 || choice<1) printf("Πρέπει να επιλέξεις από τα παρακάτω...\n");
@@ -574,6 +587,9 @@ int main()
                         case 1: //1. Αναζήτηση μέσης θερμοκρασίας βάσει της ημέρας
                             ask4day(&usersearch);
                             searchInHash(usersearch.together,&l);
+                            
+                            printf("(Για να συνεχίσεις πάτα ENTER)\n");
+                            getchar();
                             break;
                         case 2: //2. Τροποποίηση εγγραφής βάσει μέρας
                             ask4day(&usersearch);
@@ -582,11 +598,16 @@ int main()
                             scanf("%f", &c);
                             changeInHash(usersearch.together, c, &l);
                             
+                            
+                            printf("(Για να συνεχίσεις πάτα ENTER)\n");
+                            getchar();
                             break;
                         case 3: //3. Διαγραφή εγγραφής
                             ask4day(&usersearch);
                             deleteFromHash(usersearch.together, &l);
                             
+                            printf("(Για να συνεχίσεις πάτα ENTER)\n");
+                            getchar();
                             break;
                         case 4: //4. Έξοδος
                            
@@ -594,7 +615,7 @@ int main()
                     }
                 }
                     break;
-                case 4: // Πίσω
+                case 3: // Πίσω
                     
                     break;
                     

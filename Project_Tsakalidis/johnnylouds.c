@@ -415,6 +415,7 @@ void ask4date(timej* t){
     scanf("%d",&(t->hour));
     printf("Λεπτό:");
     scanf("%d",&(t->minute));
+    int dump = getchar();
     t->together=(long)100000000* (long)t->year+(long)1000000*t->month+(long)10000*t->day+100*t->hour+t->minute;
 }
 
@@ -428,6 +429,7 @@ void ask4day(timej* t){
     scanf("%d",&(t->month));
     printf("Μέρα:");
     scanf("%d",&(t->day));
+    int dump = getchar();
     t->together=(long)100000000* (long)t->year+(long)1000000*t->month+(long)10000*t->day+100*t->hour+t->minute;
 }
 
