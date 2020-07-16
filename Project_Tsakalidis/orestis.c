@@ -305,7 +305,7 @@ void deleteFromHash(long int key, hashtable* a) {
         }
         while (myNode != NULL) {
             if (myNode->key == key) {
-                printf("Key  : %ld\n-->\tDate: %d/%d/%d Temperature: %f\n", myNode->key,myNode->data.timestamp.day, myNode->data.timestamp.month, myNode->data.timestamp.year, myNode->data.temp);
+                printf("Date: %d/%d/%d Temperature: %f\n",myNode->data.timestamp.day, myNode->data.timestamp.month, myNode->data.timestamp.year, myNode->data.temp);
                 flag = 1;
                 break;
             }
