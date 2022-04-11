@@ -12,6 +12,7 @@
 #include "orestis.h"
 #include "johnnylouds.h"
 #include <time.h>
+#include <unistd.h>
 
 int main()
 {
